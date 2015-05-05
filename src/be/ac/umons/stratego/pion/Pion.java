@@ -1,5 +1,6 @@
 package be.ac.umons.stratego.pion;
 
+
 import be.ac.umons.stratego.plateau.PlateauBase;
 
 public abstract class Pion {
@@ -26,10 +27,8 @@ public abstract class Pion {
     public int getlvl () {
         return lvl;
     }
-    
-    public String getSquad() {
-    	return equipe;
-    }
+
+    public String getSquad(){ return equipe; }
     
     public static Pion conversion ( String quase, int y , int x ) { // prends le string de la case et retourne un objet du pion correspondant 
    	 
@@ -82,15 +81,20 @@ public abstract class Pion {
     	        return new Colonel(8,y,x,"Ennemy");
     	}
     
-	public boolean deplacementPossible ( String direction,PlateauBase plateau ) { // vérifie qu'il n'y a pas de fleuve et qu'il ne dépasse pas le plateau
-       String caseDeJeu; 
+	public boolean deplacementPossible ( String direction,PlateauBase plateau ) { // vérifie qu'il n'y a pas de fleuve, dépasse pas le plateau et pas ami
+       String caseDeJeu;
 		if (direction.equals("UP")) {
             nvlposY = this.posY - 1;
             while ( nvlposY < 10 && nvlposY >= 0 ) {
             	caseDeJeu = plateau.zone [nvlposY] [this.posX];
             	int lengthCase = caseDeJeu.length();
-            	return ! ((caseDeJeu.equals("FLEUVE")) 
-            			|| (this.equipe.charAt(0)==(caseDeJeu.charAt(lengthCase-1))));            
+            	if ((caseDeJeu.equals("FLEUVE")) 
+            			|| (this.equipe.charAt(0)==(caseDeJeu.charAt(lengthCase-1))))
+            		return false;
+            	
+            	else 
+            		return true;
+            
             	}
             return false;
         }
@@ -99,8 +103,11 @@ public abstract class Pion {
             while ( nvlposY < 10 && nvlposY >= 0 ) {
             	caseDeJeu = plateau.zone [nvlposY] [this.posX];
             	int lengthCase = caseDeJeu.length();
-            	return ! ((caseDeJeu.equals("FLEUVE")) 
-            			|| (this.equipe.charAt(0)==(caseDeJeu.charAt(lengthCase-1))));
+            	if ((caseDeJeu.equals("FLEUVE")) 
+            			|| (this.equipe.charAt(0)==(caseDeJeu.charAt(lengthCase-1))))
+                    return false;
+                else 
+                    return true;
             
             }
             return false;
@@ -110,8 +117,11 @@ public abstract class Pion {
             while (nvlposX < 10 && nvlposX >= 0) {
             	caseDeJeu = plateau.zone [this.posY] [nvlposX];
             	int lengthCase = caseDeJeu.length();
-            	return ! ((caseDeJeu.equals("FLEUVE")) 
-            			|| (this.equipe.charAt(0)==(caseDeJeu.charAt(lengthCase-1))));  
+            	if ((caseDeJeu.equals("FLEUVE")) 
+            			|| (this.equipe.charAt(0)==(caseDeJeu.charAt(lengthCase-1))))
+                    return false;
+                else 
+                    return true;    
             
             }
             return false;
@@ -121,8 +131,11 @@ public abstract class Pion {
             while (nvlposX < 10 && nvlposX >= 0) {
             	caseDeJeu = plateau.zone[this.posY] [nvlposX];
             	int lengthCase = caseDeJeu.length();
-                return ! (caseDeJeu.equals("FLEUVE") 
-                		|| (this.equipe.charAt(0)==(caseDeJeu.charAt(lengthCase-1))));
+                if (caseDeJeu.equals("FLEUVE") 
+                		|| (this.equipe.charAt(0)==(caseDeJeu.charAt(lengthCase-1))))
+                    return false;
+                else 
+                    return true;
            
             }
             return false;

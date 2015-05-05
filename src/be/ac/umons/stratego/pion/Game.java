@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class Game {
 
+
     public static void jeu(){
 
             boolean tour_joueur = false;
@@ -18,7 +19,7 @@ public class Game {
             String [][] plateau = po.zone;
             
             while ( ( (plateau[PlateauBase.posD_Y][PlateauBase.posD_X]).equals("null") ) == false ) {// MAJ
-                if (tour_joueur == false ){
+                if (!tour_joueur ){
                     
                     System.out.println("Joueur 1 , à vous de jouer ! ");
                     Scanner x = new Scanner(System.in);
