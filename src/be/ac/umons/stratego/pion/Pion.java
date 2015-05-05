@@ -89,13 +89,8 @@ public abstract class Pion {
             while ( nvlposY < 10 && nvlposY >= 0 ) {
             	caseDeJeu = plateau.zone [nvlposY] [this.posX];
             	int lengthCase = caseDeJeu.length();
-            	if ((caseDeJeu.equals("FLEUVE")) 
-            			|| (this.equipe.charAt(0)==(caseDeJeu.charAt(lengthCase-1))))
-            		return false;
-            	
-            	else 
-            		return true;
-            
+            	return ! ((caseDeJeu.equals("FLEUVE")) 
+            			|| (this.equipe.charAt(0)==(caseDeJeu.charAt(lengthCase-1))));            
             	}
             return false;
         }
@@ -104,11 +99,8 @@ public abstract class Pion {
             while ( nvlposY < 10 && nvlposY >= 0 ) {
             	caseDeJeu = plateau.zone [nvlposY] [this.posX];
             	int lengthCase = caseDeJeu.length();
-            	if ((caseDeJeu.equals("FLEUVE")) 
-            			|| (this.equipe.charAt(0)==(caseDeJeu.charAt(lengthCase-1))))
-                    return false;
-                else 
-                    return true;
+            	return ! ((caseDeJeu.equals("FLEUVE")) 
+            			|| (this.equipe.charAt(0)==(caseDeJeu.charAt(lengthCase-1))));
             
             }
             return false;
@@ -118,11 +110,8 @@ public abstract class Pion {
             while (nvlposX < 10 && nvlposX >= 0) {
             	caseDeJeu = plateau.zone [this.posY] [nvlposX];
             	int lengthCase = caseDeJeu.length();
-            	if ((caseDeJeu.equals("FLEUVE")) 
-            			|| (this.equipe.charAt(0)==(caseDeJeu.charAt(lengthCase-1))))
-                    return false;
-                else 
-                    return true;    
+            	return ! ((caseDeJeu.equals("FLEUVE")) 
+            			|| (this.equipe.charAt(0)==(caseDeJeu.charAt(lengthCase-1))));  
             
             }
             return false;
@@ -132,11 +121,8 @@ public abstract class Pion {
             while (nvlposX < 10 && nvlposX >= 0) {
             	caseDeJeu = plateau.zone[this.posY] [nvlposX];
             	int lengthCase = caseDeJeu.length();
-                if (caseDeJeu.equals("FLEUVE") 
-                		|| (this.equipe.charAt(0)==(caseDeJeu.charAt(lengthCase-1))))
-                    return false;
-                else 
-                    return true;
+                return ! (caseDeJeu.equals("FLEUVE") 
+                		|| (this.equipe.charAt(0)==(caseDeJeu.charAt(lengthCase-1))));
            
             }
             return false;
