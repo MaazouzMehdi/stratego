@@ -1,5 +1,6 @@
 package be.ac.umons.stratego.test;
 
+import be.ac.umons.stratego.pion.Direction;
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
@@ -7,6 +8,8 @@ import static org.junit.Assert.*;
 
 import be.ac.umons.stratego.plateau.PlateauBase;
 import be.ac.umons.stratego.pion.Captain;
+
+import java.net.NoRouteToHostException;
 
 
 public class TestDeplacement {
@@ -27,27 +30,27 @@ public class TestDeplacement {
 	@Test
 	public void deplacementPossibleTest() {
 		// test si le deplacement sur un fleuve  est impossible 
-		assertTrue(capitaine.deplacementPossible("RIGHT",plateau)==false);
+		assertTrue(capitaine.deplacementPossible(Direction.EAST,plateau,1)==false);
 		// test si le déplacement sur une zone vide est bien possible
-		assertTrue(capitaine.deplacementPossible("UP",plateau)==true);
+		assertTrue(capitaine.deplacementPossible(Direction.NORTH,plateau,1)==true);
 		// test si le pion peut se déplacer sur une case ennemie
-		assertTrue(capitaine.deplacementPossible("DOWN",plateau)==true);
+		assertTrue(capitaine.deplacementPossible(Direction.SOUTH,plateau,1)==true);
 	}
 	@Test
 	public void deplacementTest() {
 		// test si le pion s'est bien déplacé d'une unité vers le haut 
-		capitaine.deplacement("UP",plateau);
+		capitaine.deplacement(Direction.NORTH,plateau,1);
 		assertTrue(plateau.zone[capitaine.getpositionY()][capitaine.getpositionX()].equals("C-F"));
 		
 		final int oldPosX=capitaine.getpositionX();
 		final int oldPosY=capitaine.getpositionY();
 		
 		// test si le pion est bel et bien bloqué par la fin du tableau et n'a donc pas bougé de position
-		assertTrue(capitaine.deplacement("UP",plateau)==false);
+		assertTrue(capitaine.deplacement(Direction.NORTH,plateau,1)==false);
 		assertTrue(plateau.zone[capitaine.getpositionY()][capitaine.getpositionX()].equals(plateau.zone[oldPosY][oldPosX]));
 		
 		//test si le pion s'est bien déplacer vers la gauche,vers une case vide
-		assertTrue(capitaine.deplacement("LEFT",plateau)==true);
+		assertTrue(capitaine.deplacement(Direction.WEST,plateau,1)==true);
 		assertFalse(plateau.zone[capitaine.getpositionY()][capitaine.getpositionX()].equals(plateau.zone[oldPosY][oldPosX]));
 		
 		

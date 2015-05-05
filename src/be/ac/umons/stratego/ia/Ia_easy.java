@@ -14,7 +14,7 @@ import static be.ac.umons.stratego.pion.Pion.conversion;
 
 public class Ia_easy {
 
-    private ArrayList<Pion> piondispo ; // METTRE
+    private ArrayList<Pion> piondispo ;
 
         public void play (PlateauBase plateau) {
 
@@ -29,7 +29,7 @@ public class Ia_easy {
                 Random mynumbercases = new Random();
                 int nbrcases = mynumbercases.nextInt(5);
 
-                if (deplacement == 0) {
+                /*if (deplacement == 0) {
                     if (pion.deplacementPossible("UP", plateau, nbrcases))
                         pion.deplacement("UP", plateau, nbrcases);
                     else
@@ -70,6 +70,7 @@ public class Ia_easy {
                         pion.deplacement("RIGHT", plateau);
                     else
                         play(plateau);
+            }*/
             }
         }
 

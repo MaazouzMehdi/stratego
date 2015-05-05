@@ -2,6 +2,7 @@ package be.ac.umons.stratego.test;
 
 import static org.junit.Assert.*;
 
+import be.ac.umons.stratego.pion.Direction;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,7 +29,7 @@ public class AttaqueTest {
 		@Test
 	public void attaqueTest() {
 			// return true si le capitaine peut bel et bien attaqué un adversaire pres de sa position
-			assertTrue(marechal.deplacement("UP",plateau)==true);
+			assertTrue(marechal.deplacement(Direction.NORTH,plateau,1)==true);
 			// test si le marechal s'est bien déplacer
 			assertTrue(plateau.zone[marechal.getpositionY()][marechal.getpositionX()].equals("null"));
 			// test si marechal a bien pris la position du capitaine
