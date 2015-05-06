@@ -9,7 +9,14 @@ public abstract class Pion {
 	protected int posY;
 	protected int posX;
 	protected String equipe;
-	
+
+    public Pion( int lvl, int posY ,int posX , String equipe ){
+        this.lvl=lvl;
+        this.posY=posY;
+        this.posX=posX;
+        this.equipe=equipe;
+    }
+
 	public int getpositionX () {
 	    return posX;
 	}

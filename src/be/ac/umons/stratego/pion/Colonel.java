@@ -8,7 +8,7 @@ public class Colonel extends PionGeneral {
 
 	public String toString() {
 	        String a = "CO";
-		if (this.equipe=="Friend")
+		if (this.equipe.equals("Friend"))
 		        return a +"-F";
 		else 
 		        return a + "-E";
