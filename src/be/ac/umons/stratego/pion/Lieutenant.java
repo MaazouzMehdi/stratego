@@ -8,7 +8,7 @@ public class Lieutenant extends PionGeneral {
 
 	public String toString() {
 		String a = "L";
-		if (this.equipe=="Friend" )
+		if (this.equipe.equals("Friend" ))
 		        return a +"-F";
 		else 
 		        return a + "-E";

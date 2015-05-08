@@ -1,9 +1,10 @@
 package be.ac.umons.stratego.plateau;
 
+
 import java.util.Random;
 
 /* dedans tu as la méthode qui génère un plateau, une qui met les pions alliés
- * une autre , les pions ennemis et une dernière qui imprime te tableau */
+  une autre , les pions ennemis et une dernière qui imprime te tableau */
 
 public class PlateauBase 
 {
@@ -30,7 +31,7 @@ public class PlateauBase
 			placementPiece=false;
 			int numberLine = myNumberRandom.nextInt(2)+4; // ligne 0 et 1 +4
 			int numberColonne = myNumberRandom.nextInt(10);
-			if (plateau.zone[numberLine][numberColonne].equals("null")) {
+			if (plateau.zone[numberLine][numberColonne]==null) {
 				plateau.zone[numberLine][numberColonne]="FLEUVE";
 				placementPiece=true;
 			}
@@ -41,7 +42,7 @@ public class PlateauBase
 		return plateau;
 	}
 	
-	public static PlateauBase pawnRandomEnnemy(PlateauBase plateau) {
+	public static PlateauBase pawnRandomAlly(PlateauBase plateau) {
 		/* Method that will place the pieces of your team randomly on the table
 		 * This Method return the table whit your pawns */
 		Random myNumberRandom = new Random();
@@ -59,80 +60,78 @@ public class PlateauBase
 			int numberPiecesRandom= myNumberRandom.nextInt(11);
 			switch (numberPiecesRandom) {
 				case 0 :
-					if ( plateau.zone[numberLine][numberColonne].equals("null") &&countMarechal<1) {
-						plateau.zone[numberLine][numberColonne] = new String("MA-E");
+					if ( plateau.zone[numberLine][numberColonne]==null &&countMarechal<1) {
+						plateau.zone[numberLine][numberColonne] = new String("MA");
 						placementPiece=true;
 						countMarechal=1;
 				}
 				case 1: 
-					if (plateau.zone[numberLine][numberColonne].equals("null") && countGeneral<1) {
-						plateau.zone[numberLine][numberColonne] = new String("G-E");
+					if (plateau.zone[numberLine][numberColonne] ==null && countGeneral<1) {
+						plateau.zone[numberLine][numberColonne] = new String("G");
 						placementPiece=true;
 						countGeneral=1;
 					}
 				case 2:
-					if (plateau.zone[numberLine][numberColonne].equals("null") && countColonel<2) {
-						plateau.zone[numberLine][numberColonne] = new String("CO-E");
+					if (plateau.zone[numberLine][numberColonne] ==null && countColonel<2) {
+						plateau.zone[numberLine][numberColonne] = new String("CO");
 						placementPiece=true;
 						countColonel++;
 					}
 				case 3:
-					if (plateau.zone[numberLine][numberColonne].equals("null") && countMajor<3) {
-						plateau.zone[numberLine][numberColonne] = new String("MJ-E");
+					if (plateau.zone[numberLine][numberColonne] ==null && countMajor<3) {
+						plateau.zone[numberLine][numberColonne] = new String("MJ");
 						placementPiece=true;
 						countMajor++;
 					}
 				case 4:
-					if (plateau.zone[numberLine][numberColonne].equals("null") && countCaptain<4) {
-						plateau.zone[numberLine][numberColonne] = new String("C-E");
+					if (plateau.zone[numberLine][numberColonne] ==null && countCaptain<4) {
+						plateau.zone[numberLine][numberColonne] = new String("C");
 						placementPiece=true;
 						countCaptain++;
 					}
 				case 5: 
-					if (plateau.zone[numberLine][numberColonne].equals("null") && countLieutenant<4) {
-						plateau.zone[numberLine][numberColonne] = new String("L-E");
+					if (plateau.zone[numberLine][numberColonne] ==null && countLieutenant<4) {
+						plateau.zone[numberLine][numberColonne] = new String("L");
 						placementPiece=true;
 						countLieutenant++;
 					}	
 				case 6:
-					if (plateau.zone[numberLine][numberColonne].equals("null") && countSergeant<4) {
-						plateau.zone[numberLine][numberColonne] = new String("SE-E");
+					if (plateau.zone[numberLine][numberColonne] ==null && countSergeant<4) {
+						plateau.zone[numberLine][numberColonne] = new String("SE");
 						placementPiece=true;
 						countSergeant++;
 					}	
 				case 7:
-					if (plateau.zone[numberLine][numberColonne].equals("null") && countMiner<5) {
-						plateau.zone[numberLine][numberColonne] = new String("M-E");
+					if (plateau.zone[numberLine][numberColonne] ==null && countMiner<5) {
+						plateau.zone[numberLine][numberColonne] = new String("M");
 						placementPiece=true;
 						countMiner++;
 					}
 				case 8: 
-					if (plateau.zone[numberLine][numberColonne].equals("null") && countScout<8) {
-						plateau.zone[numberLine][numberColonne] = new String("SC-E");
+					if (plateau.zone[numberLine][numberColonne] ==null && countScout<8) {
+						plateau.zone[numberLine][numberColonne] = new String("SC");
 						placementPiece=true;
 						countScout++;
 					}
 				case 9:
-					if (plateau.zone[numberLine][numberColonne].equals("null") && countSpy<1) {
-						plateau.zone[numberLine][numberColonne] = new String("S-E");
+					if (plateau.zone[numberLine][numberColonne] ==null && countSpy<1) {
+						plateau.zone[numberLine][numberColonne] = new String("S");
 						placementPiece=true;
 						countSpy++;
 					}
 				case 10:
-					if (plateau.zone [numberLine][numberColonne].equals("null") && countBomb<6) {
-						plateau.zone[numberLine][numberColonne] = new String("B-E");
+					if (plateau.zone [numberLine][numberColonne] ==null && countBomb<6) {
+						plateau.zone[numberLine][numberColonne] = new String("B");
 						placementPiece=true;
 						countBomb++;
 					}
 				case 11:
-					if (plateau.zone [numberLine][numberColonne].equals("null") && countFlag<1) {
-						if ((numberLine < 2)) {
-							plateau.zone[numberLine][numberColonne] = new String("F-E");
-							placementPiece=true;
-							countFlag++;
-							//posD_X = numberColonne;
-							//posD_Y = numberLine;
-						}
+					if (plateau.zone [numberLine][numberColonne] ==null && countFlag<1) {
+						plateau.zone[numberLine][numberColonne] = new String("F");
+						placementPiece=true;
+						countFlag++;
+						posD_X = numberColonne;
+						posD_Y = numberLine;
 					}		
 				}
 				if (placementPiece==true) {
@@ -144,7 +143,7 @@ public class PlateauBase
 		}
 		
 		
-		public static PlateauBase pawnRandomAlly(PlateauBase plateau) {
+		public static PlateauBase pawnRandomEnnemy(PlateauBase plateau) {
 			/* Method that will place the pieces of your team randomly on the table
 			* This Method return the table whit your pawns */
 			Random myNumberRandom = new Random();
@@ -160,76 +159,88 @@ public class PlateauBase
 				int numberPiecesRandom= myNumberRandom.nextInt(11);
 				switch (numberPiecesRandom) {
 					case 0 :
-						if ( plateau.zone [numberLine+6][numberColonne].equals("null") &&countMarechal<1) {
-							plateau.zone[numberLine+6][numberColonne] = new String("MA-F");
+						if ( plateau.zone [numberLine+6][numberColonne]==null &&countMarechal<1) {
+							plateau.zone[numberLine+6][numberColonne] = new String("MA");
 							placementPiece=true;
 							countMarechal=1;
+
 					}	
 					case 1: 
-						if (plateau.zone[numberLine+6][numberColonne].equals("null")&& countGeneral<1) {
-							plateau.zone[numberLine+6][numberColonne] = new String("G-F");
+						if (plateau.zone[numberLine+6][numberColonne] ==null && countGeneral<1) {
+							plateau.zone[numberLine+6][numberColonne] = new String("G");
 							placementPiece=true;
 							countGeneral=1;
+
 						}
 					case 2:
-						if (plateau.zone[numberLine+6][numberColonne].equals("null") && countColonel<2) {
-							plateau.zone[numberLine+6][numberColonne] = new String("CO-F");
+						if (plateau.zone[numberLine+6][numberColonne] ==null && countColonel<2) {
+							plateau.zone[numberLine+6][numberColonne] = new String("CO");
 							placementPiece=true;
 							countColonel++;
+
 						}
 					case 3:
-						if (plateau.zone[numberLine+6][numberColonne].equals("null") && countMajor<3) {
-							plateau.zone[numberLine+6][numberColonne] = new String("MJ-F");
+						if (plateau.zone[numberLine+6][numberColonne] ==null && countMajor<3) {
+							plateau.zone[numberLine+6][numberColonne] = new String("MJ");
 							placementPiece=true;
 							countMajor++;
+
 						}
 					case 4:
-						if (plateau.zone[numberLine+6][numberColonne].equals("null")&& countCaptain<4) {
-							plateau.zone[numberLine+6][numberColonne] = new String("C-F");
+						if (plateau.zone[numberLine+6][numberColonne] ==null && countCaptain<4) {
+							plateau.zone[numberLine+6][numberColonne] = new String("C");
 							placementPiece=true;
 							countCaptain++;
+
 						}
 					case 5: 
-						if (plateau.zone[numberLine+6][numberColonne].equals("null") && countLieutenant<4) {
-							plateau.zone[numberLine+6][numberColonne] = new String("L-F");
+						if (plateau.zone[numberLine+6][numberColonne] ==null && countLieutenant<4) {
+							plateau.zone[numberLine+6][numberColonne] = new String("L");
 							placementPiece=true;
 							countLieutenant++;
+
 						}	
 					case 6:
-						if (plateau.zone[numberLine+6][numberColonne].equals("null") && countSergeant<4) {
-							plateau.zone[numberLine+6][numberColonne] = new String("SE-F");
+						if (plateau.zone[numberLine+6][numberColonne] ==null && countSergeant<4) {
+							plateau.zone[numberLine+6][numberColonne] = new String("SE");
 							placementPiece=true;
 							countSergeant++;
+
 						}	
 					case 7:
-						if (plateau.zone[numberLine+6][numberColonne].equals("null") && countMiner<5) {
-							plateau.zone[numberLine+6][numberColonne] = new String("M-F");
+						if (plateau.zone[numberLine+6][numberColonne] ==null && countMiner<5) {
+							plateau.zone[numberLine+6][numberColonne] = new String("M");
 							placementPiece=true;
 							countMiner++;
+
 						}
 					case 8: 
-						if (plateau.zone[numberLine+6][numberColonne].equals("null") && countScout<8) {
-							plateau.zone[numberLine+6][numberColonne] = new String("SC-F");
+						if (plateau.zone[numberLine+6][numberColonne] ==null && countScout<8) {
+							plateau.zone[numberLine+6][numberColonne] = new String("SC");
 							placementPiece=true;
 							countScout++;
+
 						}
 					case 9:
-						if (plateau.zone[numberLine+6][numberColonne].equals("null") && countSpy<1) {
-							plateau.zone[numberLine+6][numberColonne] = new String("S-F");
+						if (plateau.zone[numberLine+6][numberColonne] ==null && countSpy<1) {
+							plateau.zone[numberLine+6][numberColonne] = new String("S");
 							placementPiece=true;
 							countSpy++;
+
 						}
 					case 10:
-						if (plateau.zone [numberLine+6][numberColonne].equals("null") && countBomb<6) {
-							plateau.zone[numberLine+6][numberColonne] = new String("B-F");
+						if (plateau.zone [numberLine+6][numberColonne] ==null && countBomb<6) {
+							plateau.zone[numberLine+6][numberColonne] = new String("B");
 							placementPiece=true;
 							countBomb++;
+
 						}
 					case 11:
-						if (plateau.zone [numberLine+6][numberColonne].equals("null")&& countFlag<1){
-							plateau.zone[numberLine+6][numberColonne] = new String("F-F");
+						if (plateau.zone [numberLine+6][numberColonne] ==null && countFlag<1) {
+							plateau.zone[numberLine+6][numberColonne] = new String("F");
 							placementPiece=true;
 							countFlag++;
+
 						}		
 					}
 					if (placementPiece==true) {
@@ -241,9 +252,9 @@ public class PlateauBase
 	public static void afficherTab(PlateauBase plateau) {
 		for (int i=0;i<10;i++) {
 			for (int j=0;j<10;j++) {
-				if (plateau.zone[i][j]=="null") 
+				if (plateau.zone[i][j]==null) 
 					System.out.print("[ "+plateau.zone[i][j]+"  ]"+"  ");
-				else if (plateau.zone[i][j].length()==3)
+				else if (plateau.zone[i][j].length()==1)
 					System.out.print("[   "+plateau.zone[i][j]+"   ]"+"  ");
 				else if (plateau.zone[i][j].length()==6)
 					System.out.print("["+plateau.zone[i][j]+" ]"+"  ");
@@ -257,10 +268,9 @@ public class PlateauBase
 	}
 	
 	public static void main (String argv[]) {
-		afficherTab(pawnRandomAlly(pawnRandomEnnemy(((new PlateauBase())))));
+		//afficherTab(pawnRandomAlly(pawnRandomEnnemy(((plateauBase())))));
 		//PlateauBase x= new PlateauBase();
 		//pawnRandomAlly(x);
-		//afficherTab(x);
 		//afficherTab(riverPlacement(x));
 		
 		}

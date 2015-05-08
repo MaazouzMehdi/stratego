@@ -8,7 +8,7 @@ public class Bomb extends PionNoMove {
                                                                                                              
 	public String toString() {
 		String a = "B";
-		if (this.equipe=="Friend") 
+		if (this.equipe.equals("Friend"))
 		        return a +"-F";
 		else 
 		        return a + "-E";

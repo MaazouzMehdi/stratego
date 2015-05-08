@@ -8,7 +8,7 @@ public class Captain extends PionGeneral {
 
 	public String toString() {		
 		String a = "C";
-		if (this.equipe=="Friend")
+		if (this.equipe.equals("Friend"))
 		        return a +"-F";
 		else 
 		        return a + "-E";
