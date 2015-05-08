@@ -6,6 +6,9 @@ import java.awt.Graphics;
 import javax.swing.JButton;
 import javax.swing.JFrame; 
 import javax.swing.JPanel;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -20,11 +23,11 @@ public class FenetreGame extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	protected static Panneau emplacement3=new Panneau();
-	protected static JPanel panelSud= new JPanel();
+	public static JPanel panelSud= new JPanel();
 	protected static JPanel panelEast = new JPanel();
 	private JPanel panelNord= new JPanel();
 	private JPanel panelWest= new JPanel();
-	protected static DrawPlateau plateauGame = new DrawPlateau();
+	protected static DrawPlateau plateauGameGraphic = new DrawPlateau();
 	protected static int countColonel=0, countMajor=0, countGeneral=0,
 			countLieutenant=0,countMarechal=0, countCaptain=0, countFlag=0,
 			countSergeant=0, countMiner=0, countSpy=0, countScout=0, countBomb=0,
@@ -43,14 +46,14 @@ public class FenetreGame extends JFrame {
 		    //On définit le layout à utiliser sur le content pane
 		    this.setLayout(new BorderLayout());
 		    this.add(panelSud, BorderLayout.SOUTH);
-		    this.add(plateauGame,BorderLayout.CENTER);
+		    this.add(plateauGameGraphic,BorderLayout.CENTER);
 		    this.add(panelEast,BorderLayout.EAST);
 		    this.add(panelNord,BorderLayout.NORTH);
 		    this.add(panelWest,BorderLayout.WEST);
 		    
 		   PlacementPawn.PlacementEnnemyPawn();
-		   plateauGame.plateau.zone[7][5]="FLEUVE";
-		   plateauGame.plateau.zone[2][5]="FLEUVE";
+		   plateauGameGraphic.plateau.zone[7][5]="FLEUVE";
+		   plateauGameGraphic.plateau.zone[2][5]="FLEUVE";
 		   while (countColonel < 2) {
 			   Button a= new Button("Colonel");
 			   if (PlacementPawn.PlacementMyPawn(a))
@@ -61,7 +64,7 @@ public class FenetreGame extends JFrame {
 			   if (PlacementPawn.PlacementMyPawn(a))
 				   countMajor ++;
 			   }
-		   
+		   /*
 		   while (countGeneral < 1) {
 			   Button a= new Button("General");
 			   if (PlacementPawn.PlacementMyPawn(a))
@@ -118,11 +121,17 @@ public class FenetreGame extends JFrame {
 		   while (countFlag < 1) {
 			   Button a= new Button("Flag");
 			   if (PlacementPawn.PlacementMyPawn(a))
-				   countFlag ++;
+				   countFlag ++ ;
 			   }
-		     
-	}
-
+		   */
+			  if(PlacementPawn.ChoicePion()==true) {
+			   System.out.println("FINI");
+		   }
+		}
+	
 }
+	
+	
+
 
 	  
