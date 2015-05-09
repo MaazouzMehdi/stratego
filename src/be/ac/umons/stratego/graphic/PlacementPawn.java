@@ -13,6 +13,11 @@ import be.ac.umons.stratego.plateau.PlateauBase;
 
 public class PlacementPawn extends FenetreGame  {
 
+	public PlacementPawn(DrawPlateau plateauGameGraphic) {
+		super(plateauGameGraphic);
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * @param args
 	 */
@@ -20,7 +25,7 @@ public class PlacementPawn extends FenetreGame  {
 	public static boolean deplacement=false;
 	public static boolean myPion=false;
 
-	public static boolean PionMove(final PionPosition pion) {
+	public static boolean PionMove(final PionPosition pion, final DrawPlateau plateauGameGraphic) {
 		emplacement3.addMouseListener(new MouseListener() {
 
 			@Override
@@ -73,26 +78,29 @@ public class PlacementPawn extends FenetreGame  {
 								deplacement=true;
 							
 							}
-							
-								
-								
 						
 						}
+						emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
+						plateauGameGraphic.repaint();
+						emplacement3.repaint();
+						Game.GameBegin(plateauGameGraphic);
+							
 					}
-					emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
-					Game.GameBegin();
+					
 			}
 			
 			
 		});
+		
 			
 			
 		return deplacement;
 }
 			
 	
-	public static boolean ChoicePion() {
-			emplacement3.addMouseListener(new MouseListener() {
+	public static boolean ChoicePion(final DrawPlateau plateauGameGraphic) {
+		panelSud.revalidate();
+		emplacement3.addMouseListener(new MouseListener() {
 				public void mouseReleased(MouseEvent e) {}
 			
 				@Override
@@ -105,7 +113,7 @@ public class PlacementPawn extends FenetreGame  {
 							 myPion=true;
 							 System.out.println("bon pion choisi");
 							 emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
-							 PionMove(pion);
+							 PionMove(pion,plateauGameGraphic);
 							
 						}
 						else 
@@ -128,35 +136,35 @@ public class PlacementPawn extends FenetreGame  {
 	}
 	
 	
-	public static boolean  PlacementMyPawn(final Button b) {
+	public static boolean  PlacementMyPawn(final Button b,final DrawPlateau plateauGameGraphic) {
 			panelSud.add(b);
 		    b.addMouseListener(new MouseListener() {
 				@Override
 				public void mouseReleased(MouseEvent arg0) {
-					if (b.getY()/(plateauGameGraphic.getHeight()/10) > 5) {
-						if (plateauGameGraphic.plateau.zone[b.getX()/(plateauGameGraphic.getWidth()/10)][b.getY()/(plateauGameGraphic.getHeight()/10)].equals("null")) {
+					System.out.println("je place mes pions d un panel a lautre");
+						if (b.getY()/(plateauGameGraphic.getHeight()/10) > 5) {
+							if (plateauGameGraphic.plateau.zone[b.getX()/(plateauGameGraphic.getWidth()/10)][b.getY()/(plateauGameGraphic.getHeight()/10)].equals("null")) {
 								plateauGameGraphic.plateau.zone[b.getX()/(plateauGameGraphic.getWidth()/10)][b.getY()/(plateauGameGraphic.getHeight()/10)]= b.name;
 								plateauGameGraphic.remove(b);
+								plateauGameGraphic.revalidate();
 								panelSud.revalidate();
-								 if (PlacementPawn.VerifyMyPawn()==true)
-								    	Game.GameBegin();
+								b.removeMouseListener(b.getMouseListeners()[0]);
+								emplacement3.repaint();
+								 if (PlacementPawn.VerifyMyPawn(plateauGameGraphic)==true) 
+									 Game.GameBegin(plateauGameGraphic);
+							}
+								    	
 						}
-						
-				 }
 					
 					else {
 						plateauGameGraphic.remove(b);
 						panelSud.add(b);
 						panelSud.revalidate();
 						placement=false;
-					}
-					
+					} 
 					emplacement3.repaint();
 					
-					
-					
-					
-				}
+			}
 				
 				@Override
 				public void mousePressed(MouseEvent arg0) {
@@ -182,6 +190,8 @@ public class PlacementPawn extends FenetreGame  {
 					
 				}
 			});
+		    b.removeMouseListener(b.getMouseListeners()[0]);
+		    
 		    b.addMouseMotionListener(new MouseMotionListener()
 		    {
 		    	
@@ -196,31 +206,31 @@ public class PlacementPawn extends FenetreGame  {
 			
 
 				  });
+		    b.removeMouseMotionListener(b.getMouseMotionListeners()[0]);
 		    return placement;
 	
 		
 	}
 	
-	public static void PlacementEnnemyPawn() {
+	public static void PlacementEnnemyPawn(DrawPlateau plateauGameGraphic) {
 		for (int x=0 ; x < 10 ; x++ ) {
 			for (int y=0; y<4; y++) {
 				plateauGameGraphic.plateau.zone[x][y]= "Ennemy";
-				emplacement3.repaint();
+				//emplacement3.repaint();
 			}
 		}
 	}
 	
-	public static boolean VerifyMyPawn() {
+	public static boolean VerifyMyPawn(final DrawPlateau plateauGameGraphic) {
 		boolean PlacementAllPawn = true;
+		emplacement3.repaint();
 		//for (int y=6; y<10; y++) {
 			//for (int x=0; x<10; x++) {
 				if (plateauGameGraphic.plateau.zone[8][8].equals("null")) {
 					PlacementAllPawn = false;
-					System.out.println("pion pas mis");
 				}
 			//}
 		//}
-		emplacement3.repaint();
 		System.out.println("pions sont placés");
 		return PlacementAllPawn;
 	}
