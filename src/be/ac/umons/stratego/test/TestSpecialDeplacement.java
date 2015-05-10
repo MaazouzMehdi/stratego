@@ -1,13 +1,13 @@
 package be.ac.umons.stratego.test;
 
+import be.ac.umons.stratego.pion.Cell;
+import be.ac.umons.stratego.pion.CellObject;
 import be.ac.umons.stratego.pion.Direction;
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
 
-import org.junit.Test;
 import be.ac.umons.stratego.plateau.PlateauBase;
-import static be.ac.umons.stratego.plateau.PlateauBase.*;
 import be.ac.umons.stratego.pion.Scout;
 
 
@@ -19,9 +19,9 @@ public class TestSpecialDeplacement {
 	
 	@Before
 	public void init() {
-		plateau.zone[2][3]="FLEUVE";
-		plateau.zone[eclaireur.getpositionY()][eclaireur.getpositionX()]=eclaireur.toString();
-		plateau.zone[eclaireurAlly.getpositionY()][eclaireurAlly.getpositionX()]=eclaireurAlly.toString();
+		plateau.board[2][3]= new Cell(CellObject.RIVER,2,3);
+		plateau.board[eclaireur.getpositionY()][eclaireur.getpositionX()]= new Cell(CellObject.SCOUT,eclaireur.getpositionY(),eclaireur.getpositionX(),"friend");
+		plateau.board[eclaireurAlly.getpositionY()][eclaireurAlly.getpositionX()]= new Cell(CellObject.SCOUT,eclaireurAlly.getpositionY(),eclaireurAlly.getpositionX(),"friend");
 		//PlateauBase.afficherTab(plateau);
 	}
 	@Test

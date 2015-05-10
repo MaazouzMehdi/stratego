@@ -1,5 +1,7 @@
 package be.ac.umons.stratego.test;
 
+import be.ac.umons.stratego.pion.Cell;
+import be.ac.umons.stratego.pion.CellObject;
 import be.ac.umons.stratego.pion.Direction;
 import org.junit.Test;
 import org.junit.Before;
@@ -8,8 +10,6 @@ import static org.junit.Assert.*;
 
 import be.ac.umons.stratego.plateau.PlateauBase;
 import be.ac.umons.stratego.pion.Captain;
-
-import java.net.NoRouteToHostException;
 
 
 public class TestDeplacement {
@@ -22,8 +22,8 @@ public class TestDeplacement {
 	
 	@Before
 	public void init() {
-		plateau.zone[1][2]="FLEUVE";
-		plateau.zone[capitaine.getpositionY()][capitaine.getpositionX()]=capitaine.toString();
+		plateau.board[1][2]= new Cell(CellObject.RIVER,1,2);
+		plateau.board[capitaine.getpositionY()][capitaine.getpositionX()]= new Cell(CellObject.CAPTAIN,capitaine.getpositionY(),capitaine.getpositionX(),"Ennemy");
 		
 	}
 	@Test
@@ -39,18 +39,18 @@ public class TestDeplacement {
 	public void deplacementTest() {
 		// test si le pion s'est bien déplacé d'une unité vers le haut
 		capitaine.deplacement(Direction.NORTH,plateau,1);
-		assertTrue(plateau.zone[capitaine.getpositionY()][capitaine.getpositionX()].equals("C-F"));
+		assertTrue(plateau.board[capitaine.getpositionY()][capitaine.getpositionX()].getThispiece().toString().equals("C"));
 
 		final int oldPosX=capitaine.getpositionX();
 		final int oldPosY=capitaine.getpositionY();
 		
 		// test si le pion est bel et bien bloqué par la fin du tableau et n'a donc pas bougé de position
 		assertFalse(capitaine.deplacement(Direction.NORTH,plateau,1));
-		assertTrue(plateau.zone[capitaine.getpositionY()][capitaine.getpositionX()].equals(plateau.zone[oldPosY][oldPosX]));
+		assertTrue(plateau.board[capitaine.getpositionY()][capitaine.getpositionX()].getThispiece().toString().equals(plateau.board[oldPosY][oldPosX].getThispiece().toString()));
 		
 		//test si le pion s'est bien déplacer vers la gauche,vers une case vide
 		assertTrue(capitaine.deplacement(Direction.WEST,plateau,1));
-		assertFalse(plateau.zone[capitaine.getpositionY()][capitaine.getpositionX()].equals(plateau.zone[oldPosY][oldPosX]));
+		assertFalse(plateau.board[capitaine.getpositionY()][capitaine.getpositionX()].getThispiece().toString().equals(plateau.board[oldPosY][oldPosX].getThispiece().toString()));
 		
 		
 	}

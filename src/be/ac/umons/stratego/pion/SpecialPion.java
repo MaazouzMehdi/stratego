@@ -7,12 +7,12 @@ public class SpecialPion extends Pion {
 		super(lvl, posY, posX, equipe);
     }
 
-	public static SpecialPion conversion ( String quase, int y , int x ) {
+	/*public static SpecialPion conversion ( String quase, int y , int x ) {
   		if (quase.equals("SC-F"))
         	return new Scout(2,y,x,"Friend");
   		else
   			return new Scout(2,y,x,"Ennemy");
-	}
+	}*/
 
 }
 

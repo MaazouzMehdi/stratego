@@ -2,15 +2,12 @@ package be.ac.umons.stratego.pion;
 
 public class Captain extends PionGeneral {
 
-	public Captain (int lvl, int posY, int posX , String equipe) {
-		super(lvl, posY, posX, equipe);
+	public Captain ( int posY, int posX , String equipe) {
+		super(6, posY, posX, equipe);
         }
 
 	public String toString() {		
-		String a = "C";
-		if (this.equipe.equals("Friend"))
-		        return a +"-F";
-		else 
-		        return a + "-E";
+		return "C";
+
 	}
 }

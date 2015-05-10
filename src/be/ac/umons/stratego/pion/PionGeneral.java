@@ -13,4 +13,6 @@ public class PionGeneral extends Pion {
         return super.deplacement(direction, plateau, 1);
 
     }
+
+
 }
