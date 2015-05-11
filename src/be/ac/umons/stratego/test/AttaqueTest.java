@@ -12,15 +12,15 @@ public class AttaqueTest {
 	
 	
 	PlateauBase plateau;
-	Captain capitaine=new Captain(7,1,1,"Friend");
+	Captain capitaine=new Captain(1,1,"Friend");
 	Marechal marechal = new Marechal(2,1,"Ennemy");
 
 	@Before
 	public void init() {
 		plateau=new PlateauBase();
-		plateau.board[marechal.getpositionY()][marechal.getpositionX()]= new Cell(CellObject.MARECHAL,marechal.getpositionY(),marechal.getpositionX(),"Ennemy");
-		plateau.board[capitaine.getpositionY()][capitaine.getpositionX()]= new Cell(CellObject.CAPTAIN,capitaine.getpositionY(),capitaine.getpositionX(),"Friend");
-		//PlateauBase.afficherTab(plateau);
+		plateau.board[marechal.getPosY()][marechal.getPosX()]= new Cell(CellObject.MARECHAL,marechal.getPosY(),marechal.getPosX(),"Ennemy");
+		plateau.board[capitaine.getPosY()][capitaine.getPosX()]= new Cell(CellObject.CAPTAIN,capitaine.getPosY(),capitaine.getPosX(),"Friend");
+		PlateauBase.afficherTab(plateau);
 		//System.out.println("ok prochain tableau/n");
 	}
 	
@@ -32,9 +32,11 @@ public class AttaqueTest {
 			//PlateauBase.afficherTab(plateau);
 			assertTrue(marechal.deplacement(Direction.NORTH, plateau, 1));
 			// test si le marechal s'est bien déplacer
-			assertTrue(plateau.board[marechal.getpositionY() + 1][marechal.getpositionX()].equals("null"));
+			System.out.println("ok/n");
+			PlateauBase.afficherTab(plateau);
+			assertTrue(plateau.board[marechal.getPosY() + 1][marechal.getPosX()]==null);
 			// test si marechal a bien pris la position du capitaine
-			assertTrue(plateau.board[capitaine.getpositionY()][capitaine.getpositionX()].equals(marechal.toString()));
+			assertTrue(plateau.board[capitaine.getPosY()][capitaine.getPosX()].getThispiece().toString().equals(marechal.toString()));
 			
 			
 	}

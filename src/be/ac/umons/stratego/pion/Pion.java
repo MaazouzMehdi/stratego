@@ -10,6 +10,14 @@ public abstract class Pion {
 	protected int posX;
 	protected String squad;
 
+    public int getPosX() {
+        return posX;
+    }
+
+    public int getPosY() {
+        return posY;
+    }
+
     public Pion( int lvl, int posY ,int posX , String equipe ){
         this.lvl=lvl;
         this.posY=posY;
@@ -25,24 +33,25 @@ public abstract class Pion {
 
     public String getSquad(){ return squad; }
     
-	public boolean deplacementPossible (Direction direction, PlateauBase plateau,int number) { // vérifie qu'il n'y a pas de fleuve, dépasse pas le plateau et pas ami
+	public boolean deplacementPossible (Direction direction, PlateauBase plateau,int number) { // vérifie qu'il n'y a pas de fleuve, dépasse pas le plateau et pas ami et dernière case est un ennemi
 
         for (int i = 1 ; i <= number ; i++) {
             int newX = posX + i * direction.x;
             int newY = posY + i * direction.y;
             if (newX < 10 && newX >= 0 && newY < 10 && newY >= 0) {
-                Cell caseDeJeu = plateau.board[newY][newX]; //A CHANGER
-                if (caseDeJeu.getThisriverpiece().toString().equals("River"))
+                Cell caseDeJeu = plateau.board[newY][newX]; //A CHANGE
+                if (number!=i && caseDeJeu != null )
                     return false;
+                else if (number==i && caseDeJeu==null)
+                    return true;
+                else if ( number==i && ((caseDeJeu.getThisriverpiece()!=null ) || this.squad.equals(caseDeJeu.getThispiece().getSquad())))
 
-                String over_cell_squad = caseDeJeu.getThispiece().getSquad();
-                if (this.squad.equals(over_cell_squad))
                     return false;
-
             }
             else
                 return false;
         }
+
         return true;
     }
    
@@ -50,11 +59,12 @@ public abstract class Pion {
         if (deplacementPossible(direction,plateau,number)) {
             posX += direction.x*number;
             posY += direction.y*number;
-            Cell excasedejeu= plateau.board[posY-direction.y*number][posX-direction.x*number];
-            plateau.board[posY-direction.y*number][posX-direction.x*number]=null; //la position initiale avant deplacement
+            Cell excasedejeu= plateau.board[posY-direction.y*number][posX-direction.x*number];//la position initiale avant deplacement
             Cell caseDeJeu= plateau.board [posY][posX];
-            if (caseDeJeu.equals(null))
-                plateau.board[posY][posX]= excasedejeu;
+            if (caseDeJeu == null) {
+                plateau.board[posY][posX] = excasedejeu;
+                plateau.board[posY - direction.y * number][posX - direction.x * number] = null;
+            }
             else
                 attaque(direction,caseDeJeu.getThispiece(),plateau , number); // cette méthode comparera le lvl,regardera si c'est un ennemi , mettra le perdant en null et fera un deplacement
             return true;
@@ -66,16 +76,19 @@ public abstract class Pion {
     
     private void attaque (Direction direction , Pion pion , PlateauBase plateau , int number) { //MAJ
     // appelle une methode comparelvl et conversion pour voir qui a le lvl le plus grand ( attention cas spéciaux ) SSI c'est un ennemi qui compare les niveaux des objets et retourne le vainqueur  et AVANT regarde si friend or ennemi true( à faire dans le constructeur)
-        posX += direction.x*number;
-        posY += direction.y*number;
+
         Cell excasedejeu= plateau.board[posY-direction.y*number][posX-direction.x*number];
 
 
-        if (comparelvl(pion).equals("null"))
+        if (comparelvl(pion).equals("null")) {
             plateau.board[posY][posX] = null;
-        else if (comparelvl(pion).equals(this.toString())) {
-            plateau.board[posY][posX] = excasedejeu; //retourne le string vainqueur
             plateau.board[posY - direction.y * number][posX - direction.x * number] = null;
+        }
+        else if (comparelvl(pion).equals(this.toString())) {//retourne le string vainqueur
+           // plateau.board[posY][posX] = excasedejeu;
+            System.out.println(excasedejeu.getThispiece().toString());
+            plateau.board[posY-direction.y*number][posX-direction.x*number]=null;
+            plateau.board[posY][posX] = excasedejeu;
         }
         else
             plateau.board[posY-direction.y*number][posX-direction.x*number]=null;
@@ -87,18 +100,15 @@ public abstract class Pion {
         int autrelvl = piece.getlvl();
         int monlvl=this.lvl;
 
-        if (monlvl == 1){
-            if (autrelvl == 10)
-                return this.toString();
-            else
-                return piece.toString();
-        }
-
-        else if ((monlvl == 3) && (autrelvl == 42 ))
+        if ((monlvl == 1) && (autrelvl == 10))
                 return this.toString();
 
-        else if ( monlvl ==autrelvl )
+        else if ((monlvl == 3) && (autrelvl == 42))
+                return this.toString();
+
+        else if ( monlvl == autrelvl )
             return "null";
+
         else if (autrelvl < monlvl)
             return this.toString();
         else

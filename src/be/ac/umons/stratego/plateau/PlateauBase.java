@@ -1,6 +1,9 @@
 package be.ac.umons.stratego.plateau;
 
 
+import be.ac.umons.stratego.pion.Cell;
+import be.ac.umons.stratego.pion.CellObject;
+
 import java.util.Random;
 
 /* dedans tu as la méthode qui génère un plateau, une qui met les pions alliés
@@ -8,39 +11,20 @@ import java.util.Random;
 
 public class PlateauBase 
 {
-	public String[][] zone;
+	public Cell [][] board = new  Cell [10] [10];// board = zone
 	public static int posD_X;
 	public static int posD_Y;
 	
 	public PlateauBase() {
 	
-	// Methdod that generates and return a table
-	
-		this.zone= new String[10][10];
+	// Methdod that generates and returns a table
+
 		for (int i=0;i<10;i++) {
 			for (int j=0;j<10;j++)
-				this.zone[i][j]="null";
+				board[i][j]= null ;
 		}
-}
-	
-	public static PlateauBase riverPlacement (PlateauBase plateau) {
-		Random myNumberRandom = new Random();
-		int countRiver=0;
-		boolean placementPiece;
-		while (countRiver<4){ // tant que les 4 fleuves ne sont pas mis 
-			placementPiece=false;
-			int numberLine = myNumberRandom.nextInt(2)+4; // ligne 0 et 1 +4
-			int numberColonne = myNumberRandom.nextInt(10);
-			if (plateau.zone[numberLine][numberColonne]==null) {
-				plateau.zone[numberLine][numberColonne]="FLEUVE";
-				placementPiece=true;
-			}
-			
-			if (placementPiece==true) // Si un autre fleuve ne se trouvait pas sur la case
-				countRiver++;
-		}
-		return plateau;
 	}
+
 	
 	public static PlateauBase pawnRandomAlly(PlateauBase plateau) {
 		/* Method that will place the pieces of your team randomly on the table
@@ -60,81 +44,81 @@ public class PlateauBase
 			int numberPiecesRandom= myNumberRandom.nextInt(11);
 			switch (numberPiecesRandom) {
 				case 0 :
-					if ( plateau.zone[numberLine][numberColonne]==null &&countMarechal<1) {
-						plateau.zone[numberLine][numberColonne] = new String("MA");
+					if ( plateau.board[numberLine][numberColonne]==null &&countMarechal<1) {
+						plateau.board[numberLine][numberColonne] = new Cell(CellObject.MARECHAL,numberLine,numberColonne,"Friend");
 						placementPiece=true;
 						countMarechal=1;
 				}
 				case 1: 
-					if (plateau.zone[numberLine][numberColonne] ==null && countGeneral<1) {
-						plateau.zone[numberLine][numberColonne] = new String("G");
+					if (plateau.board[numberLine][numberColonne] ==null && countGeneral<1) {
+						plateau.board[numberLine][numberColonne] = new Cell(CellObject.GENERAL,numberLine,numberColonne,"Friend");
 						placementPiece=true;
 						countGeneral=1;
 					}
 				case 2:
-					if (plateau.zone[numberLine][numberColonne] ==null && countColonel<2) {
-						plateau.zone[numberLine][numberColonne] = new String("CO");
+					if (plateau.board[numberLine][numberColonne] ==null && countColonel<2) {
+						plateau.board[numberLine][numberColonne] = new Cell(CellObject.COLONEL,numberLine,numberColonne,"Friend");
 						placementPiece=true;
 						countColonel++;
 					}
 				case 3:
-					if (plateau.zone[numberLine][numberColonne] ==null && countMajor<3) {
-						plateau.zone[numberLine][numberColonne] = new String("MJ");
+					if (plateau.board[numberLine][numberColonne] ==null && countMajor<3) {
+						plateau.board[numberLine][numberColonne] = new Cell(CellObject.MAJOR,numberLine,numberColonne,"Friend");
 						placementPiece=true;
 						countMajor++;
 					}
 				case 4:
-					if (plateau.zone[numberLine][numberColonne] ==null && countCaptain<4) {
-						plateau.zone[numberLine][numberColonne] = new String("C");
+					if (plateau.board[numberLine][numberColonne] ==null && countCaptain<4) {
+						plateau.board[numberLine][numberColonne] = new Cell(CellObject.CAPTAIN,numberLine,numberColonne,"Friend");
 						placementPiece=true;
 						countCaptain++;
 					}
 				case 5: 
-					if (plateau.zone[numberLine][numberColonne] ==null && countLieutenant<4) {
-						plateau.zone[numberLine][numberColonne] = new String("L");
+					if (plateau.board[numberLine][numberColonne] ==null && countLieutenant<4) {
+						plateau.board[numberLine][numberColonne] = new Cell(CellObject.LIEUTENANT,numberLine,numberColonne,"Friend");
 						placementPiece=true;
 						countLieutenant++;
 					}	
 				case 6:
-					if (plateau.zone[numberLine][numberColonne] ==null && countSergeant<4) {
-						plateau.zone[numberLine][numberColonne] = new String("SE");
+					if (plateau.board[numberLine][numberColonne] ==null && countSergeant<4) {
+						plateau.board[numberLine][numberColonne] = new Cell(CellObject.SERGEANT,numberLine,numberColonne,"Friend");
 						placementPiece=true;
 						countSergeant++;
 					}	
 				case 7:
-					if (plateau.zone[numberLine][numberColonne] ==null && countMiner<5) {
-						plateau.zone[numberLine][numberColonne] = new String("M");
+					if (plateau.board[numberLine][numberColonne] ==null && countMiner<5) {
+						plateau.board[numberLine][numberColonne] = new Cell(CellObject.MINER,numberLine,numberColonne,"Friend");
 						placementPiece=true;
 						countMiner++;
 					}
 				case 8: 
-					if (plateau.zone[numberLine][numberColonne] ==null && countScout<8) {
-						plateau.zone[numberLine][numberColonne] = new String("SC");
+					if (plateau.board[numberLine][numberColonne] ==null && countScout<8) {
+						plateau.board[numberLine][numberColonne] = new Cell(CellObject.SCOUT,numberLine,numberColonne,"Friend");
 						placementPiece=true;
 						countScout++;
 					}
 				case 9:
-					if (plateau.zone[numberLine][numberColonne] ==null && countSpy<1) {
-						plateau.zone[numberLine][numberColonne] = new String("S");
+					if (plateau.board[numberLine][numberColonne] ==null && countSpy<1) {
+						plateau.board[numberLine][numberColonne] = new Cell(CellObject.SPY,numberLine,numberColonne,"Friend");
 						placementPiece=true;
 						countSpy++;
 					}
 				case 10:
-					if (plateau.zone [numberLine][numberColonne] ==null && countBomb<6) {
-						plateau.zone[numberLine][numberColonne] = new String("B");
+					if (plateau.board[numberLine][numberColonne] ==null && countBomb<6) {
+						plateau.board[numberLine][numberColonne] = new Cell(CellObject.BOMB,numberLine,numberColonne,"Friend");
 						placementPiece=true;
 						countBomb++;
 					}
 				case 11:
-					if (plateau.zone [numberLine][numberColonne] ==null && countFlag<1) {
-						plateau.zone[numberLine][numberColonne] = new String("F");
+					if (plateau.board[numberLine][numberColonne] ==null && countFlag<1) {
+						plateau.board[numberLine][numberColonne] = new Cell(CellObject.FLAG,numberLine,numberColonne,"Friend");
 						placementPiece=true;
 						countFlag++;
 						posD_X = numberColonne;
 						posD_Y = numberLine;
 					}		
 				}
-				if (placementPiece==true) {
+				if (placementPiece) {
 					// if the piece put in the table
 					numberPiece ++;
 				}
@@ -159,91 +143,91 @@ public class PlateauBase
 				int numberPiecesRandom= myNumberRandom.nextInt(11);
 				switch (numberPiecesRandom) {
 					case 0 :
-						if ( plateau.zone [numberLine+6][numberColonne]==null &&countMarechal<1) {
-							plateau.zone[numberLine+6][numberColonne] = new String("MA");
+						if (plateau.board [numberLine+6][numberColonne]==null &&countMarechal<1) {
+							plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.MARECHAL,numberLine,numberColonne,"Ennemy");
 							placementPiece=true;
 							countMarechal=1;
 
 					}	
 					case 1: 
-						if (plateau.zone[numberLine+6][numberColonne] ==null && countGeneral<1) {
-							plateau.zone[numberLine+6][numberColonne] = new String("G");
+						if (plateau.board[numberLine+6][numberColonne] ==null && countGeneral<1) {
+							plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.GENERAL,numberLine,numberColonne,"Ennemy");
 							placementPiece=true;
 							countGeneral=1;
 
 						}
 					case 2:
-						if (plateau.zone[numberLine+6][numberColonne] ==null && countColonel<2) {
-							plateau.zone[numberLine+6][numberColonne] = new String("CO");
+						if (plateau.board[numberLine+6][numberColonne] ==null && countColonel<2) {
+							plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.COLONEL,numberLine,numberColonne,"Ennemy");
 							placementPiece=true;
 							countColonel++;
 
 						}
 					case 3:
-						if (plateau.zone[numberLine+6][numberColonne] ==null && countMajor<3) {
-							plateau.zone[numberLine+6][numberColonne] = new String("MJ");
+						if (plateau.board[numberLine+6][numberColonne] ==null && countMajor<3) {
+							plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.MAJOR,numberLine,numberColonne,"Ennemy");
 							placementPiece=true;
 							countMajor++;
 
 						}
 					case 4:
-						if (plateau.zone[numberLine+6][numberColonne] ==null && countCaptain<4) {
-							plateau.zone[numberLine+6][numberColonne] = new String("C");
+						if (plateau.board[numberLine+6][numberColonne] ==null && countCaptain<4) {
+							plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.CAPTAIN,numberLine,numberColonne,"Ennemy");
 							placementPiece=true;
 							countCaptain++;
 
 						}
 					case 5: 
-						if (plateau.zone[numberLine+6][numberColonne] ==null && countLieutenant<4) {
-							plateau.zone[numberLine+6][numberColonne] = new String("L");
+						if (plateau.board[numberLine+6][numberColonne] ==null && countLieutenant<4) {
+							plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.LIEUTENANT,numberLine,numberColonne,"Ennemy");
 							placementPiece=true;
 							countLieutenant++;
 
 						}	
 					case 6:
-						if (plateau.zone[numberLine+6][numberColonne] ==null && countSergeant<4) {
-							plateau.zone[numberLine+6][numberColonne] = new String("SE");
+						if (plateau.board[numberLine+6][numberColonne] ==null && countSergeant<4) {
+							plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.SERGEANT,numberLine,numberColonne,"Ennemy");
 							placementPiece=true;
 							countSergeant++;
 
 						}	
 					case 7:
-						if (plateau.zone[numberLine+6][numberColonne] ==null && countMiner<5) {
-							plateau.zone[numberLine+6][numberColonne] = new String("M");
+						if (plateau.board[numberLine+6][numberColonne] ==null && countMiner<5) {
+							plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.MINER,numberLine,numberColonne,"Ennemy");
 							placementPiece=true;
 							countMiner++;
 
 						}
 					case 8: 
-						if (plateau.zone[numberLine+6][numberColonne] ==null && countScout<8) {
-							plateau.zone[numberLine+6][numberColonne] = new String("SC");
+						if (plateau.board[numberLine+6][numberColonne] ==null && countScout<8) {
+							plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.SCOUT,numberLine,numberColonne,"Ennemy");
 							placementPiece=true;
 							countScout++;
 
 						}
 					case 9:
-						if (plateau.zone[numberLine+6][numberColonne] ==null && countSpy<1) {
-							plateau.zone[numberLine+6][numberColonne] = new String("S");
+						if (plateau.board[numberLine+6][numberColonne] ==null && countSpy<1) {
+							plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.SPY,numberLine,numberColonne,"Ennemy");
 							placementPiece=true;
 							countSpy++;
 
 						}
 					case 10:
-						if (plateau.zone [numberLine+6][numberColonne] ==null && countBomb<6) {
-							plateau.zone[numberLine+6][numberColonne] = new String("B");
+						if (plateau.board[numberLine+6][numberColonne] ==null && countBomb<6) {
+							plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.BOMB,numberLine,numberColonne,"Ennemy");
 							placementPiece=true;
 							countBomb++;
 
 						}
 					case 11:
-						if (plateau.zone [numberLine+6][numberColonne] ==null && countFlag<1) {
-							plateau.zone[numberLine+6][numberColonne] = new String("F");
+						if (plateau.board[numberLine+6][numberColonne] ==null && countFlag<1) {
+							plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.FLAG,numberLine,numberColonne,"Ennemy");
 							placementPiece=true;
 							countFlag++;
 
 						}		
 					}
-					if (placementPiece==true) {
+					if (placementPiece) {
 						numberPiece ++;
 					}
 				}
@@ -252,27 +236,22 @@ public class PlateauBase
 	public static void afficherTab(PlateauBase plateau) {
 		for (int i=0;i<10;i++) {
 			for (int j=0;j<10;j++) {
-				if (plateau.zone[i][j]==null) 
-					System.out.print("[ "+plateau.zone[i][j]+"  ]"+"  ");
-				else if (plateau.zone[i][j].length()==1)
-					System.out.print("[   "+plateau.zone[i][j]+"   ]"+"  ");
-				else if (plateau.zone[i][j].length()==6)
-					System.out.print("["+plateau.zone[i][j]+" ]"+"  ");
+				Cell cell = plateau.board[i][j];
+				//String stringcell = cell.getThispiece().toString();
+				if (cell==null)
+					System.out.print("[ "+"null"+" ]  ");
 				else
-					System.out.print("[   "+plateau.zone[i][j]+"  ]"+"  ");
-					
-					
+					System.out.print("[ "+cell.getThispiece().toString()+"   ]  ");
 			}
 		System.out.println();
 		}
 	}
 	
 	public static void main (String argv[]) {
-		//afficherTab(pawnRandomAlly(pawnRandomEnnemy(((plateauBase())))));
-		//PlateauBase x= new PlateauBase();
-		//pawnRandomAlly(x);
-		//afficherTab(riverPlacement(x));
-		
+		PlateauBase x = new PlateauBase();
+		pawnRandomAlly(x);
+		pawnRandomEnnemy(x);
+		afficherTab(x);
 		}
 
 }
