@@ -65,7 +65,7 @@ public class FenetreGame extends JFrame implements ActionListener {
 		   PlacementPawn.PlacementEnnemyPawn(plateauGameGraphic);
 		   PawnOffPlateau( plateauGameGraphic);
 		   plateauGameGraphic.plateau.board[7][5]=new Cell(CellObject.RIVER,7,5);
-		   plateauGameGraphic.plateau.board[2][5]=new Cell(CellObject.RIVER,2,5);
+		   plateauGameGraphic.plateau.board[5][5]=new Cell(CellObject.RIVER,5,5);
 		   
 		   //NE PAS OUBLIER DE RETIRER LES PARENTHESES AUX IF POUR LES COUNT...
 		  /*  while (countMajor < 3) {
@@ -79,13 +79,6 @@ public class FenetreGame extends JFrame implements ActionListener {
 			   Button a= new Button("General");
 			   if (PlacementPawn.PlacementMyPawn(a)) {
 				   countGeneral ++;
-				   countPiecesTot ++;
-			   }
-		   }
-		   while (countMarechal < 3) {
-			   Button a= new Button("Marechal");
-			   if (PlacementPawn.PlacementMyPawn(a)) {
-				   countMarechal ++;
 				   countPiecesTot ++;
 			   }
 		   }
@@ -107,13 +100,6 @@ public class FenetreGame extends JFrame implements ActionListener {
 			   Button a= new Button("Sergeant");
 			   if (PlacementPawn.PlacementMyPawn(a)) {
 				   countSergeant ++;
-				   countPiecesTot ++;
-			   }
-		   }
-		   while (countMiner < 5) {
-			   Button a= new Button("Miner");
-			   if (PlacementPawn.PlacementMyPawn(a)) {
-				   countMiner ++;
 				   countPiecesTot ++;
 			   }
 		   }
@@ -164,6 +150,18 @@ public class FenetreGame extends JFrame implements ActionListener {
 				   countBomb ++;
 			   }
 				  
+		   }
+		   while (countMarechal < 3) {
+			   Button a= new Button("MARECHAL");
+			   if (PlacementPawn.PlacementMyPawn(a,plateauGameGraphic)) {
+				   countMarechal ++;
+			   }
+		   }
+		   while (countMiner < 5) {
+			   Button a= new Button("MINER");
+			   if (PlacementPawn.PlacementMyPawn(a,plateauGameGraphic)) {
+				   countMiner ++;
+			   }
 		   }
 	}
 	

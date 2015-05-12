@@ -44,113 +44,73 @@ public class PlacementPawn extends FenetreGame  {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
-					System.out.println("deplacement");
-					//if (e.getY()/(plateauGameGraphic.getHeight()/10)==pion.posY && e.getX()/(plateauGameGraphic.getWidth()/10)==pion.posX )
-						//System.out.println("on peut pas se deplacer sur soi meme");
-						//myPion=false;
-					if (myPion==true) {
+				
+					 if (myPion==true) {
 						if (e.getY()/(plateauGameGraphic.getHeight()/10)==pion.posY) {
-							if (plateauGameGraphic.plateau.board[pion.posX ][pion.posY].getThispiece().
-							deplacement(Direction.SOUTH,plateauGameGraphic.plateau,1)) {
-							//if (e.getX()/(plateauGameGraphic.getWidth()/10)==pion.posX +1){
-								//if (plateauGameGraphic.plateau.board[pion.posX +1][pion.posY].getThisriverpiece()==null ) {
-								//plateauGameGraphic.plateau.board[pion.posX +1][pion.posY]=plateauGameGraphic.plateau.board[pion.posX][pion.posY];
-								//plateauGameGraphic.plateau.board[pion.posX][pion.posY]=null; 
-								System.out.println("se deplace a droite");
-							}
-								/*else if (plateauGameGraphic.plateau.board[pion.posX +1][pion.posY]==null) {
-									plateauGameGraphic.plateau.board[pion.posX +1][pion.posY]=plateauGameGraphic.plateau.board[pion.posX][pion.posY];
-									plateauGameGraphic.plateau.board[pion.posX][pion.posY]=null; 
-								}
+							if (e.getX()/(plateauGameGraphic.getWidth()/10)==pion.posX)
+									ChoicePion(plateauGameGraphic);
+							if(e.getX()/(plateauGameGraphic.getWidth()/10)==pion.posX+1) {
+								if (plateauGameGraphic.plateau.board[pion.posY][pion.posX].getThispiece().
+								deplacementPossible(Direction.EAST,plateauGameGraphic.plateau,1)) {
 								
-								else if (!plateauGameGraphic.plateau.board[pion.posX +1][pion.posY].getThispiece().getSquad().equals
-								(plateauGameGraphic.plateau.board[pion.posX][pion.posY].getThispiece().getSquad())) {
-									plateauGameGraphic.plateau.board[pion.posX +1][pion.posY]=plateauGameGraphic.plateau.board[pion.posX][pion.posY];
-									plateauGameGraphic.plateau.board[pion.posX][pion.posY]=null; 
-								} */
-								else {
-									emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
-									emplacement3.repaint();
-									//ChoicePion(plateauGameGraphic);
+									plateauGameGraphic.plateau.board[pion.posY ][pion.posX].getThispiece().
+									deplacement(Direction.EAST,plateauGameGraphic.plateau,1);
+									deplacement=true;
+									Game.GameBegin(plateauGameGraphic);
+								}
+								else 
+									ChoicePion(plateauGameGraphic);
+							}
+							else if(e.getX()/(plateauGameGraphic.getWidth()/10)==pion.posX-1) {
+					
+								if (plateauGameGraphic.plateau.board[pion.posY][pion.posX].getThispiece().
+								deplacementPossible(Direction.WEST,plateauGameGraphic.plateau,1)) {
 									
-								
-								}
-					
-							}
-							else if(e.getX()/(plateauGameGraphic.getWidth()/10)==pion.posX -1) {
-								if (plateauGameGraphic.plateau.board[pion.posX-1][pion.posY]==null
-								&& plateauGameGraphic.plateau.board[pion.posX-1][pion.posY].getThisriverpiece()==null
-								&& !plateauGameGraphic.plateau.board[pion.posX-1][pion.posY].getThispiece().getSquad().equals
-									(plateauGameGraphic.plateau.board[pion.posX][pion.posY].getThispiece().getSquad())) {
-										plateauGameGraphic.plateau.board[pion.posX-1][pion.posY]=plateauGameGraphic.plateau.board[pion.posX][pion.posY];
-										plateauGameGraphic.plateau.board[pion.posX][pion.posY]=null;
+									plateauGameGraphic.plateau.board[pion.posY ][pion.posX].getThispiece().
+									deplacement(Direction.WEST,plateauGameGraphic.plateau,1);
+									deplacement=true;
+									Game.GameBegin(plateauGameGraphic);
 								}
 								else
-									emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
-								emplacement3.repaint();
-								
-								
-							}
+									ChoicePion(plateauGameGraphic);
 							
-						
+							}
 						}
-						else  {
-							if (e.getY()/(plateauGameGraphic.getHeight()/10)==pion.posY +1) {
-								if (plateauGameGraphic.plateau.board[pion.posX][pion.posY+1]==null) {
-									plateauGameGraphic.plateau.board[pion.posX][pion.posY+1]=plateauGameGraphic.plateau.board[pion.posX][pion.posY];
-									plateauGameGraphic.plateau.board[pion.posX][pion.posY]=null;
-								}
-								else if(plateauGameGraphic.plateau.board[pion.posX][pion.posY+1].getThisriverpiece()==null) {
-									plateauGameGraphic.plateau.board[pion.posX][pion.posY+1]=plateauGameGraphic.plateau.board[pion.posX][pion.posY];
-									plateauGameGraphic.plateau.board[pion.posX][pion.posY]=null;
-								}
-								else if ((!plateauGameGraphic.plateau.board[pion.posX][pion.posY+1].getThispiece().getSquad().equals
-									(plateauGameGraphic.plateau.board[pion.posX][pion.posY].getThispiece().getSquad()))){
-									plateauGameGraphic.plateau.board[pion.posX][pion.posY+1]=plateauGameGraphic.plateau.board[pion.posX][pion.posY];
-									plateauGameGraphic.plateau.board[pion.posX][pion.posY]=null;
+						
+						else if(e.getX()/(plateauGameGraphic.getWidth()/10)==pion.posX) {
+							if(e.getY()/(plateauGameGraphic.getHeight()/10)==pion.posY+1) {
+								if (plateauGameGraphic.plateau.board[pion.posY][pion.posX].getThispiece().
+								deplacementPossible(Direction.SOUTH,plateauGameGraphic.plateau,1)) {
+								
+									plateauGameGraphic.plateau.board[pion.posY ][pion.posX].getThispiece().
+									deplacement(Direction.SOUTH,plateauGameGraphic.plateau,1);
+									deplacement=true;
+									Game.GameBegin(plateauGameGraphic);
 								}
 								else
-									emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
-								emplacement3.repaint();
+									ChoicePion(plateauGameGraphic);
+							}
+							else if(e.getY()/(plateauGameGraphic.getHeight()/10)==pion.posY-1) {
+								if (plateauGameGraphic.plateau.board[pion.posY][pion.posX].getThispiece().
+								deplacementPossible(Direction.NORTH,plateauGameGraphic.plateau,1)) {
 								
-						
+									plateauGameGraphic.plateau.board[pion.posY][pion.posX].getThispiece().
+									deplacement(Direction.NORTH,plateauGameGraphic.plateau,1);
+									deplacement=true;
+									Game.GameBegin(plateauGameGraphic);
+								}
+								else
+									ChoicePion(plateauGameGraphic);		
 							}
-							else if(e.getY()/(plateauGameGraphic.getHeight()/10)==pion.posY -1) {
-								if (plateauGameGraphic.plateau.board[pion.posX][pion.posY-1]==null) {
-									plateauGameGraphic.plateau.board[pion.posX][pion.posY-1]=plateauGameGraphic.plateau.board[pion.posX][pion.posY];
-									plateauGameGraphic.plateau.board[pion.posX][pion.posY]=null;
-								}
-								else if ((plateauGameGraphic.plateau.board[pion.posX][pion.posY-1].getThisriverpiece()==null)) {
-									plateauGameGraphic.plateau.board[pion.posX][pion.posY-1]=plateauGameGraphic.plateau.board[pion.posX][pion.posY];
-									plateauGameGraphic.plateau.board[pion.posX][pion.posY]=null;
-								}
-								else if((!plateauGameGraphic.plateau.board[pion.posX][pion.posY-1].getThispiece().getSquad().equals
-									(plateauGameGraphic.plateau.board[pion.posX][pion.posY].getThispiece().getSquad()))){
-									plateauGameGraphic.plateau.board[pion.posX][pion.posY-1]=plateauGameGraphic.plateau.board[pion.posX][pion.posY];
-									plateauGameGraphic.plateau.board[pion.posX][pion.posY]=null;
-								}
-								else {
-									emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
-								}
-								emplacement3.repaint();
-							
-							}
-						
 						}
-						emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
-						plateauGameGraphic.repaint();
-						emplacement3.repaint();
-						Game.GameBegin(plateauGameGraphic);
-							
 					}
+				emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
+				ChoicePion(plateauGameGraphic);
 					
-			
-			
-			
+				emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
+			}
+						
 		});
-		
-			
-			
 		return deplacement;
 }
 			
@@ -162,15 +122,16 @@ public class PlacementPawn extends FenetreGame  {
 			
 				@Override
 				public void mousePressed(MouseEvent e) {
-					if ((plateauGameGraphic.plateau.board[e.getX()/(plateauGameGraphic.getWidth()/10)][e.getY()/(plateauGameGraphic.getHeight()/10)])!=null 
-				    && (plateauGameGraphic.plateau.board[e.getX()/(plateauGameGraphic.getWidth()/10)][e.getY()/(plateauGameGraphic.getHeight()/10)].getThisriverpiece())==null 
-				    && !(plateauGameGraphic.plateau.board[e.getX()/(plateauGameGraphic.getWidth()/10)][e.getY()/(plateauGameGraphic.getHeight()/10)].getThispiece()).getSquad().equals("Ennemy") 
-					&& !plateauGameGraphic.plateau.board[e.getX()/(plateauGameGraphic.getWidth()/10)][e.getY()/(plateauGameGraphic.getHeight()/10)].getThispiece().toString().equals("B")
-					&& !plateauGameGraphic.plateau.board[e.getX()/(plateauGameGraphic.getWidth()/10)][e.getY()/(plateauGameGraphic.getHeight()/10)].getThispiece().toString().equals("F")){
-							PionPosition pion = new PionPosition(e.getX()/(plateauGameGraphic.getWidth()/10),e.getY()/(plateauGameGraphic.getHeight()/10));
+					if ((plateauGameGraphic.plateau.board[e.getY()/(plateauGameGraphic.getHeight()/10)][e.getX()/(plateauGameGraphic.getWidth()/10)])!=null 
+				    && (plateauGameGraphic.plateau.board[e.getY()/(plateauGameGraphic.getHeight()/10)][e.getX()/(plateauGameGraphic.getWidth()/10)].getThisriverpiece())==null 
+				    && !(plateauGameGraphic.plateau.board[e.getY()/(plateauGameGraphic.getHeight()/10)][e.getX()/(plateauGameGraphic.getWidth()/10)].getThispiece()).getSquad().equals("Ennemy") 
+					&& !plateauGameGraphic.plateau.board[e.getY()/(plateauGameGraphic.getHeight()/10)][e.getX()/(plateauGameGraphic.getWidth()/10)].getThispiece().toString().equals("B")
+					&& !plateauGameGraphic.plateau.board[e.getY()/(plateauGameGraphic.getHeight()/10)][e.getX()/(plateauGameGraphic.getWidth()/10)].getThispiece().toString().equals("F")){
+							PionPosition pion = new PionPosition(e.getY()/(plateauGameGraphic.getHeight()/10),e.getX()/(plateauGameGraphic.getWidth()/10));
 							 myPion=true;
 							 System.out.println("bon pion choisi");
 							 emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
+							 //emplacement3.repaint();
 							 PionMove(pion,plateauGameGraphic);
 							
 						}
@@ -201,49 +162,49 @@ public class PlacementPawn extends FenetreGame  {
 				public void mouseReleased(MouseEvent arg0) {
 					System.out.println(b.toString());
 						if (b.getY()/(plateauGameGraphic.getHeight()/10) > 5) {
-							if (plateauGameGraphic.plateau.board[b.getX()/(plateauGameGraphic.getWidth()/10)][b.getY()/(plateauGameGraphic.getHeight()/10)]==null) {
+							if (plateauGameGraphic.plateau.board[b.getY()/(plateauGameGraphic.getHeight()/10)][b.getX()/(plateauGameGraphic.getWidth()/10)]==null) {
 								if (b.name.equals("COLONEL"))
-									plateauGameGraphic.plateau.board[b.getX()/(plateauGameGraphic.getWidth()/10)][b.getY()/(plateauGameGraphic.getHeight()/10)]=
-									new Cell(CellObject.COLONEL,b.getX()/(plateauGameGraphic.getWidth()/10),b.getY()/(plateauGameGraphic.getHeight()/10),"Friend");
+									plateauGameGraphic.plateau.board[b.getY()/(plateauGameGraphic.getHeight()/10)][b.getX()/(plateauGameGraphic.getWidth()/10)]=
+									new Cell(CellObject.COLONEL,b.getY()/(plateauGameGraphic.getWidth()/10),b.getX()/(plateauGameGraphic.getWidth()/10),"Friend");
 								else if (b.name.equals("CAPTAIN"))
-									plateauGameGraphic.plateau.board[b.getX()/(plateauGameGraphic.getWidth()/10)][b.getY()/(plateauGameGraphic.getHeight()/10)]=
-									new Cell(CellObject.CAPTAIN,b.getX()/(plateauGameGraphic.getWidth()/10),b.getY()/(plateauGameGraphic.getHeight()/10),"Friend");
+									plateauGameGraphic.plateau.board[b.getY()/(plateauGameGraphic.getHeight()/10)][b.getX()/(plateauGameGraphic.getWidth()/10)]=
+									new Cell(CellObject.CAPTAIN,b.getY()/(plateauGameGraphic.getHeight()/10),b.getX()/(plateauGameGraphic.getWidth()/10),"Friend");
 								else if (b.name.equals("MARECHAL"))
-									plateauGameGraphic.plateau.board[b.getX()/(plateauGameGraphic.getWidth()/10)][b.getY()/(plateauGameGraphic.getHeight()/10)]=
-									new Cell(CellObject.MARECHAL,b.getX()/(plateauGameGraphic.getWidth()/10),b.getY()/(plateauGameGraphic.getHeight()/10),"Friend");
+									plateauGameGraphic.plateau.board[b.getY()/(plateauGameGraphic.getHeight()/10)][b.getX()/(plateauGameGraphic.getWidth()/10)]=
+									new Cell(CellObject.MARECHAL,b.getY()/(plateauGameGraphic.getHeight()/10),b.getX()/(plateauGameGraphic.getWidth()/10),"Friend");
 								else if (b.name.equals("FLAG"))
-									plateauGameGraphic.plateau.board[b.getX()/(plateauGameGraphic.getWidth()/10)][b.getY()/(plateauGameGraphic.getHeight()/10)]=
-									new Cell(CellObject.FLAG,b.getX()/(plateauGameGraphic.getWidth()/10),b.getY()/(plateauGameGraphic.getHeight()/10),"Friend");
+									plateauGameGraphic.plateau.board[b.getY()/(plateauGameGraphic.getHeight()/10)][b.getX()/(plateauGameGraphic.getWidth()/10)]=
+									new Cell(CellObject.FLAG,b.getY()/(plateauGameGraphic.getHeight()/10),b.getX()/(plateauGameGraphic.getWidth()/10),"Friend");
 								else if (b.name.equals("BOMB"))
-									plateauGameGraphic.plateau.board[b.getX()/(plateauGameGraphic.getWidth()/10)][b.getY()/(plateauGameGraphic.getHeight()/10)]=
-									new Cell(CellObject.BOMB,b.getX()/(plateauGameGraphic.getWidth()/10),b.getY()/(plateauGameGraphic.getHeight()/10),"Friend");
+									plateauGameGraphic.plateau.board[b.getY()/(plateauGameGraphic.getHeight()/10)][b.getX()/(plateauGameGraphic.getWidth()/10)]=
+									new Cell(CellObject.BOMB,b.getY()/(plateauGameGraphic.getHeight()/10),b.getX()/(plateauGameGraphic.getWidth()/10),"Friend");
 								else if (b.name.equals("MAJOR"))
-									plateauGameGraphic.plateau.board[b.getX()/(plateauGameGraphic.getWidth()/10)][b.getY()/(plateauGameGraphic.getHeight()/10)]=
-									new Cell(CellObject.MAJOR,b.getX()/(plateauGameGraphic.getWidth()/10),b.getY()/(plateauGameGraphic.getHeight()/10),"Friend");
+									plateauGameGraphic.plateau.board[b.getY()/(plateauGameGraphic.getHeight()/10)][b.getX()/(plateauGameGraphic.getWidth()/10)]=
+									new Cell(CellObject.MAJOR,b.getY()/(plateauGameGraphic.getHeight()/10),b.getX()/(plateauGameGraphic.getWidth()/10),"Friend");
 								else if (b.name.equals("SPY"))
-									plateauGameGraphic.plateau.board[b.getX()/(plateauGameGraphic.getWidth()/10)][b.getY()/(plateauGameGraphic.getHeight()/10)]=
-									new Cell(CellObject.SPY,b.getX()/(plateauGameGraphic.getWidth()/10),b.getY()/(plateauGameGraphic.getHeight()/10),"Friend");
+									plateauGameGraphic.plateau.board[b.getY()/(plateauGameGraphic.getHeight()/10)][b.getX()/(plateauGameGraphic.getWidth()/10)]=
+									new Cell(CellObject.SPY,b.getY()/(plateauGameGraphic.getHeight()/10),b.getX()/(plateauGameGraphic.getWidth()/10),"Friend");
 								else if (b.name.equals("MINER"))
-									plateauGameGraphic.plateau.board[b.getX()/(plateauGameGraphic.getWidth()/10)][b.getY()/(plateauGameGraphic.getHeight()/10)]=
-									new Cell(CellObject.MINER,b.getX()/(plateauGameGraphic.getWidth()/10),b.getY()/(plateauGameGraphic.getHeight()/10),"Friend");
+									plateauGameGraphic.plateau.board[b.getY()/(plateauGameGraphic.getHeight()/10)][b.getX()/(plateauGameGraphic.getWidth()/10)]=
+									new Cell(CellObject.MINER,b.getY()/(plateauGameGraphic.getHeight()/10),b.getX()/(plateauGameGraphic.getWidth()/10),"Friend");
 								else if (b.name.equals("GENERAL"))
-									plateauGameGraphic.plateau.board[b.getX()/(plateauGameGraphic.getWidth()/10)][b.getY()/(plateauGameGraphic.getHeight()/10)]=
-									new Cell(CellObject.GENERAL,b.getX()/(plateauGameGraphic.getWidth()/10),b.getY()/(plateauGameGraphic.getHeight()/10),"Friend");
+									plateauGameGraphic.plateau.board[b.getY()/(plateauGameGraphic.getHeight()/10)][b.getX()/(plateauGameGraphic.getWidth()/10)]=
+									new Cell(CellObject.GENERAL,b.getY()/(plateauGameGraphic.getHeight()/10),b.getX()/(plateauGameGraphic.getWidth()/10),"Friend");
 								else if (b.name.equals("LIEUTENANT"))
-									plateauGameGraphic.plateau.board[b.getX()/(plateauGameGraphic.getWidth()/10)][b.getY()/(plateauGameGraphic.getHeight()/10)]=
-									new Cell(CellObject.LIEUTENANT,b.getX()/(plateauGameGraphic.getWidth()/10),b.getY()/(plateauGameGraphic.getHeight()/10),"Friend");
+									plateauGameGraphic.plateau.board[b.getY()/(plateauGameGraphic.getHeight()/10)][b.getX()/(plateauGameGraphic.getWidth()/10)]=
+									new Cell(CellObject.LIEUTENANT,b.getY()/(plateauGameGraphic.getHeight()/10),b.getX()/(plateauGameGraphic.getWidth()/10),"Friend");
 								else if (b.name.equals("SCOUT"))
-									plateauGameGraphic.plateau.board[b.getX()/(plateauGameGraphic.getWidth()/10)][b.getY()/(plateauGameGraphic.getHeight()/10)]=
-									new Cell(CellObject.SCOUT,b.getX()/(plateauGameGraphic.getWidth()/10),b.getY()/(plateauGameGraphic.getHeight()/10),"Friend");
+									plateauGameGraphic.plateau.board[b.getY()/(plateauGameGraphic.getHeight()/10)][b.getX()/(plateauGameGraphic.getWidth()/10)]=
+									new Cell(CellObject.SCOUT,b.getY()/(plateauGameGraphic.getHeight()/10),b.getX()/(plateauGameGraphic.getWidth()/10),"Friend");
 								else 
-									plateauGameGraphic.plateau.board[b.getX()/(plateauGameGraphic.getWidth()/10)][b.getY()/(plateauGameGraphic.getHeight()/10)]=
-									new Cell(CellObject.SERGEANT,b.getX()/(plateauGameGraphic.getWidth()/10),b.getY()/(plateauGameGraphic.getHeight()/10),"Friend");
+									plateauGameGraphic.plateau.board[b.getY()/(plateauGameGraphic.getHeight()/10)][b.getX()/(plateauGameGraphic.getWidth()/10)]=
+									new Cell(CellObject.SERGEANT,b.getY()/(plateauGameGraphic.getHeight()/10),b.getX()/(plateauGameGraphic.getWidth()/10),"Friend");
 								
 								plateauGameGraphic.remove(b);
 								plateauGameGraphic.revalidate();
 								panelSud.revalidate();
 								b.removeMouseListener(b.getMouseListeners()[0]);
-								emplacement3.repaint();
+								//emplacement3.repaint();
 								 if (PlacementPawn.VerifyMyPawn(plateauGameGraphic)==true) 
 									 Game.GameBegin(plateauGameGraphic);
 							}
@@ -256,7 +217,7 @@ public class PlacementPawn extends FenetreGame  {
 						panelSud.revalidate();
 						placement=false;
 					} 
-					emplacement3.repaint();
+					//emplacement3.repaint();
 					
 			}
 				

@@ -8,8 +8,8 @@ public class PionPosition {
 	int posX;
 	int posY;
 	public PionPosition( int x, int y) {
-		this.posX=x;
-		this.posY=y;
+		this.posY=x;
+		this.posX=y;
 	}
 
 }

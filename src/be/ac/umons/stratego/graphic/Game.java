@@ -53,21 +53,21 @@ public class Game {
 		plateauGameGraphic.plateau.board[2][5]=new Cell(CellObject.RIVER,2,5);
 	}
 	public static void GameBegin(DrawPlateau plateauGameGraphic) {
+			FenetreGame.emplacement3.repaint();
 			if ( FenetreGame.count==false) {
-				//System.out.println("i renre dans le if");
 				System.out.println(FenetreGame.count);
 				PlacementPawn.ChoicePion(plateauGameGraphic);
 				Ia_easy.play(plateauGameGraphic.plateau);
-				//PlateauBase.afficherTab(plateauGameGraphic.plateau);
+				PlateauBase.afficherTab(plateauGameGraphic.plateau);
+			
 			}
-				
-			else
+			else {
 				if (PlacementPawn.VerifyMyPawn(plateauGameGraphic)) {
 					System.out.println("i rentre dans le verify");
 					FenetreGame.emplacement3.repaint();
 					FenetreGame.count=false;
-					GameBegin(plateauGameGraphic);
+					Game.GameBegin(plateauGameGraphic);
 				}
-				
+			}
 	}
 }

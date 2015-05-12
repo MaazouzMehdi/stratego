@@ -37,18 +37,18 @@ public class DrawPlateau extends JPanel  {
 		
 		for (int x = 0 ; x < 10; x++ ) {
 			g.drawLine((int)((x+1)*cellX), 0, (int)((x+1)*cellX), getHeight());
-			for (int y = 0 ; y < 10 ; y++) {
-				 if ( plateau.board[x][y]==null){
+			for (int y= 0 ; y< 10 ; y++) {
+				 if ( plateau.board[y][x]==null){
 					g.setFont(font);
 					g.setColor(Color.black);
 					g.drawString("null",x*this.getWidth()/10 ,(y+1)*this.getHeight()/10);
 				}
-				 else if (plateau.board[x][y].getThisriverpiece()!= null) {
+				 else if (plateau.board[y][x].getThisriverpiece()!= null) {
 					 g.setColor(Color.blue);
-					 g.drawString(plateau.board[x][y].getThisriverpiece().toString(),x*this.getWidth()/10 ,(y+1)*this.getHeight()/10 );
+					 g.drawString(plateau.board[y][x].getThisriverpiece().toString(),x*this.getWidth()/10 ,(y+1)*this.getHeight()/10 );
 					
 				 }
-				 else if ( plateau.board[x][y].getThispiece().getSquad().equals("Ennemy")){
+				 else if ( plateau.board[y][x].getThispiece().getSquad().equals("Ennemy")){
 						g.setFont(font);
 						g.setColor(Color.red);
 						g.drawString("Ennemy",x*this.getWidth()/10 ,(y+1)*this.getHeight()/10);
@@ -56,7 +56,7 @@ public class DrawPlateau extends JPanel  {
 				else  {
 						g.setFont(font);
 						g.setColor(Color.green);
-						g.drawString(plateau.board[x][y].getThispiece().toString(),x*this.getWidth()/10 ,(y+1)*this.getHeight()/10);
+						g.drawString(plateau.board[y][x].getThispiece().toString(),x*this.getWidth()/10 ,(y+1)*this.getHeight()/10);
 					}
 				
 				
