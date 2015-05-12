@@ -8,11 +8,13 @@ public class PionGeneral extends Pion {
         super(lvl, posY, posX, equipe);
     }
 
-    @Override
-    public boolean deplacement(Direction direction, PlateauBase plateau, int number) {
+    public boolean deplacement(Direction direction, PlateauBase plateau) {
         return super.deplacement(direction, plateau, 1);
 
     }
 
+    public boolean deplacement(Direction direction, PlateauBase plateau, int cases) {
+        return super.deplacement(direction, plateau, 1);
 
+    }
 }
