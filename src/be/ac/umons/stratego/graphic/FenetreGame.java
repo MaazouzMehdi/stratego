@@ -10,6 +10,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 
+import be.ac.umons.stratego.pion.Cell;
+import be.ac.umons.stratego.pion.CellObject;
+import be.ac.umons.stratego.pion.River;
 import be.ac.umons.stratego.plateau.PlateauBase;
 
 
@@ -41,7 +44,7 @@ public class FenetreGame extends JFrame implements ActionListener {
 	
 	
 	public FenetreGame(DrawPlateau plateauGameGraphic){
-			emplacement3.removeAll();
+			//emplacement3.removeAll();
 		    this.setTitle("Bienvenue dans la Stragego");
 		    this.setSize(800, 800);
 		    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,12 +64,12 @@ public class FenetreGame extends JFrame implements ActionListener {
 		    
 		   PlacementPawn.PlacementEnnemyPawn(plateauGameGraphic);
 		   PawnOffPlateau( plateauGameGraphic);
-		   plateauGameGraphic.plateau.zone[7][5]="RIVER";
-		   plateauGameGraphic.plateau.zone[2][5]="RIVER";
+		   plateauGameGraphic.plateau.board[7][5]=new Cell(CellObject.RIVER,7,5);
+		   plateauGameGraphic.plateau.board[2][5]=new Cell(CellObject.RIVER,2,5);
 		   
 		   //NE PAS OUBLIER DE RETIRER LES PARENTHESES AUX IF POUR LES COUNT...
-		    while (countMajor < 3) {
-		       Button a= new Button("Major");
+		  /*  while (countMajor < 3) {
+		       Button a= new Button("M");
 			   if (PlacementPawn.PlacementMyPawn(a,plateauGameGraphic)) {
 				   countMajor ++;
 			   }
@@ -146,15 +149,22 @@ public class FenetreGame extends JFrame implements ActionListener {
 		}
 		   */
 		    repaint();
+		    emplacement3.repaint();
 	}
 	
 	public void PawnOffPlateau(final DrawPlateau plateauGameGraphic) {
 		   while (countColonel < 2) {
-			   Button a= new Button("Colonel");
+			   Button a= new Button("COlONEL"); 
 			   PlacementPawn.PlacementMyPawn(a,plateauGameGraphic);
 			   countColonel ++;
 		   }
+		   while (countBomb < 4) {
+			   Button a= new Button("BOMB");
+			   if (PlacementPawn.PlacementMyPawn(a,plateauGameGraphic)) {
+				   countBomb ++;
+			   }
 				  
+		   }
 	}
 	
 	public void initMenu()  {
@@ -179,7 +189,6 @@ public class FenetreGame extends JFrame implements ActionListener {
 			count =true;
 			Game.NewGame(Interface.plateauGameGraphic);
 			emplacement3.repaint();
-			//plateauGameGraphic.repaint();
 		}
 		else if ((JMenuItem)e.getSource()==save)
 		{
@@ -188,6 +197,7 @@ public class FenetreGame extends JFrame implements ActionListener {
 		
 		else {
 			Game.NewGame(Interface.plateauGameGraphic);
+			//Interface.plateauGameGraphic.repaint();
 			emplacement3.repaint();
 			this.dispose();
 			new Interface();

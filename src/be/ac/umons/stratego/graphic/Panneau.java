@@ -14,7 +14,7 @@ public class Panneau extends JPanel
 		//Permet de placer l'image dans la fenêtre
 		//...........................................
 		
-		public void paintComponent( Graphics g)
+		/*public void paintComponent( Graphics g)
 		{
 			try
 			{
@@ -30,6 +30,7 @@ public class Panneau extends JPanel
 			}
 				
 		}
+		*/
 
 }
 

@@ -15,6 +15,10 @@ import be.ac.umons.stratego.graphic.FenetreGame;
 import be.ac.umons.stratego.plateau.PlateauBase;
 
 public class DrawPlateau extends JPanel  {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public PlateauBase plateau;
 	public DrawPlateau(PlateauBase board) {
 		this.plateau=board;
@@ -28,36 +32,41 @@ public class DrawPlateau extends JPanel  {
 		
 		Font font = new Font("Courier",Font.BOLD,20);
 		
-		for (int y = 1; y < 10; y++)
+		for (int y = 1; y < 10; y++) 
 			g.drawLine(0, (int)(y*cellY), getWidth(), (int)(y*cellY));
 		
 		for (int x = 0 ; x < 10; x++ ) {
 			g.drawLine((int)((x+1)*cellX), 0, (int)((x+1)*cellX), getHeight());
 			for (int y = 0 ; y < 10 ; y++) {
-				if ( plateau.zone[x][y].equals("Ennemy")){
-					g.setFont(font);
-					g.setColor(Color.red);
-					g.drawString(plateau.zone[x][y],x*this.getWidth()/10 ,(y+1)*this.getHeight()/10);
-				}
-				else if ( plateau.zone[x][y].equals("null")) {
+				 if ( plateau.board[x][y]==null){
 					g.setFont(font);
 					g.setColor(Color.black);
-					g.drawString(plateau.zone[x][y],x*this.getWidth()/10 ,(y+1)*this.getHeight()/10);
+					g.drawString("null",x*this.getWidth()/10 ,(y+1)*this.getHeight()/10);
 				}
-				else {
-					g.setFont(font);
-					g.setColor(Color.green);
-					g.drawString(plateau.zone[x][y],x*this.getWidth()/10 ,(y+1)*this.getHeight()/10);
-				}
+				 else if (plateau.board[x][y].getThisriverpiece()!= null) {
+					 g.setColor(Color.blue);
+					 g.drawString(plateau.board[x][y].getThisriverpiece().toString(),x*this.getWidth()/10 ,(y+1)*this.getHeight()/10 );
+					
+				 }
+				 else if ( plateau.board[x][y].getThispiece().getSquad().equals("Ennemy")){
+						g.setFont(font);
+						g.setColor(Color.red);
+						g.drawString("Ennemy",x*this.getWidth()/10 ,(y+1)*this.getHeight()/10);
+					}
+				else  {
+						g.setFont(font);
+						g.setColor(Color.green);
+						g.drawString(plateau.board[x][y].getThispiece().toString(),x*this.getWidth()/10 ,(y+1)*this.getHeight()/10);
+					}
 				
 				
 			}
 			
 		}
 		
-		g.setColor(Color.blue);
-		g.drawString(plateau.zone[7][5],7*this.getWidth()/10 ,(5+1)*this.getHeight()/10 );
-		g.drawString(plateau.zone[2][5],2*this.getWidth()/10 ,(5+1)*this.getHeight()/10 );
+		//g.setColor(Color.blue);
+		//g.drawString(plateau.board[7][5].getThisriverpiece().toString(),7*this.getWidth()/10 ,(5+1)*this.getHeight()/10 );
+		//g.drawString(plateau.board[2][5].getThisriverpiece().toString(),2*this.getWidth()/10 ,(5+1)*this.getHeight()/10 );
 		
 	}
 	    	
