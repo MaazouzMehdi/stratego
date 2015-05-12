@@ -24,7 +24,6 @@ public class TestSpecialDeplacement {
 		plateau.board[eclaireur.getPosY()][eclaireur.getPosX()]= new Cell(CellObject.SCOUT,eclaireur.getPosY(),eclaireur.getPosX(),"Friend");
 		plateau.board[eclaireurAlly.getPosY()][eclaireurAlly.getPosX()]= new Cell(CellObject.SCOUT,eclaireurAlly.getPosY(),eclaireurAlly.getPosX(),"Friend");
 
-		//PlateauBase.afficherTab(plateau);
 	}
 	@Test
 	public void specialDeplacementPossibleTest(){
@@ -36,10 +35,9 @@ public class TestSpecialDeplacement {
 		assertFalse(eclaireur.deplacementPossible(Direction.EAST, plateau, 1));
 		// test si le pion peut se deplacer de 2 cases libres vers le bas
 		assertTrue(eclaireur.deplacementPossible(Direction.SOUTH,plateau,2));
-
+		// test si le pion peut se deplacer de 5 unitées vers le bas 
 		assertTrue(eclaireur.deplacement(Direction.SOUTH, plateau, 5));
 
-		//PlateauBase.afficherTab(plateau);
 	}
 	
 
