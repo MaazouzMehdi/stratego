@@ -7,7 +7,12 @@
 		includeantruntime="false" />
 
 	</target>
-
+	
+	<target name="run" depends="build" >
+		<java classname="be.ac.umons.stratego.graphic.Interface" fork="true"
+			  classpath="build"/>
+	</target>
+	
 	<target name="clean">
 		<delete dir ="build"/>
 	</target>

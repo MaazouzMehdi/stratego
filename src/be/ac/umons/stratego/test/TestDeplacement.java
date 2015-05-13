@@ -46,7 +46,7 @@ public class TestDeplacement {
 	public void deplacementTest() {
 		// test si le pion s'est bien déplacé d'une unité vers le haut
 		capitaine.deplacement(Direction.NORTH,plateau,1);
-		assertTrue(plateau.board[capitaine.getPosY()][capitaine.getPosX()].getThispiece().toString().equals("CAP"));
+		assertTrue(plateau.board[capitaine.getPosY()][capitaine.getPosX()].getThispiece().toString().equals("CAPTAIN"));
 		
 		final int oldPosX=capitaine.getPosX();
 		final int oldPosY=capitaine.getPosY();

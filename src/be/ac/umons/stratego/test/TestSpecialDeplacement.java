@@ -1,5 +1,7 @@
 package be.ac.umons.stratego.test;
 
+
+
 import be.ac.umons.stratego.pion.Cell;
 import be.ac.umons.stratego.pion.CellObject;
 import be.ac.umons.stratego.pion.Direction;
@@ -42,3 +44,4 @@ public class TestSpecialDeplacement {
 	
 
 }
+

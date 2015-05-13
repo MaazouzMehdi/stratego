@@ -57,8 +57,7 @@ public class Interface extends JFrame implements ActionListener
 		}
 		
 		
-		public static void main(String argv[])
-		{
+		public static void main(String argv[]){
 			Interface fenetre = new Interface();
 			
 		}
