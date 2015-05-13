@@ -44,7 +44,7 @@ public class FenetreGame extends JFrame implements ActionListener {
 	
 	
 	public FenetreGame(DrawPlateau plateauGameGraphic){
-			//emplacement3.removeAll();
+			emplacement3.removeAll();
 		    this.setTitle("Bienvenue dans la Stragego");
 		    this.setSize(800, 800);
 		    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,8 +64,10 @@ public class FenetreGame extends JFrame implements ActionListener {
 		    
 		   PlacementPawn.PlacementEnnemyPawn(plateauGameGraphic);
 		   PawnOffPlateau( plateauGameGraphic);
-		   plateauGameGraphic.plateau.board[7][5]=new Cell(CellObject.RIVER,7,5);
-		   plateauGameGraphic.plateau.board[5][5]=new Cell(CellObject.RIVER,5,5);
+		   plateauGameGraphic.plateau.board[4][7]=new Cell(CellObject.RIVER,4,7);
+			plateauGameGraphic.plateau.board[5][7]=new Cell(CellObject.RIVER,5,7);
+			plateauGameGraphic.plateau.board[4][6]=new Cell(CellObject.RIVER,4,6);
+			plateauGameGraphic.plateau.board[5][6]=new Cell(CellObject.RIVER,5,6);
 		   
 		   //NE PAS OUBLIER DE RETIRER LES PARENTHESES AUX IF POUR LES COUNT...
 		  /*  while (countMajor < 3) {
@@ -144,7 +146,7 @@ public class FenetreGame extends JFrame implements ActionListener {
 			   }
 				  
 		   }
-		   while (countMarechal < 3) {
+		   while (countMarechal < 1) {
 			   Button a= new Button("MARECHAL");
 			   if (PlacementPawn.PlacementMyPawn(a,plateauGameGraphic)) {
 				   countMarechal ++;
@@ -184,25 +186,30 @@ public class FenetreGame extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e)
 	{
 		if((JMenuItem)e.getSource()==newGame) {
-			count =true;
+			
+			Interface.plateauGameGraphic.removeAll();
+			Interface.plateauGameGraphic.repaint();
 			Game.NewGame(Interface.plateauGameGraphic);
-			emplacement3.repaint();
+			emplacement3.add(Interface.plateauGameGraphic);
+			this.dispose();
+			new FenetreGame(Interface.plateauGameGraphic);
+			count =true;
 		}
 		else if ((JMenuItem)e.getSource()==save)
 		{
-			System.exit(0); // permet de quitter le programme définitevement
+			System.exit(0);
 		}
 		
 		else {
+			Interface.plateauGameGraphic.removeAll();
+			Interface.plateauGameGraphic.repaint();
 			Game.NewGame(Interface.plateauGameGraphic);
-			//Interface.plateauGameGraphic.repaint();
-			emplacement3.repaint();
+			emplacement3.add(Interface.plateauGameGraphic);
 			this.dispose();
 			new Interface();
 		}
-			
 	}
-		
+	//public void actionPerformed(ActionEvent e) {}	
 	
 }
 	
