@@ -25,4 +25,12 @@
 		</junit>
 	</target>
 
+	<target name="javadoc">
+		<javadoc destdir="doc" use="true" sourcepath="src" access="public" >
+			<classpath>
+				<pathelement path ="lib/junit-4.12.jar"/>
+				<pathelement path ="lib/hamcrest-core-1.3.jar"/>
+			</classpath>
+		</javadoc>
+	</target>
 </project>
