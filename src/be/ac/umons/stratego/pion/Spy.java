@@ -7,6 +7,6 @@ public class Spy extends PionGeneral {
         }
 
 	public String toString() {
-		return "S";
+		return "SPY";
 	}
 }

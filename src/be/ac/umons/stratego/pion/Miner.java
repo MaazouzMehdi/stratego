@@ -7,6 +7,6 @@ public class Miner extends PionGeneral {
 	}
 
 	public String toString() {
-		return "M";
+		return "MINER";
 	}
 }

@@ -7,6 +7,6 @@ public class Sergeant extends PionGeneral{
         }
 
 	public String toString() {
-		return "SE";
+		return "SERGEANT";
 	}
 }

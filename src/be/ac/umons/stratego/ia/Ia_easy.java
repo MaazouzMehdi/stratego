@@ -25,7 +25,7 @@ public class Ia_easy {
         Random myrandomdeplacement = new Random();
         int direction = myrandomdeplacement.nextInt(4);
 
-            if (pion.toString().equals("Sc")) {
+            if (pion.toString().equals("SCOUT")) {
 
                 Random mynumbercases = new Random();
                 int nbrcases = mynumbercases.nextInt(5);

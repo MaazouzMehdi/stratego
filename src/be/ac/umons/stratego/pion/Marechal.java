@@ -7,7 +7,7 @@ public class Marechal extends PionGeneral {
         }
 
 	public String toString() {
-		return "MA";
+		return "MARECHAL";
 	}
 
 }

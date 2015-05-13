@@ -7,6 +7,6 @@ public class Lieutenant extends PionGeneral {
         }
 
 	public String toString() {
-		return "L";
+		return "LIEUTENANT";
 	}
 }

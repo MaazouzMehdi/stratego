@@ -7,6 +7,6 @@ public class Major extends PionGeneral{
         }
 
 	public String toString() {
-		return "MJ";
+		return "MAJOR";
 	}
 }

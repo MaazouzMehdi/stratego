@@ -7,6 +7,6 @@ public class Bomb extends PionNoMove {
         }
                                                                                                              
 	public String toString() {
-		return "B";
+		return "BOMB";
 	}
 }

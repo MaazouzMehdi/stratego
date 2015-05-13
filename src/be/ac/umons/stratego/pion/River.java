@@ -16,6 +16,6 @@ public class River {
 
     @Override
     public String toString() {
-        return "River";
+        return "RIVER";
     }
 }
