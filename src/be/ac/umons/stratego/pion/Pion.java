@@ -86,7 +86,6 @@ public abstract class Pion {
         }
         else if (comparelvl(pion).equals(this.toString())) {//retourne le string vainqueur
            // plateau.board[posY][posX] = excasedejeu;
-            System.out.println(excasedejeu.getThispiece().toString());
             plateau.board[posY-direction.y*number][posX-direction.x*number]=null;
             plateau.board[posY][posX] = excasedejeu;
         }
