@@ -17,14 +17,6 @@ public abstract class Pion {
     public int getPosY() {
         return posY;
     }
-    
-    public void setPosX(int x) {
-    	this.posX=x;
-    }
-    
-    public void setPosY(int y) {
-    	this.posY=y;
-    }
 
     public Pion( int lvl, int posY ,int posX , String equipe ){
         this.lvl=lvl;
@@ -38,8 +30,6 @@ public abstract class Pion {
     public int getlvl () {
         return lvl;
     }
-    
-  
 
     public String getSquad(){ return squad; }
     
@@ -54,8 +44,8 @@ public abstract class Pion {
                     return false;
                 else if (number==i && caseDeJeu==null)
                     return true;
-                else if ( number==i && ((caseDeJeu.getThisriverpiece()!=null ) || this.squad.equals(caseDeJeu.getThispiece().getSquad()))) 
-                    
+                else if ( number==i && ((caseDeJeu.getThisriverpiece()!=null ) || this.squad.equals(caseDeJeu.getThispiece().getSquad())))
+
                     return false;
             }
             else
@@ -96,6 +86,7 @@ public abstract class Pion {
         }
         else if (comparelvl(pion).equals(this.toString())) {//retourne le string vainqueur
            // plateau.board[posY][posX] = excasedejeu;
+            System.out.println(excasedejeu.getThispiece().toString());
             plateau.board[posY-direction.y*number][posX-direction.x*number]=null;
             plateau.board[posY][posX] = excasedejeu;
         }
