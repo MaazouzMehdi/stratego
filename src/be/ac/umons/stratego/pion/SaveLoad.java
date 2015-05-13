@@ -1,6 +1,7 @@
-package be.ac.umons.stratego.plateau;
+package be.ac.umons.stratego.pion;
 
 import be.ac.umons.stratego.pion.Cell;
+import be.ac.umons.stratego.plateau.PlateauBase;
 
 import java.io.*;
 
@@ -8,8 +9,8 @@ import java.io.*;
  * Created by marco on 13/05/15.
  */
 public class SaveLoad {
-    public void SaveGame() throws IOException,ClassNotFoundException {
-        Cell[][] gameBoard = PlateauBase.board;
+    public void SaveGame(PlateauBase plateau) throws IOException,ClassNotFoundException {
+        Cell[][] gameBoard = plateau.board;
         OutputStream file = new FileOutputStream("Sauvegarde");
         ObjectOutputStream oursave = new ObjectOutputStream(file); //effectue la sérialistation
         oursave.writeObject(gameBoard);

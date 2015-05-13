@@ -12,4 +12,5 @@ public class PionNoMove extends Pion {
 		return false;
 	}
 
+
 }

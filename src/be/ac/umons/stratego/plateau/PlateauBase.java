@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class PlateauBase 
 {
-	public static Cell [][] board = new  Cell [10] [10];// board = zone
+	public Cell [][] board = new  Cell [10] [10];// board = zone
 	public static int posD_X;
 	public static int posD_Y;
 	
