@@ -1,8 +1,6 @@
 package be.ac.umons.stratego.pion;
 
-import be.ac.umons.stratego.graphic.Pions;
 
-import java.io.Serializable;
 
 /**
  * Created by marco on 5/05/15.

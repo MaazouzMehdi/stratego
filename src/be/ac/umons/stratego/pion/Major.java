@@ -2,15 +2,11 @@ package be.ac.umons.stratego.pion;
 
 public class Major extends PionGeneral{
 
-	public Major (int lvl, int posY, int posX , String equipe) {
-		super(lvl, posY, posX, equipe);
+	public Major(int posY, int posX, String equipe) {
+		super(7, posY, posX, equipe);
         }
 
 	public String toString() {
-		String a = "MJ";
-		if (this.equipe.equals("Friend" ))
-		        return a +"-F";
-		else 
-		        return a + "-E";
+		return "MJ";
 	}
 }

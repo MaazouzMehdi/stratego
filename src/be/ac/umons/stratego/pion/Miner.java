@@ -2,15 +2,11 @@ package be.ac.umons.stratego.pion;
 
 public class Miner extends PionGeneral {
 
-	public Miner (int lvl, int posY, int posX , String equipe) {
-		super(lvl, posY, posX, equipe);
-        }
+	public Miner ( int posY, int posX , String equipe) {
+		super(3, posY, posX, equipe);
+	}
 
 	public String toString() {
-		String a = "M";
-		if (this.equipe.equals("Friend"))
-		        return a +"-F";
-		else 
-		        return a + "-E";
+		return "M";
 	}
 }
