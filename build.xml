@@ -2,8 +2,9 @@
 	<target name ="build">
 	<mkdir dir="build"/>		
 	<javac srcdir="src"
-			destdir="build"
-			classpath="lib/junit-4.12.jar"/>
+		destdir="build"
+		classpath="lib/junit-4.12.jar"
+		includeantruntime="false" />
 
 	</target>
 
@@ -11,15 +12,15 @@
 		<delete dir ="build"/>
 	</target>
 	<target name="test" depends="build">
-		<junit printsummary ="yes" showoutput="yes">
+		<junit printsummary ="yes" showoutput="yes" fork="true">
 			<classpath>
 				<pathelement path ="lib/junit-4.12.jar"/>
+				<pathelement path ="lib/hamcrest-core-1.3.jar"/>
 				<pathelement path ="build"/>
 			</classpath>
-			<batchtest>
-				<fileset dir ="src" includes="**/*AttaqueTest.java"/>
-				<fileset dir ="src" includes="**/*TestSpecialDeplacement.java"/>
-				<fileset dir ="src" includes="**/*TestDeplacement.java"/>
+			<formatter type="xml" />
+			<batchtest todir="tests">
+				<fileset dir ="src" includes="**/*Test*.java"/>
 			</batchtest>
 		</junit>
 	</target>
