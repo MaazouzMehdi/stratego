@@ -7,6 +7,6 @@ public class General extends PionGeneral {
         }
 
 	public String toString() {		
-		return "G";
+		return "GENERAL";
 	}
 }

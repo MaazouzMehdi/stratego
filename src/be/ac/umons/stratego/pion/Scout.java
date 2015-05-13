@@ -7,7 +7,7 @@ public class Scout extends Pion {
         }
 
 	public String toString() {
-		return "SC";
+		return "SCOUT";
 	}
 
 }

@@ -7,7 +7,7 @@ public class Flag extends PionNoMove {
         }
 
 	public String toString() {
-	        return "F";
+	        return "FLAG";
 		
 	}
 }

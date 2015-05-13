@@ -7,7 +7,7 @@ public class Captain extends PionGeneral {
         }
 
 	public String toString() {		
-		return "C";
+		return "CAPTAIN";
 
 	}
 }
