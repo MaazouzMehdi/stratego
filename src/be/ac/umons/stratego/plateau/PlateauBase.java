@@ -136,7 +136,7 @@ public class PlateauBase
 			countLieutenant=0, countColonel=0,countMajor=0,countCaptain=0,countMiner=0,
 			countSergeant=0;
 			int numberShuffer = 42;
-			for (int i=0;i<10;i++) {
+			for (int i=0;i<4;i++) {
 				for (int j=0;j<10;j++) {
 					if (countMarechal != 1 ) {
 						plateau.board[i][j]= new Cell(CellObject.MARECHAL,i,j,"Ennemy");
@@ -190,32 +190,27 @@ public class PlateauBase
 				}
 			}
 			while (numberShuffer != 0) {
-				int numberLine = myNumberRandom.nextInt(4);
-				int numberColonne = myNumberRandom.nextInt(10);
-				Cell a= plateau.board[numberLine][numberColonne];
-				
+				int numberLine1 = myNumberRandom.nextInt(4);
+				int numberColonne1 = myNumberRandom.nextInt(10);
+				Cell a= plateau.board[numberLine1][numberColonne1];
 				Cell old_a=a;
+				Pion oldPiece_a=a.getThispiece();
 				
-				old_a.getThispiece().setlvl(a.getThispiece().getlvl());
-				old_a.getThispiece().setPosX(a.getThispiece().getPosX());
-				old_a.setThispiece(a.getThispiece());
-				numberLine = myNumberRandom.nextInt(4);
-				numberColonne = myNumberRandom.nextInt(10); 
+				int numberLine2 = myNumberRandom.nextInt(4);
+				int numberColonne2 = myNumberRandom.nextInt(10); 
 				
-				Cell b = plateau.board[numberLine][numberColonne];
-				//a=b;
+				Cell b = plateau.board[numberLine2][numberColonne2];
 				a.setThispiece(b.getThispiece());
-				a.getThispiece().setlvl(b.getThispiece().getlvl());
-				a.getThispiece().setPosX(b.getThispiece().getPosX());
-				a.getThispiece().setPosY(b.getThispiece().getPosY());
+				b.setThispiece(oldPiece_a);
+				a=b;
+				b=old_a;
 				
-				//b=old_a;
-				b.setThispiece(old_a.getThispiece());
-				b.getThispiece().setlvl(old_a.getThispiece().getlvl());
-				b.getThispiece().setPosX(old_a.getThispiece().getPosX());
-				b.getThispiece().setPosY(old_a.getThispiece().getPosY());
+				plateau.board[numberLine1][numberColonne1]=b;
+				plateau.board[numberLine2][numberColonne2]=a;
+				
+				
 				numberShuffer --;
-			}
+			} 
 			return plateau;
 		}
 			

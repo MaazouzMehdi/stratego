@@ -103,14 +103,7 @@ public class FenetreGame extends JFrame implements ActionListener {
 				   countPiecesTot ++;
 			   }
 		   }
-		   while (countScout < 8) {
-			   Button a= new Button("Scout");
-			   if (PlacementPawn.PlacementMyPawn(a)) {
-				   countScout ++;
-				   countPiecesTot ++;
-			   }
-		  }
-		   
+		 
 		   while (countSpy < 1) {
 			   Button a= new Button("Spy");
 			   if (PlacementPawn.PlacementMyPawn(a)) {
@@ -163,6 +156,13 @@ public class FenetreGame extends JFrame implements ActionListener {
 				   countMiner ++;
 			   }
 		   }
+		   while (countScout < 8) {
+			   Button a= new Button("SCOUT");
+			   if (PlacementPawn.PlacementMyPawn(a,plateauGameGraphic)) {
+				   countScout ++;
+			   }
+		  }
+		   
 	}
 	
 	public void initMenu()  {
