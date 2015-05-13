@@ -167,8 +167,10 @@ public class PlacementPawn extends FenetreGame  {
 									emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
 									Game.GameBegin(plateauGameGraphic);
 								}
-								else
+								else {
+									emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
 									ChoicePion(plateauGameGraphic);
+								}
 							
 							}
 						}
@@ -202,6 +204,11 @@ public class PlacementPawn extends FenetreGame  {
 									ChoicePion(plateauGameGraphic);	
 								}
 							}
+						}
+						else {
+							emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
+							ChoicePion(plateauGameGraphic);
+								
 						}
 					}
 				emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
