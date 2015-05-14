@@ -229,12 +229,12 @@ public class PlacementPawn extends FenetreGame  {
 					if ((plateauGameGraphic.plateau.board[e.getY()/(plateauGameGraphic.getHeight()/10)][e.getX()/(plateauGameGraphic.getWidth()/10)])!=null 
 				    && (plateauGameGraphic.plateau.board[e.getY()/(plateauGameGraphic.getHeight()/10)][e.getX()/(plateauGameGraphic.getWidth()/10)].getThisriverpiece())==null 
 				    && !(plateauGameGraphic.plateau.board[e.getY()/(plateauGameGraphic.getHeight()/10)][e.getX()/(plateauGameGraphic.getWidth()/10)].getThispiece()).getSquad().equals("Ennemy") 
-					&& !plateauGameGraphic.plateau.board[e.getY()/(plateauGameGraphic.getHeight()/10)][e.getX()/(plateauGameGraphic.getWidth()/10)].getThispiece().toString().equals("B")
-					&& !plateauGameGraphic.plateau.board[e.getY()/(plateauGameGraphic.getHeight()/10)][e.getX()/(plateauGameGraphic.getWidth()/10)].getThispiece().toString().equals("F")){
+					&& !plateauGameGraphic.plateau.board[e.getY()/(plateauGameGraphic.getHeight()/10)][e.getX()/(plateauGameGraphic.getWidth()/10)].getThispiece().toString().equals("Bomb")
+					&& !plateauGameGraphic.plateau.board[e.getY()/(plateauGameGraphic.getHeight()/10)][e.getX()/(plateauGameGraphic.getWidth()/10)].getThispiece().toString().equals("FLAG")){
 							PionPosition pion = new PionPosition(e.getY()/(plateauGameGraphic.getHeight()/10),e.getX()/(plateauGameGraphic.getWidth()/10));
 							myPion=true;
 							emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
-							if (plateauGameGraphic.plateau.board[e.getY()/(plateauGameGraphic.getHeight()/10)][e.getX()/(plateauGameGraphic.getWidth()/10)].getThispiece().toString().equals("SC"))
+							if (plateauGameGraphic.plateau.board[e.getY()/(plateauGameGraphic.getHeight()/10)][e.getX()/(plateauGameGraphic.getWidth()/10)].getThispiece().toString().equals("SCOUT"))
 								SpecialPionMove(pion,plateauGameGraphic);
 							else 
 								PionMove(pion,plateauGameGraphic);

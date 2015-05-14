@@ -1,13 +1,11 @@
 package be.ac.umons.stratego.pion;
 
-import java.io.NotSerializableException;
-import java.io.*;
-
+import java.io.Serializable;
 
 /**
  * Created by marco on 6/05/15.
  */
-public class Cell {
+public class Cell implements Serializable {
 
     private Pion thispiece;
     private River thisriverpiece;
@@ -51,8 +49,8 @@ public class Cell {
             case COLONEL:
                 thispiece = new Colonel(posY, posX, squad);
                 break;
-            //case RIVER:
-            	//thisriverpiece= new River(posY,posX);
+            case RIVER:
+            	thisriverpiece= new River(posY,posX);
             	
         }
     }

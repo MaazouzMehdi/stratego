@@ -8,7 +8,7 @@ import java.io.*;
 /**
  * Created by marco on 13/05/15.
  */
-public class SaveLoad {
+public class SaveLoad implements Serializable{
     public static void SaveGame(PlateauBase plateau) throws IOException,ClassNotFoundException {
         Cell[][] gameBoard = plateau.board;
         OutputStream file = new FileOutputStream("Sauvegarde");
