@@ -218,7 +218,6 @@ public class PlateauBase
 		for (int i=0;i<10;i++) {
 			for (int j=0;j<10;j++) {
 				Cell cell = plateau.board[i][j];
-				//String stringcell = cell.getThispiece().toString();
 				if (cell==null)
 					System.out.print("[ "+"null"+" ]  ");
 				else if (cell.getThisriverpiece()!=null)
@@ -230,11 +229,11 @@ public class PlateauBase
 		}
 	}
 	
-	public static void main (String argv[]) {
+	/*public static void main (String argv[]) {
 		PlateauBase x = new PlateauBase();
 		//pawnRandomAlly(x);
 		pawnRandomEnnemy(x);
 		afficherTab(x);
 		}
-
+*/
 }

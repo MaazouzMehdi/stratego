@@ -31,7 +31,7 @@ public class DrawPlateau extends JPanel  {
 			final float cellY=getHeight()/10;
 		
 		Font font = new Font("Courier",Font.BOLD,20);
-		
+		FenetreGame.emplacement3.repaint();
 		for (int y = 1; y < 10; y++) 
 			g.drawLine(0, (int)(y*cellY), getWidth(), (int)(y*cellY));
 		
@@ -51,7 +51,7 @@ public class DrawPlateau extends JPanel  {
 				 else if ( plateau.board[y][x].getThispiece().getSquad().equals("Ennemy")){
 						g.setFont(font);
 						g.setColor(Color.red);
-						g.drawString("Ennemy",x*this.getWidth()/10 ,(y+1)*this.getHeight()/10);
+						g.drawString(plateau.board[y][x].getThispiece().toString(),x*this.getWidth()/10 ,(y+1)*this.getHeight()/10);
 					}
 				else  {
 						g.setFont(font);
