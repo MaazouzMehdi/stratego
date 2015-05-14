@@ -189,7 +189,7 @@ public class PlateauBase
 					}
 				}
 			}
-			while (numberShuffer != 0) {
+			/*while (numberShuffer != 0) {
 				int numberLine1 = myNumberRandom.nextInt(4);
 				int numberColonne1 = myNumberRandom.nextInt(10);
 				Cell a= plateau.board[numberLine1][numberColonne1];
@@ -210,9 +210,9 @@ public class PlateauBase
 				
 				
 				numberShuffer --;
-			} 
+			} */
 			return plateau;
-		}
+		} 
 			
 	public static void afficherTab(PlateauBase plateau) {
 		for (int i=0;i<10;i++) {

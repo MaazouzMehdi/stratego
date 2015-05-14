@@ -12,7 +12,7 @@ import java.awt.event.ActionEvent;
 public class Interface extends JFrame implements ActionListener
 	{
 		private Panneau emplacement1=new Panneau();
-		public final static DrawPlateau plateauGameGraphic= new DrawPlateau(new PlateauBase());
+		//public final static DrawPlateau plateauGameGraphic= new DrawPlateau(new PlateauBase());
 		private JButton bouton1 = new JButton("Jeu");
 		private JButton bouton2 = new JButton("Option");
 		private JButton bouton3 = new JButton("Quitter");
@@ -40,9 +40,10 @@ public class Interface extends JFrame implements ActionListener
 		{
 			if((JButton)e.getSource()==bouton1)
 			{
-				this.dispose(); // permet de fermer la fenetre
+				this.dispose();
+				new BeforeGame();// permet de fermer la fenetre
 				//new FenetreGame(new DrawPlateau(new PlateauBase()));
-				new FenetreGame(plateauGameGraphic);
+				//new FenetreGame(plateauGameGraphic);
 			}
 			else if ((JButton)e.getSource()==bouton3)
 			{

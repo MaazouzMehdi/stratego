@@ -141,7 +141,7 @@ public class PlacementPawn extends FenetreGame  {
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
 				
-					 if (myPion==true) {    //////////////////////////
+					     //////////////////////////
 						if (e.getY()/(plateauGameGraphic.getHeight()/10)==pion.posY) {
 							if(e.getX()/(plateauGameGraphic.getWidth()/10)==pion.posX+1) {
 								if (plateauGameGraphic.plateau.board[pion.posY][pion.posX].getThispiece().
@@ -204,7 +204,6 @@ public class PlacementPawn extends FenetreGame  {
 									ChoicePion(plateauGameGraphic);	
 								}
 							}
-						}
 						else {
 							emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
 							ChoicePion(plateauGameGraphic);
@@ -213,8 +212,6 @@ public class PlacementPawn extends FenetreGame  {
 					}
 				emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
 				ChoicePion(plateauGameGraphic);
-					
-				//emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
 			}
 						
 		});
@@ -272,7 +269,6 @@ public class PlacementPawn extends FenetreGame  {
 		    b.addMouseListener(new MouseListener() {
 				@Override
 				public void mouseReleased(MouseEvent arg0) {
-					System.out.println(b.toString());
 						if (b.getY()/(plateauGameGraphic.getHeight()/10) > 5) {
 							if (plateauGameGraphic.plateau.board[b.getY()/(plateauGameGraphic.getHeight()/10)][b.getX()/(plateauGameGraphic.getWidth()/10)]==null) {
 								if (b.name.equals("COLONEL"))
