@@ -16,9 +16,17 @@ public abstract class Pion implements Serializable {
     public int getPosX() {
         return posX;
     }
+    
+    public void setPosX(int x) {
+    	this.posX=x;
+    }  	
 
     public int getPosY() {
         return posY;
+    }
+    
+    public void setPosY(int y) {
+    	this.posY=y;
     }
 
     public Pion( int lvl, int posY ,int posX , String equipe ){
