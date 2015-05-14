@@ -57,13 +57,11 @@ public class Game {
 	
 	public static void GameBegin(DrawPlateau plateauGameGraphic) {
 			FenetreGame.emplacement3.repaint();
-			plateauGameGraphic.repaint();
-			if (Victory.SomeoneWin(plateauGameGraphic.plateau) || (Victory.YouWin(plateauGameGraphic.plateau))) {
-				new FenetreEnd();
-			}
+			//plateauGameGraphic.repaint();
 			if ( FenetreGame.count==false) {
 				PlacementPawn.ChoicePion(plateauGameGraphic);
 				Ia_easy.play(plateauGameGraphic.plateau);
+				
 				FenetreGame.emplacement3.repaint();
 				PlateauBase.afficherTab(plateauGameGraphic.plateau);
 			
@@ -76,5 +74,5 @@ public class Game {
 					Game.GameBegin(plateauGameGraphic);
 				}
 			}
-	}
-}
+		}
+	}	

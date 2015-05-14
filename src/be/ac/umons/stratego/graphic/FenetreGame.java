@@ -27,27 +27,26 @@ public class FenetreGame extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	protected static Panneau emplacement3=new Panneau();
 	public static JPanel panelSud= new JPanel();
-	protected static JPanel panelEast = new JPanel();
-	private JPanel panelNord= new JPanel();
-	private JPanel panelWest= new JPanel();
-	//public final DrawPlateau plateauGameGraphic; 
+	public static JPanel panelEast = new JPanel();
+	protected static JPanel panelNord= new JPanel();
+	protected static JPanel panelWest= new JPanel();
 	protected static int countColonel=0, countMajor=0, countGeneral=0,
 			countLieutenant=0,countMarechal=0, countCaptain=0, countFlag=0,
 			countSergeant=0, countMiner=0, countSpy=0, countScout=0, countBomb=0,
 			countEnnemy=0;
-	private JMenuBar menuBar = new JMenuBar();
-	private JMenu game = new JMenu("Partie");
-	private JMenu JMenuExit = new JMenu("Quitter");
+	static JMenuBar menuBar = new JMenuBar();
+	 static JMenu game = new JMenu("Partie");
+	static  JMenu JMenuExit = new JMenu("Quitter");
 	
-	private JMenuItem newGame=new JMenuItem("Nouvelle partie");
-	private JMenuItem save=new JMenuItem("Sauvegarder Partie");
-	private JMenuItem exit=new JMenuItem("Quitter partie");
+	 static JMenuItem newGame=new JMenuItem("Nouvelle partie");
+	 static JMenuItem save=new JMenuItem("Sauvegarder Partie");
+	 static JMenuItem exit=new JMenuItem("Quitter partie");
 
 	
 	
 	
 	public FenetreGame(DrawPlateau plateauGameGraphic){
-			emplacement3.removeAll();
+			//emplacement3.removeAll();
 		    this.setTitle("Bienvenue dans la Stragego");
 		    this.setSize(800, 800);
 		    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
