@@ -9,7 +9,7 @@ import java.io.*;
  * Created by marco on 13/05/15.
  */
 public class SaveLoad {
-    public void SaveGame(PlateauBase plateau) throws IOException,ClassNotFoundException {
+    public static void SaveGame(PlateauBase plateau) throws IOException,ClassNotFoundException {
         Cell[][] gameBoard = plateau.board;
         OutputStream file = new FileOutputStream("Sauvegarde");
         ObjectOutputStream oursave = new ObjectOutputStream(file); //effectue la sérialistation
@@ -18,7 +18,7 @@ public class SaveLoad {
 
     }
 
-    public Cell[][] LoadGame() throws  IOException,ClassNotFoundException{
+    public static Cell[][] LoadGame() throws  IOException,ClassNotFoundException{
         InputStream file = new FileInputStream("Sauvegarde");
         ObjectInputStream ourload= new ObjectInputStream(file); // effectue la désérialistation
         Cell [][] gameBoard = (Cell[][])ourload.readObject();

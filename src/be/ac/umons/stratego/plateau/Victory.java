@@ -14,11 +14,11 @@ import java.util.ArrayList;
  */
 public class Victory {
 
-    public boolean SomeoneWin(PlateauBase plateau){
+    public static boolean SomeoneWin(PlateauBase plateau){
        return ( ( FlagDisponible("Friend",plateau) && MyPawnsCanMoves(plateau) ) && (FlagDisponible("Ennemy",plateau) && ComputerPawnsCanMoves(plateau) ) );
     }
 
-    public boolean YouWin (PlateauBase plateau) {
+    public static boolean YouWin (PlateauBase plateau) {
         if ( ( FlagDisponible("Friend",plateau) && MyPawnsCanMoves(plateau) ) && !(FlagDisponible("Ennemy",plateau) || ComputerPawnsCanMoves(plateau) ) )
             return true;
         else
@@ -26,7 +26,7 @@ public class Victory {
     }
 
 
-    public boolean FlagDisponible ( String squad,PlateauBase plateau){
+    public static boolean FlagDisponible ( String squad,PlateauBase plateau){
         if (squad.equals("friend")){
              for (int i = 8;i<10;i++) {// regarde si le drapeau est toujours présent
                  for (int j=0;j<10;j++) {
@@ -57,17 +57,19 @@ public class Victory {
         }
     }
 
-    public boolean MyPawnsCanMoves( PlateauBase plateau){
+    public static boolean MyPawnsCanMoves( PlateauBase plateau){
 
         for (int i=0;i<10;i++) {
             for (int j=0;j<10;j++) {
                 Cell cell = plateau.board[i][j];
+                System.out.println(plateau.board[4][1]==null);
+                System.out.println(cell.getThispiece().toString());
                 if (cell.getThisriverpiece()!=null || cell==null || cell.getThispiece().getSquad().equals("Ennemy"))
                     continue;
                 else {
-                    if (cell.getThispiece().deplacementPossible(Direction.NORTH, plateau, 1)
-                            || cell.getThispiece().deplacementPossible(Direction.SOUTH, plateau, 1)
-                            || cell.getThispiece().deplacementPossible(Direction.EAST, plateau, 1)
+                    if (cell.getThispiece().deplacementPossible(Direction.NORTH, plateau, 1) ==true
+                            || cell.getThispiece().deplacementPossible(Direction.SOUTH, plateau, 1)==true
+                            || cell.getThispiece().deplacementPossible(Direction.EAST, plateau, 1)==true
                             || cell.getThispiece().deplacementPossible(Direction.WEST, plateau, 1) == true );
                         return true;
                 }
@@ -76,7 +78,7 @@ public class Victory {
         return false;
     }
 
-    private boolean ComputerPawnsCanMoves( PlateauBase plateau) {
+    private static boolean ComputerPawnsCanMoves( PlateauBase plateau) {
         ArrayList<Pion> pawnsCanMoveOnBoard= Ia_easy.pawnsCanMove;
         return (!pawnsCanMoveOnBoard.isEmpty());
     }
