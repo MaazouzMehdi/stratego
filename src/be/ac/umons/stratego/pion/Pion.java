@@ -1,6 +1,7 @@
 package be.ac.umons.stratego.pion;
 
 
+import be.ac.umons.stratego.ia.Ia_easy;
 import be.ac.umons.stratego.plateau.PlateauBase;
 
 public abstract class Pion {
@@ -85,12 +86,11 @@ public abstract class Pion {
             plateau.board[posY - direction.y * number][posX - direction.x * number] = null;
         }
         else if (comparelvl(pion).equals(this.toString())) {//retourne le string vainqueur
-           // plateau.board[posY][posX] = excasedejeu;
-            plateau.board[posY-direction.y*number][posX-direction.x*number]=null;
-            plateau.board[posY][posX] = excasedejeu;
+           plateau.board[posY-direction.y*number][posX-direction.x*number]=null;
+           plateau.board[posY][posX] = excasedejeu;
         }
-        else
-            plateau.board[posY-direction.y*number][posX-direction.x*number]=null;
+        else 
+        	plateau.board[posY-direction.y*number][posX-direction.x*number]=null;
     }
 
     
