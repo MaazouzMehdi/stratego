@@ -62,10 +62,8 @@ public class Victory {
         for (int i=0;i<10;i++) {
             for (int j=0;j<10;j++) {
                 Cell cell = plateau.board[i][j];
-                System.out.println(plateau.board[4][1]==null);
-                System.out.println(cell.getThispiece().toString());
-                if (cell.getThisriverpiece()!=null || cell==null || cell.getThispiece().getSquad().equals("Ennemy"))
-                    continue;
+                if ((cell==null) ||  cell.getThisriverpiece()!=null ||(cell.getThispiece().getSquad().equals("Ennemy")))
+                	continue;
                 else {
                     if (cell.getThispiece().deplacementPossible(Direction.NORTH, plateau, 1) ==true
                             || cell.getThispiece().deplacementPossible(Direction.SOUTH, plateau, 1)==true

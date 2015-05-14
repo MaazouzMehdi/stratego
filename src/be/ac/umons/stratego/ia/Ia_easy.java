@@ -19,8 +19,8 @@ public class Ia_easy {
 
 
     public static void play(PlateauBase plateau) {
-
-
+    	pawnsDisponible.clear();
+    	pawnsCanMove.clear();
         Pion pion = choice(plateau);// truc qui choisis le pion de liste dispo
         Random myrandomdeplacement = new Random();
         int direction = myrandomdeplacement.nextInt(4);
@@ -35,18 +35,26 @@ public class Ia_easy {
                 	
                     if (pion.deplacementPossible(Direction.NORTH, plateau, nbrcases))
                         pion.deplacement(Direction.NORTH, plateau, nbrcases);
+                    else
+                    	play(plateau);
                 } else if (direction == 2) {
                 	
                     if (pion.deplacementPossible(Direction.SOUTH, plateau, nbrcases))
                         pion.deplacement(Direction.SOUTH, plateau, nbrcases);
+                    else
+                    	play(plateau);
                 } else if (direction == 1) {
                 	
                     if (pion.deplacementPossible(Direction.WEST, plateau, nbrcases))
                         pion.deplacement(Direction.WEST, plateau, nbrcases);
+                    else
+                    	play(plateau);
                 } else {
                 	
                     if (pion.deplacementPossible(Direction.EAST, plateau, nbrcases))
                         pion.deplacement(Direction.EAST, plateau, nbrcases);
+                    else
+                    	play(plateau);
                 }
             }
             else {
@@ -55,18 +63,26 @@ public class Ia_easy {
                 	System.out.println("test au nord");
                     if (pion.deplacementPossible(Direction.NORTH, plateau,1))
                         pion.deplacement(Direction.NORTH, plateau,1);
+                    else
+                    	play(plateau);
                 } else if (direction == 2) {
                 	System.out.println("test au sud");
                     if (pion.deplacementPossible(Direction.SOUTH, plateau,1))
                         pion.deplacement(Direction.SOUTH, plateau,1);
+                    else
+                    	play(plateau);
                 } else if (direction == 1) {
                 	System.out.println("test au ouest");
                     if (pion.deplacementPossible(Direction.WEST, plateau,1))
                         pion.deplacement(Direction.WEST, plateau,1);
+                    else
+                    	play(plateau);
                 } else {
                 	System.out.println("test a est");
                     if (pion.deplacementPossible(Direction.EAST, plateau,1))
                         pion.deplacement(Direction.EAST, plateau,1);
+                    else
+                    	play(plateau);
                 }
             }
         }
@@ -76,6 +92,8 @@ public class Ia_easy {
             Random choicepion = new Random();
             int myindex = choicepion.nextInt(pawnsCanMove.size());
             Pion mychoice = pawnsCanMove.get(myindex);
+            //for( int i=0; i< pawnsCanMove.size();i++)
+            	//System.out.println(pawnsCanMove.get(i).toString());
             return mychoice;
 
         }

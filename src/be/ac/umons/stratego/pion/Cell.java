@@ -51,8 +51,8 @@ public class Cell {
             case COLONEL:
                 thispiece = new Colonel(posY, posX, squad);
                 break;
-            case RIVER:
-            	thisriverpiece= new River(posY,posX);
+            //case RIVER:
+            	//thisriverpiece= new River(posY,posX);
             	
         }
     }
