@@ -18,11 +18,13 @@ public class SaveLoad implements Serializable{
 
     }
 
-    public static Cell[][] LoadGame() throws  IOException,ClassNotFoundException{
+    public static PlateauBase LoadGame() throws  IOException,ClassNotFoundException{
         InputStream file = new FileInputStream("Sauvegarde");
         ObjectInputStream ourload= new ObjectInputStream(file); // effectue la désérialistation
         Cell [][] gameBoard = (Cell[][])ourload.readObject();
+        PlateauBase x = new PlateauBase();
+        x.board = gameBoard;
         ourload.close();
-        return gameBoard;
+        return x;
     }
 }
