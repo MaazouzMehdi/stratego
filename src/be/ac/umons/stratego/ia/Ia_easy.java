@@ -24,21 +24,27 @@ public class Ia_easy {
         Pion pion = choice(plateau);// truc qui choisis le pion de liste dispo
         Random myrandomdeplacement = new Random();
         int direction = myrandomdeplacement.nextInt(4);
-
+        System.out.println(pion.toString());
+        System.out.println(pion.getPosY());
+        System.out.println(pion.getPosX());
             if (pion.toString().equals("SCOUT")) {
 
                 Random mynumbercases = new Random();
                 int nbrcases = mynumbercases.nextInt(5);
                 if (direction == 0) {
+                	
                     if (pion.deplacementPossible(Direction.NORTH, plateau, nbrcases))
                         pion.deplacement(Direction.NORTH, plateau, nbrcases);
                 } else if (direction == 2) {
+                	
                     if (pion.deplacementPossible(Direction.SOUTH, plateau, nbrcases))
                         pion.deplacement(Direction.SOUTH, plateau, nbrcases);
                 } else if (direction == 1) {
+                	
                     if (pion.deplacementPossible(Direction.WEST, plateau, nbrcases))
                         pion.deplacement(Direction.WEST, plateau, nbrcases);
                 } else {
+                	
                     if (pion.deplacementPossible(Direction.EAST, plateau, nbrcases))
                         pion.deplacement(Direction.EAST, plateau, nbrcases);
                 }
@@ -46,15 +52,19 @@ public class Ia_easy {
             else {
 
                 if (direction == 0) {
+                	System.out.println("test au nord");
                     if (pion.deplacementPossible(Direction.NORTH, plateau,1))
                         pion.deplacement(Direction.NORTH, plateau,1);
                 } else if (direction == 2) {
+                	System.out.println("test au sud");
                     if (pion.deplacementPossible(Direction.SOUTH, plateau,1))
                         pion.deplacement(Direction.SOUTH, plateau,1);
                 } else if (direction == 1) {
+                	System.out.println("test au ouest");
                     if (pion.deplacementPossible(Direction.WEST, plateau,1))
                         pion.deplacement(Direction.WEST, plateau,1);
                 } else {
+                	System.out.println("test a est");
                     if (pion.deplacementPossible(Direction.EAST, plateau,1))
                         pion.deplacement(Direction.EAST, plateau,1);
                 }

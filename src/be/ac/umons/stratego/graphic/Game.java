@@ -4,6 +4,7 @@ import be.ac.umons.stratego.ia.Ia_easy;
 import be.ac.umons.stratego.pion.Cell;
 import be.ac.umons.stratego.pion.CellObject;
 import be.ac.umons.stratego.plateau.PlateauBase;
+import be.ac.umons.stratego.plateau.Victory;
 
 public class Game {
 
@@ -56,10 +57,13 @@ public class Game {
 	
 	public static void GameBegin(DrawPlateau plateauGameGraphic) {
 			FenetreGame.emplacement3.repaint();
+			if (Victory.SomeoneWin(plateauGameGraphic.plateau) || (Victory.YouWin(plateauGameGraphic.plateau))) {
+				new FenetreEnd();
+			}
 			if ( FenetreGame.count==false) {
-				System.out.println(FenetreGame.count);
 				PlacementPawn.ChoicePion(plateauGameGraphic);
 				Ia_easy.play(plateauGameGraphic.plateau);
+				FenetreGame.emplacement3.repaint();
 				PlateauBase.afficherTab(plateauGameGraphic.plateau);
 			
 			}

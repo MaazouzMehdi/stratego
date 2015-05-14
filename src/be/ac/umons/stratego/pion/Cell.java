@@ -1,5 +1,9 @@
 package be.ac.umons.stratego.pion;
 
+import java.io.NotSerializableException;
+import java.io.*;
+
+
 /**
  * Created by marco on 6/05/15.
  */

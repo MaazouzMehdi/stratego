@@ -7,12 +7,15 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 
 import be.ac.umons.stratego.pion.Cell;
 import be.ac.umons.stratego.pion.CellObject;
 import be.ac.umons.stratego.pion.River;
+import be.ac.umons.stratego.pion.SaveLoad;
 import be.ac.umons.stratego.plateau.PlateauBase;
 
 
@@ -183,33 +186,40 @@ public class FenetreGame extends JFrame implements ActionListener {
 		this.setJMenuBar(menuBar);
 	}
 	
+	public void DisposeFenetreGame() {
+		this.dispose();
+	}
+	
 	public void actionPerformed(ActionEvent e)
 	{
 		if((JMenuItem)e.getSource()==newGame) {
 			
-			Interface.plateauGameGraphic.removeAll();
-			Interface.plateauGameGraphic.repaint();
-			Game.NewGame(Interface.plateauGameGraphic);
-			emplacement3.add(Interface.plateauGameGraphic);
+			BeforeGame.plateauGameGraphic.removeAll();
+			BeforeGame.plateauGameGraphic.repaint();
+			Game.NewGame(BeforeGame.plateauGameGraphic);
+			emplacement3.add(BeforeGame.plateauGameGraphic);
 			this.dispose();
-			new FenetreGame(Interface.plateauGameGraphic);
+			new FenetreGame(BeforeGame.plateauGameGraphic);
 			count =true;
 		}
 		else if ((JMenuItem)e.getSource()==save)
 		{
-			System.exit(0);
+			try {
+				SaveLoad.SaveGame(BeforeGame.plateauGameGraphic.plateau);
+			} catch (ClassNotFoundException | IOException e1) {
+				e1.printStackTrace();
+			}
 		}
 		
 		else {
-			Interface.plateauGameGraphic.removeAll();
-			Interface.plateauGameGraphic.repaint();
-			Game.NewGame(Interface.plateauGameGraphic);
-			emplacement3.add(Interface.plateauGameGraphic);
+			BeforeGame.plateauGameGraphic.removeAll();
+			BeforeGame.plateauGameGraphic.repaint();
+			Game.NewGame(BeforeGame.plateauGameGraphic);
+			emplacement3.add(BeforeGame.plateauGameGraphic);
 			this.dispose();
 			new Interface();
 		}
 	}
-	//public void actionPerformed(ActionEvent e) {}	
 	
 }
 	
