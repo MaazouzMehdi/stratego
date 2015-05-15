@@ -7,27 +7,63 @@
 \newcommand{\progalgo}[1]{<<~Programmation et Algorithmique #1~>>}
 
 \title{Rapport de projet (BA1 informatique, UMONS)}
-\author{xxx}
+\author{Maazouz Mehdi,Salemi Marco}
 \begin{document}
 \maketitle
 \tableofcontents
 \newpage
 
-\section{A}
+\section{Introduction}
 
-sssss
+Le projet qui nous a été demandé durant l'année académique 2014-2015 en BA1 informatique consiste en la création d'un jeu sur plateau, notamment très connu , le Stratego. Pour réaliser à bien se projet, nous avons du appliquer au mieux les notions vues aux cours Programmation et Algorithmique 1 ainsi que Programmation et Algorithmique 2.
 
-\subsection{B}
+\section{Deroulement}
 
-etgetegt
+Tout d'abord , il est important de préciser que les groupes qui étaient convenus au départ ont été modifiés durant les vacances de Pâques.
+Suite à des abandons de projet, voir d'études, un nouveau groupe s'est formé qui n'est autre que moi-même et Marco Salemi.
+En ce qui concerne le projet en lui-même, nous étions partis dans une mauvaise direction car nous ne jouions qu'avec des Strings.
+De ce fait , nous étions loin de bien utiliser tout ce que Java pouvait nous apporter en terme d'héritage,d'énumération,et plus généralement de tout ce qui touche au langage orienté-objet.
+Après en avoir parlé avec des élèves-assistants, ainsi que certains de nos camarades, nous avons décidé de tout reprendre à zéro et de repartir sur une base saine.Malheureusement, celà a bien entendu eu des réperussions sur le temps qu'il nous restait avant la remise du projet.
+Nous sommes donc reparti en essayant d'utiiser au mieux le principe d'héritage , en créant une classe "parent" abstraite et plusieurs classes qui en découlentet qui, constitueront nos pions par la suite . On a aussi créé une classe qui va contenir un plateau de jeu ( constitué de cases) dans lequel se situeront nos pions.Outre la partie graphique , un de nos premiers obstacles à été le placement des pions adverses sur le plateau de jeu. En effet, nous étions parti sur un placement aléatoire des pions mais nous avons vite constaté que cela pouvait prendre un certain temps sur lequel nous n'avions aucun contrôle. Nous avons alors opté pour un placement prédéfini suivi d'un mélange des cases afin d'avoir un placement différent lors de chaque partie.
+\section{IA}
+ En ce qui concerne l'Intelligence Artificielle , nous en avons insérées deux dans notre jeu . Une ,naîve qui va bouger ses pions aléatoirement sans prendre connaissance de la position des pions ennemis . Et une, plus subtil, qui va jouer en essayant de s'adapter au jeu de l'adversaire .
+\subsection{IA "naive"}
 
-hfhnfhf
+Comme son nom l'indique, cette IA ne va se charger que de déplacer les pions ( qui peuvent être déplacés évidemment ) sur le plateau de jeu.
+Cette IA a servis principalement à tester les conditions de victoires, à débogger les éventuelles erreurs qui nous ont accompagné durant ce projet.
 
-efficacité
+\subsection {IA "difficile"}
+Cette IA nous a demandé beaucoup plus de temps de par sa complexité et les erreurs ( de logiques ) que nous avons été amenée à essayer de corriger au mieux.Pour mieux comprendre la façon dont cette IA a été construite , il va falloir expliquer les différents principes de fonctionnement à travers les différentes méthodes : l'analyse (ou le principe de la spirale ) et la logique de jeu ( ou le principe de l'attaque-defense)  
 
-Salut ca va ? ééèèê
-xxxxx
+\subsubsection {Principe de la spirale}
+Cette méthode (appelée spiraleAnalyse dans notre projet) a été immaginée lors d'une grande question que nous nous sommes posés durant la réalisation de l'IA , cette question était : Comment faire pour repérer l'ennemi le plus proche de notre pion.La réponse après un bon moment de recherche a été une analyse en spirale. En effet en analysant les cases près de notre pion en spirale nous pouvions être certain de l'ennemi le plus proche et ainsi notre pion pouvait réagir vis à vis de sa position (accéder grâce aux attributs du pion retourner)  
+\subsubsection {Principe de l'attaque et la défense}
+Après avoir analyser le pion le plus proche , nous avons implémenter deux sortes de stratégies à effectuer : attaque ou défense. Si l'ennemi détecter est plus fort que notre pion(grâce à la méthode Comparelvl de la classe Pion) , notre pion se déplace dans sa direction ou sur lui si possible donc l'attaque. Si dans le cas contraire , l'ennemi est plus fort que nous , notre pion se déplace dans la direction opposée si possible ou une autre direction si il ne sait ou encore ne se déplace pas si aucune solution n'est possible 
 
-\section{BG}
+\section{Avantages}
+Malgré que ce soit notre premier projet, nous avons pu néanmoins en tirer quelques avantages :
+\subsection{Partie graphique et console distinctes}
+Nous avonc bien séparer toute la partie graphique de la partie console, à aucun moment , nous n'avons insérer de codes concernant la partie  graphique dans e coeur même du jeu . Nous avons considéré l'interface graphique comme un habillage "jetable" qui peut être remplacé à tout moment sans empiéter sur le code du jeu.
+\subsection{Git pour un gain de temps }
+ Nous avons utlisiséde Git pour les "commit" et partages de fichiers. En effet, vu que les groupes ont été modifiés et que le projet a été recommencé à zéro, nous nous sommes donc intéresser à Git qui nous a amené un gain de temps considérable dans la création de ce dernier.
+Celà nous a notamment permis d'éviter les partages de fichiers par clé USB .
+
+\subsection{Principe de l'Orienté-Objet}
+Nous nous sommes inspirés de beaucoup d'éléments du cours afin de réaliser notre projet.Nous nous sommes tout particulièrement intéressé à la notion d'héritage, nous avonc également utilisé une classe abstraire comme "parent" d'une grande partie de nos classes.Comme vous avez sans doute pu le voir , les énumérations ont été également plusieurs fois utlisées au travers de notre projet ( je me permet de préciser que la partie énumération n'a pas été vu au cours de Monsieur B.Quoitin même si ce dernier à mis les slides par la suite à notre disposition) 
+
+ 
+\section{Inconvénients}
+Bien entendu , un projet sans défaut en première n'est sans doute pas un projet.
+\subsection{Partie graphique perfectible}
+ Même si la partie graphique fera l'objet de moins de critique , je pense qu'il est tout de même préfrable d'indiquer qu'elle n'est pas réellement optimisée ,nous avons eu beaucoup de mal a gérer l'apparitions des bugs, des ralentissements durant nos phases de tests.
+De plus , nous ne pouvons que confirmer l'abscence d'image pour "habiller" notre interface graphique.
+\subsection{Principe de l'Orienté-Objet} 
+ Certes , on en a également parlé dans les avantages mais nous ne maîtrisons pas le concept jusqu'à ses retranchements .On peut citer en exemple le fait que notre plateau de jeu soit consitué de cases dans lequel se situent des pions et que le mouvement des pions se fait en interchangeant les cases.Ce qui a constitulé un problème lors de notre mélange pour le placement des pions ennemis au début de partie car nous avons du modifié les variables d'instances PosX et posY de nos pions. Ce qui nous a poussé à utiliser des variables temporaires.
+\subsection{Redondence de certaines méthodes}
+ En parcourant le code , on peut constater qu'on aurait peut-être pu mieux optimiser le comportement de certaines méthodes , soit les rendre plus simples tout en étant aussi efficace . Au fil et à mesure de l'avancement de notre projet , on s'est aperçu que l'on pouvait mieux utiliser la notion d'énumération. Cette dernière nous aurait permis d'éviter cette redondence .   
+ 
+\section{Conclusion}
+
+Pour conclure , ce projet fût notre première grande experience en tant que futurs " informaticiens". On a beaucoup appris , notamment en ce qui concerne l'oranisation, et le temps qui ont été unes des tâches les plus difficiles de ce projet.Cela est dû en parti au fait que le projet devait être fait à deux. Mais nous avons du gérer beaucoup d'autres obstacles , comme la partie graphique qui n'a pas fait l'objet de cours spécifiques, nous avond du nous renseigner nous même et apprendre à chercher des solutions autres que par la voie des élèves-assisants,professeurs.De même pour le fichier ant, ou bien la javadoc, voire même des tests unitaires. Toutes ces outils ont été difficiles à prendre en main ,de part notre ignorance à leur égard mais au final, ils sont sans aucun doute tous primordiaux à la formation d'un projet de moyenne,grande ampleur. Sans ces outils , nous n'aurions pas pu rendre notre projet dans le délais iimparti.
 
 \end{document}
