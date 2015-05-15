@@ -10,49 +10,23 @@ import be.ac.umons.stratego.plateau.Victory;
 public class Game {
 
 	public static void NewGame(DrawPlateau plateauGameGraphic) {
-		for (int y=0; y<4; y++) {
+		for (int y=0; y<10; y++) {
 			for (int x=0; x<10; x++) {
-				if(plateauGameGraphic.plateau.board[y][x]!=null && !plateauGameGraphic.plateau.board[y][x].getThispiece().getSquad().equals("Ennemy")) {
-					Button a= new Button(plateauGameGraphic.plateau.board[y][x].getThispiece().toString());
-					FenetreGame.panelSud.revalidate();
-					plateauGameGraphic.repaint();
-					FenetreGame.emplacement3.repaint();
-				}
-					
-			}
-		}
-		
-		for (int y=4; y<6; y++) {
-			for (int x=0; x<10; x++) {
-				if(plateauGameGraphic.plateau.board[y][x]!=null && plateauGameGraphic.plateau.board[y][x].getThisriverpiece()==null
-					&& !plateauGameGraphic.plateau.board[y][x].getThispiece().getSquad().equals("Ennemy")) {
-					Button a= new Button(plateauGameGraphic.plateau.board[y][x].getThispiece().toString());
-					PlacementPawn.PlacementMyPawn(a,plateauGameGraphic);
-					plateauGameGraphic.repaint();
-					FenetreGame.emplacement3.repaint();
-					FenetreGame.panelSud.revalidate();
-					
-				}
-				plateauGameGraphic.plateau.board[y][x]=null;
-			}
-		}
-		for (int y=6; y<10; y++) {
-			for (int x=0; x<10; x++) {
-				if(plateauGameGraphic.plateau.board[y][x]!=null && !plateauGameGraphic.plateau.board[y][x].getThispiece().getSquad().equals("Ennemy")) {
-					Button a= new Button(plateauGameGraphic.plateau.board[y][x].getThispiece().toString());
-					PlacementPawn.PlacementMyPawn(a,plateauGameGraphic);
-					plateauGameGraphic.repaint();
-					FenetreGame.emplacement3.repaint();
-					FenetreGame.panelSud.revalidate();
-				}
 				plateauGameGraphic.plateau.board[y][x]=null;
 					
 			}
 		}
+		PlacementPawn.PlacementEnnemyPawn(plateauGameGraphic);
+		FenetreGame.PawnOffPlateau(plateauGameGraphic);
 		plateauGameGraphic.plateau.board[4][7]=new Cell(CellObject.RIVER,4,7);
 		plateauGameGraphic.plateau.board[5][7]=new Cell(CellObject.RIVER,5,7);
 		plateauGameGraphic.plateau.board[4][6]=new Cell(CellObject.RIVER,4,6);
 		plateauGameGraphic.plateau.board[5][6]=new Cell(CellObject.RIVER,5,6);
+		
+		plateauGameGraphic.plateau.board[4][2]=new Cell(CellObject.RIVER,4,2);
+		plateauGameGraphic.plateau.board[5][2]=new Cell(CellObject.RIVER,5,3);
+		plateauGameGraphic.plateau.board[4][3]=new Cell(CellObject.RIVER,4,2);
+		plateauGameGraphic.plateau.board[5][3]=new Cell(CellObject.RIVER,5,3);
 	}
 	
 	public static void GameBegin(DrawPlateau plateauGameGraphic) {

@@ -19,7 +19,7 @@ public class Panneau extends JPanel
 			try
 			{
 				
-			Image image= ImageIO.read(new File("stratego3.jpeg"));
+			Image image= ImageIO.read(new File("ressources/stratego3.jpeg"));
 			g.drawImage(image,0,0,this.getWidth(),this.getHeight(),this);
 
 			}
@@ -31,6 +31,7 @@ public class Panneau extends JPanel
 				
 		}
 		*/
+		
 
 }
 
