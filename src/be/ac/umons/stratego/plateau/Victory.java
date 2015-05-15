@@ -36,13 +36,13 @@ public class Victory {
         for (int i=0;i<10;i++) {
             for (int j=0;j<10;j++) {
                 Cell cell = plateau.board[i][j];
-                if ((cell!=null) &&  cell.getThisriverpiece()==null && (cell.getThispiece().getSquad().equals("Ennemy")) &&
+                if ((cell!=null) &&  cell.getThisriverpiece()==null && (cell.getThispiece().getSquad().equals("Friend")) &&
                         (cell.getThispiece().deplacementPossible(Direction.NORTH, plateau, 1)
                             || cell.getThispiece().deplacementPossible(Direction.SOUTH, plateau, 1)
                             || cell.getThispiece().deplacementPossible(Direction.EAST, plateau, 1)
-                            || cell.getThispiece().deplacementPossible(Direction.WEST, plateau, 1)))
-                        return true;
-            }
+                            || cell.getThispiece().deplacementPossible(Direction.WEST, plateau, 1)))  
+                	return true;
+              }
         }
         return false;
     }
