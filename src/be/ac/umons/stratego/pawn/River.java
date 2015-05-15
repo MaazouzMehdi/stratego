@@ -5,6 +5,10 @@ import java.io.Serializable;
 /**
  * Created by marco on 9/05/15.
  */
+
+/**
+ * This class represents a river in the game
+ */
 public class River implements Serializable {
     int posY;
     int posX;

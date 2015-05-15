@@ -4,9 +4,8 @@ import be.ac.umons.stratego.ia.Ia_Hard;
 import be.ac.umons.stratego.ia.Ia_easy;
 import be.ac.umons.stratego.pawn.Cell;
 import be.ac.umons.stratego.pawn.CellObject;
-import be.ac.umons.stratego.pawn.Pawn;
-import be.ac.umons.stratego.plateau.BaseBoard;
-import be.ac.umons.stratego.plateau.Victory;
+import be.ac.umons.stratego.board.BaseBoard;
+import be.ac.umons.stratego.board.Victory;
 
 public class Game {
 	public static boolean Ia_hard=false;

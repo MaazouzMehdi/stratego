@@ -1,18 +1,11 @@
 package be.ac.umons.stratego.graphic;
 
 import javax.swing.JPanel;
-import javax.swing.JButton;
-import java.awt.event.MouseEvent;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.BorderLayout;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import be.ac.umons.stratego.graphic.WindowGame;
-import be.ac.umons.stratego.plateau.BaseBoard;
+
+import be.ac.umons.stratego.board.BaseBoard;
 
 public class DrawPlateau extends JPanel  {
 	/**
@@ -76,13 +69,13 @@ public class DrawPlateau extends JPanel  {
 
 		/*if (PlacementPawn.clique==true) {
 			g.setColor(Color.yellow);
-			g.drawString(plateau.board[yellowY][pion.posX].getThispiece().toString(),pion.posY*this.getWidth()/10 ,((pion.posX+1)*this.getHeight()/10)-20);
+			g.drawString(board.board[yellowY][pion.posX].getThispiece().toString(),pion.posY*this.getWidth()/10 ,((pion.posX+1)*this.getHeight()/10)-20);
 		} */
 		
 		
 		//g.setColor(Color.blue);
-		//g.drawString(plateau.board[7][5].getThisriverpiece().toString(),7*this.getWidth()/10 ,(5+1)*this.getHeight()/10 );
-		//g.drawString(plateau.board[2][5].getThisriverpiece().toString(),2*this.getWidth()/10 ,(5+1)*this.getHeight()/10 );
+		//g.drawString(board.board[7][5].getThisriverpiece().toString(),7*this.getWidth()/10 ,(5+1)*this.getHeight()/10 );
+		//g.drawString(board.board[2][5].getThisriverpiece().toString(),2*this.getWidth()/10 ,(5+1)*this.getHeight()/10 );
 		
 	}
 

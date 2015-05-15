@@ -6,7 +6,7 @@ import be.ac.umons.stratego.pawn.Cell;
 import be.ac.umons.stratego.pawn.CellObject;
 import be.ac.umons.stratego.pawn.Direction;
 import be.ac.umons.stratego.pawn.Scout;
-import be.ac.umons.stratego.plateau.BaseBoard;
+import be.ac.umons.stratego.board.BaseBoard;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,15 +29,15 @@ public class TestSpecialDeplacement {
 	}
 	@Test
 	public void specialDeplacementPossibleTest(){
-		// test si le pion est bine bloquer par son allié
+		// test si le pawn est bine bloquer par son allié
 		assertFalse(eclaireur.deplacementPossible(Direction.WEST, plateau, 1));
-		// test si le pion est bel et bien bloqué par la fin du tableau
+		// test si le pawn est bel et bien bloqué par la fin du tableau
 		assertFalse(eclaireur.deplacementPossible(Direction.NORTH, plateau, 3));
-		// test si le pion est bien bloqué par la présence d'un fleuve sur son chemin
+		// test si le pawn est bien bloqué par la présence d'un fleuve sur son chemin
 		assertFalse(eclaireur.deplacementPossible(Direction.EAST, plateau, 1));
-		// test si le pion peut se deplacer de 2 cases libres vers le bas
+		// test si le pawn peut se deplacer de 2 cases libres vers le bas
 		assertTrue(eclaireur.deplacementPossible(Direction.SOUTH,plateau,2));
-		// test si le pion peut se deplacer de 5 unitées vers le bas 
+		// test si le pawn peut se deplacer de 5 unitées vers le bas
 		assertTrue(eclaireur.deplacement(Direction.SOUTH, plateau, 5));
 
 	}

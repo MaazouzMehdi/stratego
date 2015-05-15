@@ -19,7 +19,7 @@ public class PanelOption extends JPanel
 	 * 
 	 */
 
-		/*public void paintComponent( Graphics g)
+		public void paintComponent( Graphics g)
 		{
 			try
 			{
@@ -35,6 +35,5 @@ public class PanelOption extends JPanel
 			}
 				
 		}
-		*/
 
 	}

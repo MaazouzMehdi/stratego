@@ -5,11 +5,27 @@ import java.io.Serializable;
 /**
  * Created by marco on 6/05/15.
  */
+
+/**
+ * this class represents a Cell in the game board of stratego
+ */
 public class Cell implements Serializable {
 
+    /**
+     * <p>thispiece contains a pawn object if the cell contains a pawn, otherwise contains null</p>
+     * <p>thisriverpiece contains a river object if the cell contains a river, otherwise contains null</p>
+     */
     private Pawn thispiece;
     private River thisriverpiece;
 
+    /**
+     * <p>The cell is created with his position on the board,the piece contains in it and the squad of the pawn if the cell contains a pawn</p>
+     * <p></p>The differents attributs of the class are initialized about the parameters</p>
+     * @param pioncase represents the piece on the cell ( pawn or river )
+     * @param posY represents the y position on the board
+     * @param posX represents the x position on the board
+     * @param squad represents the squad of the pawn if the cell contains a pawn
+     */
     public Cell( CellObject pioncase, int posY , int posX , String squad) {
     
         switch (pioncase) {

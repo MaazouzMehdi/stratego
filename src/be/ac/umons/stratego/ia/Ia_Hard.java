@@ -3,14 +3,24 @@ package be.ac.umons.stratego.ia;
 import be.ac.umons.stratego.pawn.Cell;
 import be.ac.umons.stratego.pawn.Direction;
 import be.ac.umons.stratego.pawn.Pawn;
-import be.ac.umons.stratego.plateau.BaseBoard;
+import be.ac.umons.stratego.board.BaseBoard;
 
 /**
  * Created by marco on 13/05/15.
  */
-public class Ia_Hard {
 
-    public void play(BaseBoard plateau){
+/**
+ * this class is a artificial intelligent that analyse the best move to do and see the ennemy pion next his pawn
+ */
+public class Ia_Hard {
+    /**
+     * <p>This method drives the IA for play</p>
+     * <p>this method determines for the most farthest pawn what is the best choice to do  </p>
+     * <p>if the pawn can't move , the method choice the next pawn most farthest</p>
+     * <p>otherwise , do a random move </p>
+     * @param plateau represents the game board
+     */
+    public static void play(BaseBoard plateau){
 
         for (int i=9;i>=0;i--){
             for (int j=0;j<9;j++){
@@ -20,25 +30,29 @@ public class Ia_Hard {
                     Pawn ennemy;
                     if (thispawn.getSquad().equals("Ennemy") && (ennemy=spiraleAnalyse(thispawn, plateau))!=null) {
                         analyseBestChoice(thispawn, ennemy, plateau);
-                        ///si un déplacement n'a pas été réalisé, on continue
                         if (plateau.board[i][j] == null)
-                            return; // arrete play car l'action executée
+                            return; // because action executed
                     }
                 }
             }
         }
-
-        //ici on fera un déplacement aléatoire si aucun ennemi est detecter ou aucune solution n'est possible
+        //Here we do a random deplacement through the Ia_easy if no one ennemy is detected near all the pawns or there isn't no intelligent possibilities of deplacement
         Ia_easy.play(plateau);
     }
 
-    public Pawn spiraleAnalyse(Pawn pion, BaseBoard plateau){
+    /**
+     * this method analyse in spiral the most closed ennemy pawn ( call analyseLigne() ) of my pawn
+     * @param pion
+     * @param plateau
+     * @return the most closed pawn or otherwise null
+     */
+    public static Pawn spiraleAnalyse(Pawn pion, BaseBoard plateau){
         int posX_Init = pion.getPosX();
         int posY_Init = pion.getPosY();
-         // 2 boucles de la spirale
         int i = 1;
-        if (analyseLigne(Direction.EAST,posX_Init,posY_Init,i,plateau) != null) {  // regarde pour chaque ligne de la spirale si pas ennemi ( Friend car moi )
-            return analyseLigne(Direction.EAST, posX_Init, posY_Init, i, plateau);// retourne l'ennemi ou null si pas
+
+        if (analyseLigne(Direction.EAST,posX_Init,posY_Init,i,plateau) != null) {
+            return analyseLigne(Direction.EAST, posX_Init, posY_Init, i, plateau);
         }
         posX_Init += 1;
 
@@ -86,7 +100,17 @@ public class Ia_Hard {
         return null;
     }
 
-    public Pawn analyseLigne(Direction direction ,int posX_Init,int posY_Init ,int numbercells, BaseBoard plateau){
+    /**
+     * this method determines the most closed pawn in the line of the chosen direction,
+     * the length of the line depends on numbercells
+     * @param direction represents the direction of the move
+     * @param posX_Init represents the initial x position of the pawn
+     * @param posY_Init represents the initial y posiiton of the pawn
+     * @param numbercells represents the numbers of cells to analyse in the line
+     * @param plateau represents the game board
+     * @return the most closed pawn or otherwise null
+     */
+    public static Pawn analyseLigne(Direction direction ,int posX_Init,int posY_Init ,int numbercells, BaseBoard plateau){
         for (int add=1;add<=numbercells;add++) {
             int y = posY_Init + add*direction.y;
             int x = posX_Init + add*direction.x;
@@ -100,39 +124,48 @@ public class Ia_Hard {
         return null;
     }
 
-    public void analyseBestChoice(Pawn ourpawn , Pawn piontoattack, BaseBoard plateau){ // regarde le meilleur déplacement à effectuer , fais rien si aucune bonne solution
-        String whatHaveToDo = ourpawn.comparelvl(piontoattack);                           // se possitionne d'abord à la même ligne(y) que le pawn ensuite regarde les colonnes (x)
+    /**
+     * this method attack the piontoattack (or go in his direction) if we beat him ,
+     * or move to the opposed direction if he beat our
+     * otherwise the method can't move dans do nothing
+     * @param ourpawn represents our pawn
+     * @param piontoattack represents the most closed pion
+     * @param plateau represents the game board
+     */
+    public static void analyseBestChoice(Pawn ourpawn , Pawn piontoattack, BaseBoard plateau){
+        String whatHaveToDo = ourpawn.comparelvl(piontoattack);
+        // our position move first to the same line(y) and then to the same colon (x)
 
         if (whatHaveToDo.equals(ourpawn.toString()) || whatHaveToDo.equals("null") ){
 
-            if (ourpawn.getPosY() > piontoattack.getPosY() ) { // si le pawn se trouve plus haut
-                if (ourpawn.deplacementPossible(Direction.NORTH, plateau, 1) ) // va dans le sens de l'ennemi pour l'attaquer à chaque tour
+            if (ourpawn.getPosY() > piontoattack.getPosY() ) { // if the ennemy pawn is up
+                if (ourpawn.deplacementPossible(Direction.NORTH, plateau, 1) )
                     ourpawn.deplacement(Direction.NORTH, plateau, 1);
 
             }
-            else if (ourpawn.getPosY() < piontoattack.getPosY() ) { // si le pawn se trouve plus bas
+            else if (ourpawn.getPosY() < piontoattack.getPosY() ) { // if the ennemy pawn is down
                 if (ourpawn.deplacementPossible(Direction.SOUTH, plateau, 1) )
                     ourpawn.deplacement(Direction.SOUTH, plateau, 1);
             }
-            else if (ourpawn.getPosX() < piontoattack.getPosX() ) { //si le pawn se trouve à droite
+            else if (ourpawn.getPosX() < piontoattack.getPosX() ) { //if the ennemy pawn is on the right
                 if (ourpawn.deplacementPossible(Direction.EAST,plateau,1) )
                     ourpawn.deplacement(Direction.EAST,plateau,1);
             }
-            else if (ourpawn.getPosX() > piontoattack.getPosX() ) { // si le pawn se trouve à gauche
+            else if (ourpawn.getPosX() > piontoattack.getPosX() ) { // if the ennemy pawn is on the left
                 if (ourpawn.deplacementPossible(Direction.WEST,plateau,1) )
                     ourpawn.deplacement(Direction.WEST,plateau,1);
             }
         }
         else {
-            if (ourpawn.getPosY() > piontoattack.getPosY() ) { // si le pawn se trouve plus haut
-                if (ourpawn.deplacementPossible(Direction.SOUTH, plateau, 1) ) // va dans le sens opposé ou s'éloigne dans d'autres directions si possible (dans cet ordre)
+            if (ourpawn.getPosY() > piontoattack.getPosY() ) {
+                if (ourpawn.deplacementPossible(Direction.SOUTH, plateau, 1) )
                     ourpawn.deplacement(Direction.SOUTH, plateau, 1);
                 else if (ourpawn.deplacementPossible(Direction.EAST, plateau, 1) )
                     ourpawn.deplacement(Direction.EAST, plateau, 1);
                 else if (ourpawn.deplacementPossible(Direction.WEST, plateau, 1) )
                     ourpawn.deplacementPossible(Direction.WEST, plateau, 1);
             }
-            else if (ourpawn.getPosY() < piontoattack.getPosY() ) { // si le pawn se trouve plus bas
+            else if (ourpawn.getPosY() < piontoattack.getPosY() ) {
                 if (ourpawn.deplacementPossible(Direction.NORTH, plateau, 1) )
                     ourpawn.deplacement(Direction.NORTH, plateau, 1);
                 else if (ourpawn.deplacementPossible(Direction.EAST, plateau, 1) )
@@ -140,7 +173,7 @@ public class Ia_Hard {
                 else if (ourpawn.deplacementPossible(Direction.WEST, plateau, 1) )
                     ourpawn.deplacementPossible(Direction.WEST, plateau, 1);
             }
-            else if (ourpawn.getPosX() < piontoattack.getPosX() ) { //si le pawn se trouve à droite
+            else if (ourpawn.getPosX() < piontoattack.getPosX() ) {
                 if (ourpawn.deplacementPossible(Direction.WEST,plateau,1) )
                     ourpawn.deplacement(Direction.WEST,plateau,1);
                 else if (ourpawn.deplacementPossible(Direction.NORTH, plateau, 1) )
@@ -148,7 +181,7 @@ public class Ia_Hard {
                 else if (ourpawn.deplacementPossible(Direction.SOUTH, plateau, 1) )
                     ourpawn.deplacementPossible(Direction.NORTH, plateau, 1);
             }
-            else if (ourpawn.getPosX() > piontoattack.getPosX() ) { // si le pawn se trouve à gauche
+            else if (ourpawn.getPosX() > piontoattack.getPosX() ) {
                 if (ourpawn.deplacementPossible(Direction.EAST,plateau,1) )
                     ourpawn.deplacement(Direction.EAST,plateau,1);
                 else if (ourpawn.deplacementPossible(Direction.NORTH, plateau, 1) )

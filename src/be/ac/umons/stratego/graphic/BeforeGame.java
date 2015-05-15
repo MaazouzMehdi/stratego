@@ -8,7 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import be.ac.umons.stratego.pawn.SaveLoad;
-import be.ac.umons.stratego.plateau.BaseBoard;
+import be.ac.umons.stratego.board.BaseBoard;
+
 
 public class BeforeGame extends JFrame implements ActionListener {
 	private Panneau emplacement1=new Panneau();
@@ -18,7 +19,7 @@ public class BeforeGame extends JFrame implements ActionListener {
 	
 	public BeforeGame() {
 		this.setTitle("Bienvenue dans le Stratego");
-		this.setSize(800,800);
+		this.setSize(800, 800);
 		this.setLocationRelativeTo(null);
 		
 		//on prévient notre JFrame que ce sera notre Jpannel

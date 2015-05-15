@@ -3,8 +3,6 @@ package be.ac.umons.stratego.graphic;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 
-import be.ac.umons.stratego.plateau.BaseBoard;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -12,7 +10,7 @@ import java.awt.event.ActionEvent;
 public class Interface extends JFrame implements ActionListener
 	{
 		private Panneau emplacement1=new Panneau();
-		//public final static DrawPlateau plateauGameGraphic= new DrawPlateau(new PlateauBase());
+		//public final static DrawPlateau plateauGameGraphic= new DrawPlateau(new BaseBoard());
 		private JButton bouton1 = new JButton("Jeu");
 		private JButton bouton2 = new JButton("Option");
 		private JButton bouton3 = new JButton("Quitter");
@@ -42,7 +40,7 @@ public class Interface extends JFrame implements ActionListener
 			{
 				this.dispose();
 				new BeforeGame();// permet de fermer la fenetre
-				//new FenetreGame(new DrawPlateau(new PlateauBase()));
+				//new FenetreGame(new DrawPlateau(new BaseBoard()));
 				//new FenetreGame(plateauGameGraphic);
 			}
 			else if ((JButton)e.getSource()==bouton3)

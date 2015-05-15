@@ -6,7 +6,7 @@ import be.ac.umons.stratego.pawn.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import be.ac.umons.stratego.plateau.BaseBoard;
+import be.ac.umons.stratego.board.BaseBoard;
 
 public class AttaqueTest {
 	
