@@ -12,7 +12,8 @@ public enum Direction {
     WEST(-1, 0);
 
 
-    final int x, y;
+    public final int x;
+    public final int y;
 
     Direction(int nx, int ny) {
         x = nx;
