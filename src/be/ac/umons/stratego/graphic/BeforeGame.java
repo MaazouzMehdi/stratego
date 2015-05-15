@@ -30,6 +30,8 @@ public class BeforeGame extends JFrame implements ActionListener {
 		bouton2.addActionListener(this); 
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		FenetreGame.emplacement3.repaint();
 	}
 	
 	public void actionPerformed(ActionEvent e)

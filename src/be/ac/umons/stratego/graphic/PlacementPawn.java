@@ -126,8 +126,9 @@ public class PlacementPawn extends FenetreGame  {
 					emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);	
 					Game.GameBegin(plateauGameGraphic);
 			}
-			
-		 }
+				emplacement3.repaint();	
+		 
+		}
 			else {
 				clique=false;
 				emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
@@ -296,7 +297,7 @@ public class PlacementPawn extends FenetreGame  {
 							if (plateauGameGraphic.plateau.board[b.getY()/(plateauGameGraphic.getHeight()/10)][b.getX()/(plateauGameGraphic.getWidth()/10)]==null) {
 								if (b.name.equals("COLONEL"))
 									plateauGameGraphic.plateau.board[b.getY()/(plateauGameGraphic.getHeight()/10)][b.getX()/(plateauGameGraphic.getWidth()/10)]=
-									new Cell(CellObject.COLONEL,b.getY()/(plateauGameGraphic.getWidth()/10),b.getX()/(plateauGameGraphic.getWidth()/10),"Friend");
+									new Cell(CellObject.COLONEL,b.getY()/(plateauGameGraphic.getHeight()/10),b.getX()/(plateauGameGraphic.getWidth()/10),"Friend");
 								else if (b.name.equals("CAPTAIN"))
 									plateauGameGraphic.plateau.board[b.getY()/(plateauGameGraphic.getHeight()/10)][b.getX()/(plateauGameGraphic.getWidth()/10)]=
 									new Cell(CellObject.CAPTAIN,b.getY()/(plateauGameGraphic.getHeight()/10),b.getX()/(plateauGameGraphic.getWidth()/10),"Friend");
@@ -348,7 +349,7 @@ public class PlacementPawn extends FenetreGame  {
 						panelSud.revalidate();
 						placement=false;
 					} 
-					//emplacement3.repaint();
+					emplacement3.repaint();
 					
 			}
 				
@@ -400,28 +401,20 @@ public class PlacementPawn extends FenetreGame  {
 	
 	public static void PlacementEnnemyPawn(DrawPlateau plateauGameGraphic) {
 		PlateauBase.pawnRandomEnnemy(plateauGameGraphic.plateau);
-		PlateauBase.afficherTab(plateauGameGraphic.plateau);
-		emplacement3.repaint();
-		//plateauGameGraphic.repaint();
-		//for (int x=0 ; x < 10 ; x++ ) {
-		//	for (int y=0; y<4; y++) {
-			//	plateauGameGraphic.plateau.board[x][y]= plateau.board[x][y];
-				//emplacement3.repaint();
-			//}
-		//}
+		//PlateauBase.afficherTab(plateauGameGraphic.plateau);
+		//emplacement3.repaint();
 	}
 	
 	public static boolean VerifyMyPawn(final DrawPlateau plateauGameGraphic) {
 		boolean PlacementAllPawn = true;
 		emplacement3.repaint();
-		//for (int y=6; y<10; y++) {
-			//for (int x=0; x<10; x++) {
-				if (plateauGameGraphic.plateau.board[8][8]==null){
+		for (int y=6; y<10; y++) {
+			for (int x=0; x<10; x++) {
+				if (plateauGameGraphic.plateau.board[y][x]==null){
 					PlacementAllPawn = false;
 				}
-			//}
-		//}
-		System.out.println("pions sont placés");
+			}
+		}
 		return PlacementAllPawn;
 	}
 	

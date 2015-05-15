@@ -1,13 +1,19 @@
 package be.ac.umons.stratego.graphic;
 
 import javax.swing.JButton;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import javax.swing.JFrame;
+import javax.swing.JMenuItem;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 
 @SuppressWarnings("serial")
 public class FenetreOption extends Interface
 	{
+		public boolean Ia_Hard=false;
 		private PanelOption emplacement2=new PanelOption();
 		private JButton bouton5 = new JButton("Retour");
 		private JButton bouton4 = new JButton("Difficulté");
@@ -46,12 +52,21 @@ public class FenetreOption extends Interface
 				emplacement2.add(choixDifficulter);
 				choixDifficulter.addItem("Facile");
 				choixDifficulter.addItem("Difficile");
-				choixDifficulter.addItem("Silvia");
+				choixDifficulter.addActionListener(new ItemAction());
+				
 			}
 				
-				
+			
 		}
-		
+		class ItemAction implements ActionListener{
+		    public void actionPerformed(ActionEvent e) {
+		      if ( choixDifficulter.getSelectedItem().equals("Facile"))
+		    	  Game.Ia_hard=false;  
+		    else if (choixDifficulter.getSelectedItem().equals("Difficile") )
+		    	Game.Ia_hard=true;
+		      
+		  }
 
 	}
 
+}

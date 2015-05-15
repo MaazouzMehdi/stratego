@@ -17,11 +17,6 @@ public class Ia_easy {
     public static ArrayList<Pion> pawnsDisponible = new ArrayList<>(40); // VOIR SYNTAXE
     public static ArrayList<Pion> pawnsCanMove = new ArrayList<>(40);
     
-    public static int old_posY;
-    public static int old_posX;
-    public static int newPosX;
-    public static int newPosY;
-    
     
     public static void play(PlateauBase plateau) {
     	pawnsDisponible.clear();

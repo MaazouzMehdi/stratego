@@ -50,6 +50,7 @@ public class FenetreEnd extends JFrame implements ActionListener {
 	{
 		if((JButton)e.getSource()==bouton1)
 		{
+			FenetreGame.save_game=false;
 			BeforeGame.plateauGameGraphic.removeAll();
 			BeforeGame.plateauGameGraphic.repaint();
 			Game.NewGame(BeforeGame.plateauGameGraphic);
@@ -64,6 +65,7 @@ public class FenetreEnd extends JFrame implements ActionListener {
 		}
 		
 		else {
+			FenetreGame.save_game=false;
 			BeforeGame.plateauGameGraphic.removeAll();
 			BeforeGame.plateauGameGraphic.repaint();
 			Game.NewGame(BeforeGame.plateauGameGraphic);
@@ -71,6 +73,7 @@ public class FenetreEnd extends JFrame implements ActionListener {
 			this.dispose();
 			new Interface();
 		}
-			
+	
 	}
+	
 }

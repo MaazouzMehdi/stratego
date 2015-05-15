@@ -62,7 +62,7 @@ public class FenetreGame extends JFrame implements ActionListener {
 		    this.add(panelNord,BorderLayout.NORTH);
 		    this.initMenu();
 		    
-		   PlacementPawn.PlacementEnnemyPawn(plateauGameGraphic);
+		   //PlacementPawn.PlacementEnnemyPawn(plateauGameGraphic);
 		   PawnOffPlateau( plateauGameGraphic);
 		   plateauGameGraphic.plateau.board[4][7]=new Cell(CellObject.RIVER,4,7);
 			plateauGameGraphic.plateau.board[5][7]=new Cell(CellObject.RIVER,5,7);
@@ -74,63 +74,6 @@ public class FenetreGame extends JFrame implements ActionListener {
 			plateauGameGraphic.plateau.board[4][3]=new Cell(CellObject.RIVER,4,2);
 			plateauGameGraphic.plateau.board[5][3]=new Cell(CellObject.RIVER,5,3);
 		   
-		   //NE PAS OUBLIER DE RETIRER LES PARENTHESES AUX IF POUR LES COUNT...
-		  /*  while (countMajor < 3) {
-		       Button a= new Button("M");
-			   if (PlacementPawn.PlacementMyPawn(a,plateauGameGraphic)) {
-				   countMajor ++;
-			   }
-			}
-		   /*
-		   while (countGeneral < 1) {
-			   Button a= new Button("General");
-			   if (PlacementPawn.PlacementMyPawn(a)) {
-				   countGeneral ++;
-				   countPiecesTot ++;
-			   }
-		   }
-		   while (countCaptain < 4) {
-			   Button a= new Button("Captain");
-			   if (PlacementPawn.PlacementMyPawn(a)) {
-				   countCaptain ++;
-				   countPiecesTot ++;
-			   }
-		   }
-		   while (countLieutenant < 4) {
-			   Button a= new Button("Lieutenant");
-			   if (PlacementPawn.PlacementMyPawn(a)) {
-				   countLieutenant ++;
-				   countPiecesTot ++;
-			   }
-		   }
-		   while (countSergeant < 4) {
-			   Button a= new Button("Sergeant");
-			   if (PlacementPawn.PlacementMyPawn(a)) {
-				   countSergeant ++;
-				   countPiecesTot ++;
-			   }
-		   }
-		 
-		   while (countSpy < 1) {
-			   Button a= new Button("Spy");
-			   if (PlacementPawn.PlacementMyPawn(a)) {
-				   countSpy ++;
-				   countPiecesTot ++;
-			   }
-		    }
-		   
-		   while (countBomb < 4) {
-			   Button a= new Button("Bomb");
-			   if (PlacementPawn.PlacementMyPawn(a)) {
-				   countBomb ++;
-				   countPiecesTot ++;
-			   }
-			}
-		   
-				   countPiecesTot ++;
-				 }
-		}
-		   */
 		    repaint();
 		    emplacement3.repaint();
 	}
@@ -141,7 +84,7 @@ public class FenetreGame extends JFrame implements ActionListener {
 			   PlacementPawn.PlacementMyPawn(a,plateauGameGraphic);
 			   countColonel ++;
 		   }
-		   while (countBomb < 4) {
+		   while (countBomb < 6) {
 			   Button a= new Button("BOMB");
 			   if (PlacementPawn.PlacementMyPawn(a,plateauGameGraphic)) {
 				   countBomb ++;
@@ -172,6 +115,45 @@ public class FenetreGame extends JFrame implements ActionListener {
 				   countFlag ++ ;
 			   }
 		   }
+		   while (countMajor < 3) {
+			   Button a= new Button("MAJOR");
+			   if (PlacementPawn.PlacementMyPawn(a,plateauGameGraphic)) {
+				   countMajor ++;
+		   }
+		}
+		   while (countGeneral < 1) {
+			   Button a= new Button("GENERAL");
+			   if (PlacementPawn.PlacementMyPawn(a,plateauGameGraphic)) {
+			   countGeneral ++;
+		   }
+	   }
+	   while (countCaptain < 4) {
+		   Button a= new Button("CAPTAIN");
+		   if (PlacementPawn.PlacementMyPawn(a,plateauGameGraphic)) {
+			   countCaptain ++;
+		   }
+	   }
+	   while (countLieutenant < 4) {
+		   Button a= new Button("LIEUTENANT");
+		   if (PlacementPawn.PlacementMyPawn(a,plateauGameGraphic)) {
+			   countLieutenant ++;
+			   
+		   }
+	   }
+	   while (countSergeant < 4) {
+		   Button a= new Button("SERGEANT");
+		   if (PlacementPawn.PlacementMyPawn(a,plateauGameGraphic)) {
+			   countSergeant ++;
+			   
+		   }
+	   }
+	 
+	   while (countSpy < 1) {
+		   Button a= new Button("SPY");
+		   if (PlacementPawn.PlacementMyPawn(a,plateauGameGraphic)) {
+			   countSpy ++;
+		   }
+	    }
 	}
 	
 	public void initMenu()  {
@@ -237,6 +219,7 @@ public class FenetreGame extends JFrame implements ActionListener {
 	
 }
 	
+		
 	
 
 
