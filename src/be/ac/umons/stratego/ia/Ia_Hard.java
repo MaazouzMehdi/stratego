@@ -10,7 +10,7 @@ import be.ac.umons.stratego.plateau.BaseBoard;
  */
 public class Ia_Hard {
 
-    public void play(BaseBoard plateau){
+    public static void play(BaseBoard plateau){
 
         for (int i=9;i>=0;i--){
             for (int j=0;j<9;j++){
@@ -32,7 +32,7 @@ public class Ia_Hard {
         Ia_easy.play(plateau);
     }
 
-    public Pawn spiraleAnalyse(Pawn pion, BaseBoard plateau){
+    public static Pawn spiraleAnalyse(Pawn pion, BaseBoard plateau){
         int posX_Init = pion.getPosX();
         int posY_Init = pion.getPosY();
          // 2 boucles de la spirale
@@ -86,7 +86,7 @@ public class Ia_Hard {
         return null;
     }
 
-    public Pawn analyseLigne(Direction direction ,int posX_Init,int posY_Init ,int numbercells, BaseBoard plateau){
+    public static Pawn analyseLigne(Direction direction ,int posX_Init,int posY_Init ,int numbercells, BaseBoard plateau){
         for (int add=1;add<=numbercells;add++) {
             int y = posY_Init + add*direction.y;
             int x = posX_Init + add*direction.x;
@@ -100,7 +100,7 @@ public class Ia_Hard {
         return null;
     }
 
-    public void analyseBestChoice(Pawn ourpawn , Pawn piontoattack, BaseBoard plateau){ // regarde le meilleur déplacement à effectuer , fais rien si aucune bonne solution
+    public static void analyseBestChoice(Pawn ourpawn , Pawn piontoattack, BaseBoard plateau){ // regarde le meilleur déplacement à effectuer , fais rien si aucune bonne solution
         String whatHaveToDo = ourpawn.comparelvl(piontoattack);                           // se possitionne d'abord à la même ligne(y) que le pawn ensuite regarde les colonnes (x)
 
         if (whatHaveToDo.equals(ourpawn.toString()) || whatHaveToDo.equals("null") ){
