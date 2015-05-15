@@ -45,8 +45,10 @@ public class Game {
 					win=true;
 					new WindowEnd();
 				}
-				if (Ia_hard)
+				if (Ia_hard) {
 					Ia_Hard.play(plateauGameGraphic.plateau);
+				}
+					
 				else
 					Ia_easy.play(plateauGameGraphic.plateau);
 				if (!Victory.ComputerPawnsCanMoves(plateauGameGraphic.plateau) && (!Victory.MyPawnsCanMoves(plateauGameGraphic.plateau)) ) {
@@ -65,7 +67,7 @@ public class Game {
 			}
 			else {
 				if (PlacementPawn.VerifyMyPawn(plateauGameGraphic)) {
-					WindowGame.emplacement3.repaint();
+					//WindowGame.emplacement3.repaint();
 					WindowGame.count=false;
 					Game.GameBegin(plateauGameGraphic);
 				}

@@ -258,21 +258,14 @@ public class PlacementPawn extends WindowGame  {
 							if (plateauGameGraphic.plateau.board[e.getY()/(plateauGameGraphic.getHeight()/10)][e.getX()/(plateauGameGraphic.getWidth()/10)].getThispiece().toString().equals("SCOUT"))
 								SpecialPionMove(pion,plateauGameGraphic);
 								
-							else {
+							else 
 								
 								PionMove(pion,plateauGameGraphic);
-							System.out.println("bon pion choisi");
-							}
+							
 							
 						}
-						else 
-							
-							System.out.println("mauvais choix");
 						
-							
-							
-			
-				}
+				  }
 				@Override
 				public void mouseExited(MouseEvent e) {}
 				@Override
@@ -349,7 +342,7 @@ public class PlacementPawn extends WindowGame  {
 						panelSud.revalidate();
 						placement=false;
 					} 
-					emplacement3.repaint();
+					//emplacement3.repaint();
 					
 			}
 				
@@ -410,7 +403,7 @@ public class PlacementPawn extends WindowGame  {
 		emplacement3.repaint();
 		for (int y=6; y<10; y++) {
 			for (int x=0; x<10; x++) {
-				if (plateauGameGraphic.plateau.board[y][x]==null){
+				if (plateauGameGraphic.plateau.board[8][8]==null){
 					PlacementAllPawn = false;
 				}
 			}
