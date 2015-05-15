@@ -1,70 +1,38 @@
 package be.ac.umons.stratego.graphic;
 
 import java.awt.BorderLayout;
-
-import javax.swing.JFrame; 
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
+import javax.swing.JFrame;
+import javax.swing.JMenuItem;
 
 import be.ac.umons.stratego.pion.Cell;
 import be.ac.umons.stratego.pion.CellObject;
-import be.ac.umons.stratego.pion.River;
 import be.ac.umons.stratego.pion.SaveLoad;
-import be.ac.umons.stratego.plateau.PlateauBase;
 
+public class FenetreLoadGame extends JFrame implements ActionListener {
 
-public class FenetreGame extends JFrame implements ActionListener {
-	/**
-	 * 
-	 */
-	public static boolean count=false;
-	private static final long serialVersionUID = 1L;
-	protected static Panneau emplacement3=new Panneau();
-	public static JPanel panelSud= new JPanel();
-	public static JPanel panelEast = new JPanel();
-	protected static JPanel panelNord= new JPanel();
-	protected static JPanel panelWest= new JPanel();
-	protected static int countColonel=0, countMajor=0, countGeneral=0,
-			countLieutenant=0,countMarechal=0, countCaptain=0, countFlag=0,
-			countSergeant=0, countMiner=0, countSpy=0, countScout=0, countBomb=0,
-			countEnnemy=0;
-	static JMenuBar menuBar = new JMenuBar();
-	 static JMenu game = new JMenu("Partie");
-	static  JMenu JMenuExit = new JMenu("Quitter");
-	
-	 static JMenuItem newGame=new JMenuItem("Nouvelle partie");
-	 static JMenuItem save=new JMenuItem("Sauvegarder Partie");
-	 static JMenuItem exit=new JMenuItem("Quitter partie");
-
-	
-	
-	
-	public FenetreGame(DrawPlateau plateauGameGraphic){
-			//emplacement3.removeAll();
+	public FenetreLoadGame(DrawPlateau plateauGameGraphic) {
 		    this.setTitle("Bienvenue dans la Stragego");
 		    this.setSize(800, 800);
 		    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		    this.setLocationRelativeTo(null);
-		    this.setContentPane(emplacement3);
+		    this.setContentPane(FenetreGame.emplacement3);
 		    this.setVisible(true);
 		    //this.plateauGameGraphic=plateauGameGraphic;
 		    
 		    //On définit le layout à utiliser sur le content pane
 		    this.setLayout(new BorderLayout());
-		    this.add(panelSud, BorderLayout.SOUTH);
+		    this.add(FenetreGame.panelSud, BorderLayout.SOUTH);
 		    this.add(plateauGameGraphic,BorderLayout.CENTER);
-		    this.add(panelEast,BorderLayout.EAST);
-		    this.add(panelNord,BorderLayout.NORTH);
-		    this.add(panelWest,BorderLayout.WEST);
+		    this.add(FenetreGame.panelEast,BorderLayout.EAST);
+		    this.add(FenetreGame.panelNord,BorderLayout.NORTH);
+		    this.add(FenetreGame.panelWest,BorderLayout.WEST);
 		    this.initMenu();
 		    
-		   PlacementPawn.PlacementEnnemyPawn(plateauGameGraphic);
+		   //PlacementPawn.PlacementEnnemyPawn(plateauGameGraphic);
 		   PawnOffPlateau( plateauGameGraphic);
 		   plateauGameGraphic.plateau.board[4][7]=new Cell(CellObject.RIVER,4,7);
 			plateauGameGraphic.plateau.board[5][7]=new Cell(CellObject.RIVER,5,7);
@@ -132,23 +100,23 @@ public class FenetreGame extends JFrame implements ActionListener {
 		}
 		   */
 		    repaint();
-		    emplacement3.repaint();
+		    FenetreGame.emplacement3.repaint();
 	}
 	
 	public void PawnOffPlateau(final DrawPlateau plateauGameGraphic) {
-		   while (countColonel < 2) {
+		   while (FenetreGame.countColonel < 2) {
 			   Button a= new Button("COlONEL"); 
 			   PlacementPawn.PlacementMyPawn(a,plateauGameGraphic);
-			   countColonel ++;
+			   FenetreGame.countColonel ++;
 		   }
-		   while (countBomb < 4) {
+		   while (FenetreGame.countBomb < 4) {
 			   Button a= new Button("BOMB");
 			   if (PlacementPawn.PlacementMyPawn(a,plateauGameGraphic)) {
-				   countBomb ++;
+				   FenetreGame.countBomb ++;
 			   }
 				  
 		   }
-		   while (countMarechal < 1) {
+		   /*while (countMarechal < 1) {
 			   Button a= new Button("MARECHAL");
 			   if (PlacementPawn.PlacementMyPawn(a,plateauGameGraphic)) {
 				   countMarechal ++;
@@ -166,23 +134,24 @@ public class FenetreGame extends JFrame implements ActionListener {
 				   countScout ++;
 			   }
 		  }
+		  */
 		   
 	}
 	
 	public void initMenu()  {
-		menuBar.add(game);
-		menuBar.add(JMenuExit);
+		FenetreGame.menuBar.add(FenetreGame.game);
+		FenetreGame.menuBar.add(FenetreGame.JMenuExit);
 	   
-		game.add(newGame);
-		game.add(save);
-		JMenuExit.add(exit);
+		FenetreGame.game.add(FenetreGame.newGame);
+		FenetreGame.game.add(FenetreGame.save);
+		FenetreGame.JMenuExit.add(FenetreGame.exit);
 		
-		newGame.addActionListener(this);
-		save.addActionListener(this);
-		exit.addActionListener(this);
+		FenetreGame.newGame.addActionListener(this);
+		FenetreGame.save.addActionListener(this);
+		FenetreGame.exit.addActionListener(this);
 		
 		//Ajout de la barre de menus sur la fenêtre
-		this.setJMenuBar(menuBar);
+		this.setJMenuBar(FenetreGame.menuBar);
 	}
 	
 	public void DisposeFenetreGame() {
@@ -191,17 +160,17 @@ public class FenetreGame extends JFrame implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e)
 	{
-		if((JMenuItem)e.getSource()==newGame) {
+		if((JMenuItem)e.getSource()==FenetreGame.newGame) {
 			
 			BeforeGame.plateauGameGraphic.removeAll();
 			BeforeGame.plateauGameGraphic.repaint();
 			Game.NewGame(BeforeGame.plateauGameGraphic);
-			emplacement3.add(BeforeGame.plateauGameGraphic);
+			FenetreGame.emplacement3.add(BeforeGame.plateauGameGraphic);
 			this.dispose();
 			new FenetreGame(BeforeGame.plateauGameGraphic);
-			count =true;
+			FenetreGame.count =true;
 		}
-		else if ((JMenuItem)e.getSource()==save)
+		else if ((JMenuItem)e.getSource()==FenetreGame.save)
 		{
 			try {
 				SaveLoad.SaveGame(BeforeGame.plateauGameGraphic.plateau);
@@ -214,7 +183,7 @@ public class FenetreGame extends JFrame implements ActionListener {
 			BeforeGame.plateauGameGraphic.removeAll();
 			BeforeGame.plateauGameGraphic.repaint();
 			Game.NewGame(BeforeGame.plateauGameGraphic);
-			emplacement3.add(BeforeGame.plateauGameGraphic);
+			FenetreGame.emplacement3.add(BeforeGame.plateauGameGraphic);
 			this.dispose();
 			new Interface();
 		}
@@ -225,4 +194,3 @@ public class FenetreGame extends JFrame implements ActionListener {
 	
 
 
-	  

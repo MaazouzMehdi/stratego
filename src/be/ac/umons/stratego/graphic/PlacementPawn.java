@@ -4,7 +4,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Point;
 
 import javax.swing.JPanel;
@@ -28,10 +31,13 @@ public class PlacementPawn extends FenetreGame  {
 	 */
 	static boolean placement = true;
 	public static boolean deplacement=false;
-	public static boolean myPion=false;
+	public static boolean clique;
+	public static int YellowX;
+	public static int YellowY;
 
 	
 	public static void SpecialPionMove( final PionPosition pion, final DrawPlateau plateauGameGraphic) {
+		clique=true;
 		emplacement3.addMouseListener(new MouseListener() {
 		@Override
 		public void mouseClicked(MouseEvent e) {}
@@ -45,9 +51,11 @@ public class PlacementPawn extends FenetreGame  {
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
 			if (e.getY()/(plateauGameGraphic.getHeight()/10)==pion.posY) {
+				clique=false;
 				if (e.getX()/(plateauGameGraphic.getWidth()/10)==pion.posX) {
 					emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);	
 					ChoicePion(plateauGameGraphic);
+					
 				}
 				else if(e.getX()/(plateauGameGraphic.getWidth()/10) > pion.posX) { 
 						if (plateauGameGraphic.plateau.board[pion.posY][pion.posX].getThispiece().
@@ -84,6 +92,7 @@ public class PlacementPawn extends FenetreGame  {
 				}
 			}
 			else if(e.getX()/(plateauGameGraphic.getWidth()/10)==pion.posX) {
+				clique=false;
 				if (e.getY()/(plateauGameGraphic.getHeight()/10)==pion.posY) {
 					emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);	
 					ChoicePion(plateauGameGraphic);
@@ -103,6 +112,7 @@ public class PlacementPawn extends FenetreGame  {
 					Game.GameBegin(plateauGameGraphic);
 				}
 				else {
+					clique=false;
 					if (plateauGameGraphic.plateau.board[pion.posY][pion.posX].getThispiece().
 							deplacementPossible(Direction.NORTH,plateauGameGraphic.plateau,pion.posY -(e.getY()/(plateauGameGraphic.getHeight()/10)))){
 								
@@ -119,6 +129,7 @@ public class PlacementPawn extends FenetreGame  {
 			
 		 }
 			else {
+				clique=false;
 				emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
 				ChoicePion(plateauGameGraphic);
 			}
@@ -127,6 +138,7 @@ public class PlacementPawn extends FenetreGame  {
 	  });
 	}
 	public static boolean PionMove(final PionPosition pion, final DrawPlateau plateauGameGraphic) {
+		clique=true;
 		emplacement3.addMouseListener(new MouseListener() {
 
 			@Override
@@ -146,13 +158,15 @@ public class PlacementPawn extends FenetreGame  {
 							if(e.getX()/(plateauGameGraphic.getWidth()/10)==pion.posX+1) {
 								if (plateauGameGraphic.plateau.board[pion.posY][pion.posX].getThispiece().
 								deplacementPossible(Direction.EAST,plateauGameGraphic.plateau,1)) {
-								
+									clique=false;
+									plateauGameGraphic.repaint();
 									plateauGameGraphic.plateau.board[pion.posY ][pion.posX].getThispiece().
 									deplacement(Direction.EAST,plateauGameGraphic.plateau,1);
 									emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
 									Game.GameBegin(plateauGameGraphic);
 								}
 								else {
+									clique=false;
 									emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
 									ChoicePion(plateauGameGraphic);
 								}
@@ -161,13 +175,14 @@ public class PlacementPawn extends FenetreGame  {
 					
 								if (plateauGameGraphic.plateau.board[pion.posY][pion.posX].getThispiece().
 								deplacementPossible(Direction.WEST,plateauGameGraphic.plateau,1)) {
-									
+									clique=false;
 									plateauGameGraphic.plateau.board[pion.posY ][pion.posX].getThispiece().
 									deplacement(Direction.WEST,plateauGameGraphic.plateau,1);
 									emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
 									Game.GameBegin(plateauGameGraphic);
 								}
 								else {
+									clique=false;
 									emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
 									ChoicePion(plateauGameGraphic);
 								}
@@ -179,13 +194,14 @@ public class PlacementPawn extends FenetreGame  {
 							if(e.getY()/(plateauGameGraphic.getHeight()/10)==pion.posY+1) {
 								if (plateauGameGraphic.plateau.board[pion.posY][pion.posX].getThispiece().
 								deplacementPossible(Direction.SOUTH,plateauGameGraphic.plateau,1)) {
-								
+									clique=false;
 									plateauGameGraphic.plateau.board[pion.posY ][pion.posX].getThispiece().
 									deplacement(Direction.SOUTH,plateauGameGraphic.plateau,1);
 									emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
 									Game.GameBegin(plateauGameGraphic);
 								}
 								else {
+									clique=false;
 									emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
 									ChoicePion(plateauGameGraphic);
 								}
@@ -193,23 +209,26 @@ public class PlacementPawn extends FenetreGame  {
 							else if(e.getY()/(plateauGameGraphic.getHeight()/10)==pion.posY-1) {
 								if (plateauGameGraphic.plateau.board[pion.posY][pion.posX].getThispiece().
 								deplacementPossible(Direction.NORTH,plateauGameGraphic.plateau,1)) {
-								
+									clique=false;
 									plateauGameGraphic.plateau.board[pion.posY][pion.posX].getThispiece().
 									deplacement(Direction.NORTH,plateauGameGraphic.plateau,1);
 									emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
 									Game.GameBegin(plateauGameGraphic);
 								}
 								else {
+									clique=false;
 									emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
 									ChoicePion(plateauGameGraphic);	
 								}
 							}
 						else {
+							clique=false;
 							emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
 							ChoicePion(plateauGameGraphic);
 								
 						}
 					}
+				clique=false;
 				emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
 				ChoicePion(plateauGameGraphic);
 			}
@@ -232,19 +251,21 @@ public class PlacementPawn extends FenetreGame  {
 					&& !plateauGameGraphic.plateau.board[e.getY()/(plateauGameGraphic.getHeight()/10)][e.getX()/(plateauGameGraphic.getWidth()/10)].getThispiece().toString().equals("Bomb")
 					&& !plateauGameGraphic.plateau.board[e.getY()/(plateauGameGraphic.getHeight()/10)][e.getX()/(plateauGameGraphic.getWidth()/10)].getThispiece().toString().equals("FLAG")){
 							PionPosition pion = new PionPosition(e.getY()/(plateauGameGraphic.getHeight()/10),e.getX()/(plateauGameGraphic.getWidth()/10));
-							myPion=true;
+							YellowX=pion.posX;
+							YellowY=pion.posY;
 							emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
 							if (plateauGameGraphic.plateau.board[e.getY()/(plateauGameGraphic.getHeight()/10)][e.getX()/(plateauGameGraphic.getWidth()/10)].getThispiece().toString().equals("SCOUT"))
 								SpecialPionMove(pion,plateauGameGraphic);
-							else 
+								
+							else {
+								
 								PionMove(pion,plateauGameGraphic);
 							System.out.println("bon pion choisi");
-							 //emplacement3.repaint();
-							 
+							}
 							
 						}
-						else //{
-							//emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
+						else 
+							
 							System.out.println("mauvais choix");
 						
 							
@@ -259,7 +280,9 @@ public class PlacementPawn extends FenetreGame  {
 				public void mouseClicked(MouseEvent e) {}
 			
 			});
-	return myPion;
+		
+		
+	return true;
 		
 	}
 	
@@ -400,6 +423,10 @@ public class PlacementPawn extends FenetreGame  {
 		//}
 		System.out.println("pions sont placés");
 		return PlacementAllPawn;
+	}
+	
+	public  void paintComponent(Graphics g){
+	
 	}
 
 	

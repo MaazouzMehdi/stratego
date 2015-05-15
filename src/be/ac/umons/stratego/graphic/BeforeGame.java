@@ -43,6 +43,9 @@ public class BeforeGame extends JFrame implements ActionListener {
 			this.dispose();
 			try {
 				SaveLoad.LoadGame();
+				new FenetreLoadGame(plateauGameGraphic);
+				//FenetreGame.emplacement3.repaint();
+				BeforeGame.plateauGameGraphic.repaint();
 			} catch (ClassNotFoundException | IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

@@ -26,7 +26,7 @@ public class Victory {
     }
 
     public static boolean FlagDisponible ( String squad,PlateauBase plateau){
-        if (squad.equals("friend")){
+        if (squad.equals("Friend")){
              for (int i = 8;i<10;i++) {// regarde si le drapeau est toujours présent
                  for (int j=0;j<10;j++) {
                      Cell cell = plateau.board[i][j];
@@ -64,9 +64,19 @@ public class Victory {
         return false;
     }
 
-    private static boolean ComputerPawnsCanMoves( PlateauBase plateau) {
-        ArrayList<Pion> pawnsCanMoveOnBoard= Ia_easy.pawnsCanMove;
-        return (!pawnsCanMoveOnBoard.isEmpty());
+    public static boolean ComputerPawnsCanMoves( PlateauBase plateau) {
+    	for (int i=0;i<10;i++) {
+            for (int j=0;j<10;j++) {
+                Cell cell = plateau.board[i][j];
+                if (!((cell==null) ||  cell.getThisriverpiece()!=null ||(cell.getThispiece().getSquad().equals("Friend"))) &&
+                        (cell.getThispiece().deplacementPossible(Direction.NORTH, plateau, 1)
+                            || cell.getThispiece().deplacementPossible(Direction.SOUTH, plateau, 1)
+                            || cell.getThispiece().deplacementPossible(Direction.EAST, plateau, 1)
+                            || cell.getThispiece().deplacementPossible(Direction.WEST, plateau, 1) ))
+                     return true;
+            }
+    	}
+    	return false;
     }
 
 }

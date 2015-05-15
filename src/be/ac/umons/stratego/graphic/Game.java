@@ -3,6 +3,7 @@ package be.ac.umons.stratego.graphic;
 import be.ac.umons.stratego.ia.Ia_easy;
 import be.ac.umons.stratego.pion.Cell;
 import be.ac.umons.stratego.pion.CellObject;
+import be.ac.umons.stratego.pion.Pion;
 import be.ac.umons.stratego.plateau.PlateauBase;
 import be.ac.umons.stratego.plateau.Victory;
 
@@ -48,7 +49,6 @@ public class Game {
 					
 			}
 		}
-		//PlateauBase.pawnRandomAlly(plateauGameGraphic.plateau);
 		plateauGameGraphic.plateau.board[4][7]=new Cell(CellObject.RIVER,4,7);
 		plateauGameGraphic.plateau.board[5][7]=new Cell(CellObject.RIVER,5,7);
 		plateauGameGraphic.plateau.board[4][6]=new Cell(CellObject.RIVER,4,6);
@@ -57,13 +57,13 @@ public class Game {
 	
 	public static void GameBegin(DrawPlateau plateauGameGraphic) {
 			FenetreGame.emplacement3.repaint();
-			plateauGameGraphic.repaint();
-			if (Victory.SomeoneWin(plateauGameGraphic.plateau) || (Victory.YouWin(plateauGameGraphic.plateau))) {
-				new FenetreEnd();
-			}
 			if ( FenetreGame.count==false) {
 				PlacementPawn.ChoicePion(plateauGameGraphic);
+				if ((! Victory.FlagDisponible("Ennemy", plateauGameGraphic.plateau) || !Victory.ComputerPawnsCanMoves(plateauGameGraphic.plateau)))
+					new FenetreEnd();
 				Ia_easy.play(plateauGameGraphic.plateau);
+				if (!Victory.ComputerPawnsCanMoves(plateauGameGraphic.plateau))
+					new FenetreEnd();
 				FenetreGame.emplacement3.repaint();
 				PlateauBase.afficherTab(plateauGameGraphic.plateau);
 			
@@ -76,5 +76,5 @@ public class Game {
 					Game.GameBegin(plateauGameGraphic);
 				}
 			}
-	}
-}
+		}
+	}	
