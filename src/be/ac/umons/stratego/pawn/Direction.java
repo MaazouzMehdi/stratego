@@ -1,4 +1,4 @@
-package be.ac.umons.stratego.pion;
+package be.ac.umons.stratego.pawn;
 
 
 

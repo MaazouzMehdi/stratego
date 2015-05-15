@@ -1,24 +1,22 @@
 package be.ac.umons.stratego.plateau;
 
 
-import be.ac.umons.stratego.pion.Cell;
-import be.ac.umons.stratego.pion.CellObject;
-import be.ac.umons.stratego.pion.Pion;
-import be.ac.umons.stratego.pion.SaveLoad;
+import be.ac.umons.stratego.pawn.Cell;
+import be.ac.umons.stratego.pawn.CellObject;
+import be.ac.umons.stratego.pawn.Pawn;
 
-import java.io.IOException;
 import java.util.Random;
 
 /* dedans tu as la méthode qui génère un plateau, une qui met les pions alliés
   une autre , les pions ennemis et une dernière qui imprime te tableau */
 
-public class PlateauBase 
+public class BaseBoard
 {
 	public Cell [][] board = new  Cell [10] [10];// board = zone
 	public static int posD_X;
 	public static int posD_Y;
 	
-	public PlateauBase() {
+	public BaseBoard() {
 	
 	// Methdod that generates and returns a table
 
@@ -30,7 +28,7 @@ public class PlateauBase
 
 		
 		
-		public static PlateauBase pawnRandomEnnemy(PlateauBase plateau) {
+		public static BaseBoard pawnRandomEnnemy(BaseBoard plateau) {
 			/* Method that will place the pieces of your team randomly on the table
 			* This Method return the table whit your pawns */
 			Random myNumberRandom = new Random();
@@ -97,7 +95,7 @@ public class PlateauBase
 				Cell a= plateau.board[numberLine1][numberColonne1];
 				int x_old=a.getThispiece().getPosX();
 				int y_old=a.getThispiece().getPosY();
-				Pion oldPiece_a=a.getThispiece();
+				Pawn oldPiece_a=a.getThispiece();
 				
 				int numberLine2 = myNumberRandom.nextInt(4);
 				int numberColonne2 = myNumberRandom.nextInt(10); 
@@ -123,7 +121,7 @@ public class PlateauBase
 			return plateau;
 		} 
 			
-	public static void afficherTab(PlateauBase plateau) {
+	public static void afficherTab(BaseBoard plateau) {
 		for (int i=0;i<10;i++) {
 			for (int j=0;j<10;j++) {
 				Cell cell = plateau.board[i][j];

@@ -1,4 +1,4 @@
-package be.ac.umons.stratego.pion;
+package be.ac.umons.stratego.pawn;
 
 import java.io.Serializable;
 
@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public class Cell implements Serializable {
 
-    private Pion thispiece;
+    private Pawn thispiece;
     private River thisriverpiece;
 
     public Cell( CellObject pioncase, int posY , int posX , String squad) {
@@ -59,11 +59,11 @@ public class Cell implements Serializable {
         thisriverpiece = new River(posY, posX);
     }
 
-    public Pion getThispiece() {
+    public Pawn getThispiece() {
         return thispiece;
     }
     
-    public void setThispiece(Pion thispiece) {
+    public void setThispiece(Pawn thispiece) {
     	this.thispiece=thispiece;
     }
     
