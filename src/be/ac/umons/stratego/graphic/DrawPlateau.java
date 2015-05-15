@@ -31,10 +31,12 @@ public class DrawPlateau extends JPanel  {
 		
 		Font font = new Font("Courier",Font.BOLD,14);
 		FenetreGame.emplacement3.repaint();
+		g.setColor(Color.black);
 		for (int y = 1; y < 10; y++) 
 			g.drawLine(0, (int)(y*cellY)-10, getWidth(), (int)(y*cellY)-10);
 		
 		for (int x = 0 ; x < 10; x++ ) {
+			g.setColor(Color.black);
 			g.drawLine((int)((x+1)*cellX)-2, 0, (int)((x+1)*cellX)-2, getHeight());
 			for (int y= 0 ; y< 10 ; y++) {
 				 if ( plateau.board[y][x]==null){
