@@ -403,7 +403,7 @@ public class PlacementPawn extends WindowGame  {
 		//emplacement3.repaint();
 		for (int y=6; y<10; y++) {
 			for (int x=0; x<10; x++) {
-				if (plateauGameGraphic.plateau.board[8][8]==null){
+				if (plateauGameGraphic.plateau.board[y][x]==null){
 					PlacementAllPawn = false;
 				}
 			}

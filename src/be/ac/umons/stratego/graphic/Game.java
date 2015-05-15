@@ -34,7 +34,6 @@ public class Game {
 	}
 	
 	public static void GameBegin(DrawPlateau plateauGameGraphic) {
-		WindowGame.emplacement3.repaint();
 			if ( WindowGame.count==false) {
 				PlacementPawn.ChoicePion(plateauGameGraphic);
 				if (!Victory.ComputerPawnsCanMoves(plateauGameGraphic.plateau) && (!Victory.MyPawnsCanMoves(plateauGameGraphic.plateau)) ) {
@@ -57,17 +56,12 @@ public class Game {
 				}
 				else if ((! Victory.FlagDisponible("Friend", plateauGameGraphic.plateau) || !Victory.MyPawnsCanMoves(plateauGameGraphic.plateau))) {
 					defeat=true;
-					System.out.println(Victory.FlagDisponible("Friend", plateauGameGraphic.plateau) );
-					System.out.println(Victory.MyPawnsCanMoves(plateauGameGraphic.plateau));
 					new WindowEnd();
 				}
-				WindowGame.emplacement3.repaint();
-				BaseBoard.afficherTab(plateauGameGraphic.plateau);
 			
 			}
 			else {
 				if (PlacementPawn.VerifyMyPawn(plateauGameGraphic)) {
-					//WindowGame.emplacement3.repaint();
 					WindowGame.count=false;
 					Game.GameBegin(plateauGameGraphic);
 				}

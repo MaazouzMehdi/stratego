@@ -38,8 +38,7 @@ public class WindowGame extends JFrame implements ActionListener {
 	static JMenuBar menuBar = new JMenuBar();
 	 static JMenu game = new JMenu("Partie");
 	static  JMenu JMenuExit = new JMenu("Quitter");
-	
-	 static JMenuItem newGame=new JMenuItem("Nouvelle partie");
+
 	 static JMenuItem save=new JMenuItem("Sauvegarder Partie");
 	 static JMenuItem exit=new JMenuItem("Quitter partie");
 
@@ -91,6 +90,12 @@ public class WindowGame extends JFrame implements ActionListener {
 			   }
 				  
 		   }
+		   while (countFlag < 1) { 
+			   Button a= new Button("FLAG");
+			   if (PlacementPawn.PlacementMyPawn(a,plateauGameGraphic)) {
+				   countFlag ++ ;
+			   }
+		   }
 		   while (countMarechal < 1) {
 			   Button a= new Button("MARECHAL");
 			   if (PlacementPawn.PlacementMyPawn(a,plateauGameGraphic)) {
@@ -109,12 +114,7 @@ public class WindowGame extends JFrame implements ActionListener {
 				   countScout ++;
 			   }
 		  }
-		   while (countFlag < 1) { 
-			   Button a= new Button("FLAG");
-			   if (PlacementPawn.PlacementMyPawn(a,plateauGameGraphic)) {
-				   countFlag ++ ;
-			   }
-		   }
+		  
 		   while (countMajor < 3) {
 			   Button a= new Button("MAJOR");
 			   if (PlacementPawn.PlacementMyPawn(a,plateauGameGraphic)) {
@@ -160,11 +160,9 @@ public class WindowGame extends JFrame implements ActionListener {
 		menuBar.add(game);
 		menuBar.add(JMenuExit);
 	   
-		game.add(newGame);
 		game.add(save);
 		JMenuExit.add(exit);
 		
-		newGame.addActionListener(this);
 		save.addActionListener(this);
 		exit.addActionListener(this);
 		
@@ -178,20 +176,8 @@ public class WindowGame extends JFrame implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e)
 	{
-		if((JMenuItem)e.getSource()==newGame) {
-			panelSud.removeAll();
-			 countColonel=0 ;countMajor=0 ; countGeneral=0;
-			countLieutenant=0;countMarechal=0; countCaptain=0;countFlag=0;
-			countSergeant=0; countMiner=0;countSpy=0;countScout=0;countBomb=0;
-			BeforeGame.plateauGameGraphic.removeAll();
-			BeforeGame.plateauGameGraphic.repaint();
-			Game.NewGame(BeforeGame.plateauGameGraphic);
-			emplacement3.add(BeforeGame.plateauGameGraphic);
-			this.dispose();
-			new WindowGame(BeforeGame.plateauGameGraphic);
-			count =true;
-		}
-		else if ((JMenuItem)e.getSource()==save)
+	
+		if ((JMenuItem)e.getSource()==save)
 		{
 			try {
 				SaveLoad.SaveGame(BeforeGame.plateauGameGraphic.plateau);
@@ -209,9 +195,9 @@ public class WindowGame extends JFrame implements ActionListener {
 				BeforeGame.plateauGameGraphic.removeAll();
 				BeforeGame.plateauGameGraphic.repaint();
 				Game.NewGame(BeforeGame.plateauGameGraphic);
+				emplacement3.add(BeforeGame.plateauGameGraphic);
 			}
 			save_game=false;
-			emplacement3.add(BeforeGame.plateauGameGraphic);
 			this.dispose();
 			new Interface();
 		}
