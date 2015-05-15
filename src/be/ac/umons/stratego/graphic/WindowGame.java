@@ -74,8 +74,8 @@ public class WindowGame extends JFrame implements ActionListener {
 			plateauGameGraphic.plateau.board[4][3]=new Cell(CellObject.RIVER,4,2);
 			plateauGameGraphic.plateau.board[5][3]=new Cell(CellObject.RIVER,5,3);
 		   
-		    repaint();
-		    emplacement3.repaint();
+		    //repaint();
+		    //emplacement3.repaint();
 	}
 	
 	public static void PawnOffPlateau(final DrawPlateau plateauGameGraphic) {
