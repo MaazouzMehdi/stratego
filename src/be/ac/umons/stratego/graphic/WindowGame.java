@@ -12,14 +12,14 @@ import java.io.IOException;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 
-import be.ac.umons.stratego.pion.Cell;
-import be.ac.umons.stratego.pion.CellObject;
-import be.ac.umons.stratego.pion.River;
-import be.ac.umons.stratego.pion.SaveLoad;
-import be.ac.umons.stratego.plateau.PlateauBase;
+import be.ac.umons.stratego.pawn.Cell;
+import be.ac.umons.stratego.pawn.CellObject;
+import be.ac.umons.stratego.pawn.River;
+import be.ac.umons.stratego.pawn.SaveLoad;
+import be.ac.umons.stratego.plateau.BaseBoard;
 
 
-public class FenetreGame extends JFrame implements ActionListener {
+public class WindowGame extends JFrame implements ActionListener {
 	/**
 	 * 
 	 */
@@ -46,7 +46,7 @@ public class FenetreGame extends JFrame implements ActionListener {
 	
 	
 	
-	public FenetreGame(DrawPlateau plateauGameGraphic){
+	public WindowGame(DrawPlateau plateauGameGraphic){
 		    this.setTitle("Bienvenue dans la Stratego");
 		    this.setSize(800, 800);
 		    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -188,7 +188,7 @@ public class FenetreGame extends JFrame implements ActionListener {
 			Game.NewGame(BeforeGame.plateauGameGraphic);
 			emplacement3.add(BeforeGame.plateauGameGraphic);
 			this.dispose();
-			new FenetreGame(BeforeGame.plateauGameGraphic);
+			new WindowGame(BeforeGame.plateauGameGraphic);
 			count =true;
 		}
 		else if ((JMenuItem)e.getSource()==save)

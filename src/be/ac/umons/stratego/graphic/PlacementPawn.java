@@ -13,13 +13,13 @@ import java.awt.Point;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 
-import be.ac.umons.stratego.pion.Cell;
-import be.ac.umons.stratego.pion.CellObject;
-import be.ac.umons.stratego.pion.Direction;
-import be.ac.umons.stratego.pion.Pion;
-import be.ac.umons.stratego.plateau.PlateauBase;
+import be.ac.umons.stratego.pawn.Cell;
+import be.ac.umons.stratego.pawn.CellObject;
+import be.ac.umons.stratego.pawn.Direction;
+import be.ac.umons.stratego.pawn.Pawn;
+import be.ac.umons.stratego.plateau.BaseBoard;
 
-public class PlacementPawn extends FenetreGame  {
+public class PlacementPawn extends WindowGame  {
 
 	public PlacementPawn(DrawPlateau plateauGameGraphic) {
 		super(plateauGameGraphic);
@@ -36,7 +36,7 @@ public class PlacementPawn extends FenetreGame  {
 	public static int YellowY;
 
 	
-	public static void SpecialPionMove( final PionPosition pion, final DrawPlateau plateauGameGraphic) {
+	public static void SpecialPionMove( final PawnPosition pion, final DrawPlateau plateauGameGraphic) {
 		clique=true;
 		emplacement3.addMouseListener(new MouseListener() {
 		@Override
@@ -76,7 +76,7 @@ public class PlacementPawn extends FenetreGame  {
 					if (plateauGameGraphic.plateau.board[pion.posY][pion.posX].getThispiece().
 							deplacementPossible(Direction.WEST,plateauGameGraphic.plateau,pion.posX -(e.getX()/(plateauGameGraphic.getWidth()/10)))) {
 								
-								plateauGameGraphic.plateau.board[pion.posY ][pion.posX].getThispiece().
+						plateauGameGraphic.plateau.board[pion.posY ][pion.posX].getThispiece().
 								deplacement(Direction.WEST,plateauGameGraphic.plateau,pion.posX -(e.getX()/(plateauGameGraphic.getWidth()/10)));
 					}
 					else {
@@ -101,7 +101,7 @@ public class PlacementPawn extends FenetreGame  {
 					if (plateauGameGraphic.plateau.board[pion.posY][pion.posX].getThispiece().
 							deplacementPossible(Direction.SOUTH,plateauGameGraphic.plateau,e.getY()/(plateauGameGraphic.getHeight()/10) - pion.posY)) {
 								
-								plateauGameGraphic.plateau.board[pion.posY ][pion.posX].getThispiece().
+						plateauGameGraphic.plateau.board[pion.posY ][pion.posX].getThispiece().
 								deplacement(Direction.SOUTH,plateauGameGraphic.plateau,e.getY()/(plateauGameGraphic.getHeight()/10) - pion.posY);
 					}
 					else {
@@ -116,7 +116,7 @@ public class PlacementPawn extends FenetreGame  {
 					if (plateauGameGraphic.plateau.board[pion.posY][pion.posX].getThispiece().
 							deplacementPossible(Direction.NORTH,plateauGameGraphic.plateau,pion.posY -(e.getY()/(plateauGameGraphic.getHeight()/10)))){
 								
-								plateauGameGraphic.plateau.board[pion.posY ][pion.posX].getThispiece().
+						plateauGameGraphic.plateau.board[pion.posY ][pion.posX].getThispiece().
 								deplacement(Direction.NORTH,plateauGameGraphic.plateau,pion.posY -(e.getY()/(plateauGameGraphic.getHeight()/10)));
 					}
 					else {
@@ -138,7 +138,7 @@ public class PlacementPawn extends FenetreGame  {
 				
 	  });
 	}
-	public static boolean PionMove(final PionPosition pion, final DrawPlateau plateauGameGraphic) {
+	public static boolean PionMove(final PawnPosition pion, final DrawPlateau plateauGameGraphic) {
 		clique=true;
 		emplacement3.addMouseListener(new MouseListener() {
 
@@ -251,7 +251,7 @@ public class PlacementPawn extends FenetreGame  {
 				    && !(plateauGameGraphic.plateau.board[e.getY()/(plateauGameGraphic.getHeight()/10)][e.getX()/(plateauGameGraphic.getWidth()/10)].getThispiece()).getSquad().equals("Ennemy") 
 					&& !plateauGameGraphic.plateau.board[e.getY()/(plateauGameGraphic.getHeight()/10)][e.getX()/(plateauGameGraphic.getWidth()/10)].getThispiece().toString().equals("Bomb")
 					&& !plateauGameGraphic.plateau.board[e.getY()/(plateauGameGraphic.getHeight()/10)][e.getX()/(plateauGameGraphic.getWidth()/10)].getThispiece().toString().equals("FLAG")){
-							PionPosition pion = new PionPosition(e.getY()/(plateauGameGraphic.getHeight()/10),e.getX()/(plateauGameGraphic.getWidth()/10));
+							PawnPosition pion = new PawnPosition(e.getY()/(plateauGameGraphic.getHeight()/10),e.getX()/(plateauGameGraphic.getWidth()/10));
 							YellowX=pion.posX;
 							YellowY=pion.posY;
 							emplacement3.removeMouseListener(emplacement3.getMouseListeners()[0]);
@@ -400,7 +400,7 @@ public class PlacementPawn extends FenetreGame  {
 	}
 	
 	public static void PlacementEnnemyPawn(DrawPlateau plateauGameGraphic) {
-		PlateauBase.pawnRandomEnnemy(plateauGameGraphic.plateau);
+		BaseBoard.pawnRandomEnnemy(plateauGameGraphic.plateau);
 		//PlateauBase.afficherTab(plateauGameGraphic.plateau);
 		//emplacement3.repaint();
 	}

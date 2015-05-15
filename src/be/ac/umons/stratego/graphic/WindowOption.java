@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 
 @SuppressWarnings("serial")
-public class FenetreOption extends Interface
+public class WindowOption extends Interface
 	{
 		public boolean Ia_Hard=false;
 		private PanelOption emplacement2=new PanelOption();
@@ -20,7 +20,7 @@ public class FenetreOption extends Interface
 		// objet qui va servir a choisir la difficulté
 		private JComboBox<String> choixDifficulter = new JComboBox<String>();
 		
-		public FenetreOption()
+		public WindowOption()
 		{
 			this.setTitle("Bienvenue dans le Menu du Stratego");
 			this.setSize(800,800);

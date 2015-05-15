@@ -9,9 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 
-import be.ac.umons.stratego.pion.SaveLoad;
+import be.ac.umons.stratego.pawn.SaveLoad;
 
-public class FenetreEnd extends JFrame implements ActionListener {
+public class WindowEnd extends JFrame implements ActionListener {
 
 	/**
 	 * @param args
@@ -21,7 +21,7 @@ public class FenetreEnd extends JFrame implements ActionListener {
 	private JButton bouton2 = new JButton("Menu Principal");
 	private JButton bouton3 = new JButton("Quitter");
 	
-	public FenetreEnd()
+	public WindowEnd()
 	{
 		EndLabel affichage = new EndLabel();
 		this.setTitle("Bienvenue dans le Stratego");
@@ -50,14 +50,14 @@ public class FenetreEnd extends JFrame implements ActionListener {
 	{
 		if((JButton)e.getSource()==bouton1)
 		{
-			FenetreGame.save_game=false;
+			WindowGame.save_game=false;
 			BeforeGame.plateauGameGraphic.removeAll();
 			BeforeGame.plateauGameGraphic.repaint();
 			Game.NewGame(BeforeGame.plateauGameGraphic);
-			FenetreGame.emplacement3.add(BeforeGame.plateauGameGraphic);
+			WindowGame.emplacement3.add(BeforeGame.plateauGameGraphic);
 			this.dispose();
-			new FenetreGame(BeforeGame.plateauGameGraphic);
-			FenetreGame.count =true;
+			new WindowGame(BeforeGame.plateauGameGraphic);
+			WindowGame.count =true;
 		}
 		else if ((JButton)e.getSource()==bouton3)
 		{
@@ -65,11 +65,11 @@ public class FenetreEnd extends JFrame implements ActionListener {
 		}
 		
 		else {
-			FenetreGame.save_game=false;
+			WindowGame.save_game=false;
 			BeforeGame.plateauGameGraphic.removeAll();
 			BeforeGame.plateauGameGraphic.repaint();
 			Game.NewGame(BeforeGame.plateauGameGraphic);
-			FenetreGame.emplacement3.add(BeforeGame.plateauGameGraphic);
+			WindowGame.emplacement3.add(BeforeGame.plateauGameGraphic);
 			this.dispose();
 			new Interface();
 		}

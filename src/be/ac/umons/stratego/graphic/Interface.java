@@ -3,7 +3,7 @@ package be.ac.umons.stratego.graphic;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 
-import be.ac.umons.stratego.plateau.PlateauBase;
+import be.ac.umons.stratego.plateau.BaseBoard;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -52,7 +52,7 @@ public class Interface extends JFrame implements ActionListener
 			
 			else {
 				this.dispose();
-				new FenetreOption();
+				new WindowOption();
 			}
 				
 		}

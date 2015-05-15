@@ -11,16 +11,16 @@ import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import be.ac.umons.stratego.graphic.FenetreGame;
-import be.ac.umons.stratego.plateau.PlateauBase;
+import be.ac.umons.stratego.graphic.WindowGame;
+import be.ac.umons.stratego.plateau.BaseBoard;
 
 public class DrawPlateau extends JPanel  {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public PlateauBase plateau;
-	public DrawPlateau(PlateauBase board) {
+	public BaseBoard plateau;
+	public DrawPlateau(BaseBoard board) {
 		this.plateau=board;
 	}
 	
@@ -30,7 +30,7 @@ public class DrawPlateau extends JPanel  {
 			final float cellY=getHeight()/10;
 		
 		Font font = new Font("Courier",Font.BOLD,14);
-		FenetreGame.emplacement3.repaint();
+		WindowGame.emplacement3.repaint();
 		g.setColor(Color.black);
 		for (int y = 1; y < 10; y++) 
 			g.drawLine(0, (int)(y*cellY)-10, getWidth(), (int)(y*cellY)-10);
@@ -52,7 +52,7 @@ public class DrawPlateau extends JPanel  {
 				 else if ( plateau.board[y][x].getThispiece().getSquad().equals("Ennemy")){
 						g.setFont(font);
 						g.setColor(Color.red);
-						g.drawString(plateau.board[y][x].getThispiece().toString(),(x*this.getWidth()/10)+3 ,((y+1)*this.getHeight()/10)-20);
+						g.drawString("Ennemy",(x*this.getWidth()/10)+3 ,((y+1)*this.getHeight()/10)-20);
 					}
 				else  {
 						g.setFont(font);

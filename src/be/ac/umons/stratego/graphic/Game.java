@@ -2,10 +2,10 @@ package be.ac.umons.stratego.graphic;
 
 import be.ac.umons.stratego.ia.Ia_Hard;
 import be.ac.umons.stratego.ia.Ia_easy;
-import be.ac.umons.stratego.pion.Cell;
-import be.ac.umons.stratego.pion.CellObject;
-import be.ac.umons.stratego.pion.Pion;
-import be.ac.umons.stratego.plateau.PlateauBase;
+import be.ac.umons.stratego.pawn.Cell;
+import be.ac.umons.stratego.pawn.CellObject;
+import be.ac.umons.stratego.pawn.Pawn;
+import be.ac.umons.stratego.plateau.BaseBoard;
 import be.ac.umons.stratego.plateau.Victory;
 
 public class Game {
@@ -21,7 +21,7 @@ public class Game {
 			}
 		}
 		PlacementPawn.PlacementEnnemyPawn(plateauGameGraphic);
-		FenetreGame.PawnOffPlateau(plateauGameGraphic);
+		WindowGame.PawnOffPlateau(plateauGameGraphic);
 		plateauGameGraphic.plateau.board[4][7]=new Cell(CellObject.RIVER,4,7);
 		plateauGameGraphic.plateau.board[5][7]=new Cell(CellObject.RIVER,5,7);
 		plateauGameGraphic.plateau.board[4][6]=new Cell(CellObject.RIVER,4,6);
@@ -34,16 +34,16 @@ public class Game {
 	}
 	
 	public static void GameBegin(DrawPlateau plateauGameGraphic) {
-			FenetreGame.emplacement3.repaint();
-			if ( FenetreGame.count==false) {
+		WindowGame.emplacement3.repaint();
+			if ( WindowGame.count==false) {
 				PlacementPawn.ChoicePion(plateauGameGraphic);
 				if (!Victory.ComputerPawnsCanMoves(plateauGameGraphic.plateau) && (!Victory.MyPawnsCanMoves(plateauGameGraphic.plateau)) ) {
 					nul=true;
-					new FenetreEnd();
+					new WindowEnd();
 				}
 				if ((! Victory.FlagDisponible("Ennemy", plateauGameGraphic.plateau) || !Victory.ComputerPawnsCanMoves(plateauGameGraphic.plateau))){
 					win=true;
-					new FenetreEnd();
+					new WindowEnd();
 				}
 				if (Ia_hard)
 					Ia_Hard.play(plateauGameGraphic.plateau);
@@ -51,22 +51,22 @@ public class Game {
 					Ia_easy.play(plateauGameGraphic.plateau);
 				if (!Victory.ComputerPawnsCanMoves(plateauGameGraphic.plateau) && (!Victory.MyPawnsCanMoves(plateauGameGraphic.plateau)) ) {
 					nul=true;
-					new FenetreEnd();
+					new WindowEnd();
 				}
 				else if ((! Victory.FlagDisponible("Friend", plateauGameGraphic.plateau) || !Victory.MyPawnsCanMoves(plateauGameGraphic.plateau))) {
 					defeat=true;
 					System.out.println(Victory.FlagDisponible("Friend", plateauGameGraphic.plateau) );
 					System.out.println(Victory.MyPawnsCanMoves(plateauGameGraphic.plateau));
-					new FenetreEnd();
+					new WindowEnd();
 				}
-				FenetreGame.emplacement3.repaint();
-				PlateauBase.afficherTab(plateauGameGraphic.plateau);
+				WindowGame.emplacement3.repaint();
+				BaseBoard.afficherTab(plateauGameGraphic.plateau);
 			
 			}
 			else {
 				if (PlacementPawn.VerifyMyPawn(plateauGameGraphic)) {
-					FenetreGame.emplacement3.repaint();
-					FenetreGame.count=false;
+					WindowGame.emplacement3.repaint();
+					WindowGame.count=false;
 					Game.GameBegin(plateauGameGraphic);
 				}
 			}
