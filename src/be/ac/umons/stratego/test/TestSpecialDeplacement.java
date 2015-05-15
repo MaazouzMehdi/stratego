@@ -2,11 +2,11 @@ package be.ac.umons.stratego.test;
 
 
 
-import be.ac.umons.stratego.pion.Cell;
-import be.ac.umons.stratego.pion.CellObject;
-import be.ac.umons.stratego.pion.Direction;
-import be.ac.umons.stratego.pion.Scout;
-import be.ac.umons.stratego.plateau.PlateauBase;
+import be.ac.umons.stratego.pawn.Cell;
+import be.ac.umons.stratego.pawn.CellObject;
+import be.ac.umons.stratego.pawn.Direction;
+import be.ac.umons.stratego.pawn.Scout;
+import be.ac.umons.stratego.plateau.BaseBoard;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
 
 public class TestSpecialDeplacement {
 	
-	PlateauBase plateau = new PlateauBase();
+	BaseBoard plateau = new BaseBoard();
 	Scout eclaireur = new Scout(2,2,"Friend");
 	Scout eclaireurAlly=new Scout(2,1,"Friend");
 	

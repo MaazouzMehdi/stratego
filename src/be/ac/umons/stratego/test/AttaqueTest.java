@@ -2,16 +2,16 @@ package be.ac.umons.stratego.test;
 
 import static org.junit.Assert.*;
 
-import be.ac.umons.stratego.pion.*;
+import be.ac.umons.stratego.pawn.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import be.ac.umons.stratego.plateau.PlateauBase;
+import be.ac.umons.stratego.plateau.BaseBoard;
 
 public class AttaqueTest {
 	
 	
-	PlateauBase plateau;
+	BaseBoard plateau;
 	Captain capitaine=new Captain(1,1,"Friend");
 	Marechal marechal = new Marechal(2,1,"Ennemy");
 	Bomb bombe = new Bomb(1,0,"Friend");
@@ -20,7 +20,7 @@ public class AttaqueTest {
 
 	@Before
 	public void init() {
-		plateau=new PlateauBase();
+		plateau=new BaseBoard();
 		plateau.board[marechal.getPosY()][marechal.getPosX()]= new Cell(CellObject.MARECHAL,marechal.getPosY(),marechal.getPosX(),"Ennemy");
 		plateau.board[capitaine.getPosY()][capitaine.getPosX()]= new Cell(CellObject.CAPTAIN,capitaine.getPosY(),capitaine.getPosX(),"Friend");
 		plateau.board[eclaireur.getPosY()][eclaireur.getPosX()]= new Cell(CellObject.SCOUT,eclaireur.getPosY(),eclaireur.getPosX(),"Friend");

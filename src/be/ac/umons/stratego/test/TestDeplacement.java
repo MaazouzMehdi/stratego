@@ -1,20 +1,20 @@
 package be.ac.umons.stratego.test;
 
-import be.ac.umons.stratego.pion.*;
-import be.ac.umons.stratego.plateau.PlateauBase;
+import be.ac.umons.stratego.pawn.*;
+import be.ac.umons.stratego.plateau.BaseBoard;
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
 
 
-import be.ac.umons.stratego.plateau.PlateauBase;
+import be.ac.umons.stratego.plateau.BaseBoard;
 
 
 public class TestDeplacement {
 	
 	//classe qui va servir a tester si le deplacement est possible et si oui,le deplacement d'un pion
 
-	PlateauBase plateau = new PlateauBase();
+	BaseBoard plateau = new BaseBoard();
 	Captain capitaine=new Captain(1,1,"Friend");
 	Captain eclaireur=new Captain(1,2,"Friend");
 	Captain capitaineEnnemy=new Captain(2,1,"Ennemy");
