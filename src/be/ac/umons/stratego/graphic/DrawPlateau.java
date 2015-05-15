@@ -1,18 +1,11 @@
 package be.ac.umons.stratego.graphic;
 
 import javax.swing.JPanel;
-import javax.swing.JButton;
-import java.awt.event.MouseEvent;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.BorderLayout;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import be.ac.umons.stratego.graphic.WindowGame;
-import be.ac.umons.stratego.plateau.BaseBoard;
+
+import be.ac.umons.stratego.board.BaseBoard;
 
 public class DrawPlateau extends JPanel  {
 	/**

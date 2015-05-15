@@ -1,23 +1,14 @@
 package be.ac.umons.stratego.graphic;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Point;
-
-import javax.swing.JPanel;
-import javax.swing.JFrame;
 
 import be.ac.umons.stratego.pawn.Cell;
 import be.ac.umons.stratego.pawn.CellObject;
 import be.ac.umons.stratego.pawn.Direction;
-import be.ac.umons.stratego.pawn.Pawn;
-import be.ac.umons.stratego.plateau.BaseBoard;
+import be.ac.umons.stratego.board.BaseBoard;
 
 public class PlacementPawn extends WindowGame  {
 
@@ -394,7 +385,7 @@ public class PlacementPawn extends WindowGame  {
 	
 	public static void PlacementEnnemyPawn(DrawPlateau plateauGameGraphic) {
 		BaseBoard.pawnRandomEnnemy(plateauGameGraphic.plateau);
-		//PlateauBase.afficherTab(plateauGameGraphic.plateau);
+		//PlateauBase.afficherTab(plateauGameGraphic.board);
 		//emplacement3.repaint();
 	}
 	

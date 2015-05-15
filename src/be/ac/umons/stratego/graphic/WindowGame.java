@@ -14,9 +14,7 @@ import javax.swing.JMenuBar;
 
 import be.ac.umons.stratego.pawn.Cell;
 import be.ac.umons.stratego.pawn.CellObject;
-import be.ac.umons.stratego.pawn.River;
 import be.ac.umons.stratego.pawn.SaveLoad;
-import be.ac.umons.stratego.plateau.BaseBoard;
 
 
 public class WindowGame extends JFrame implements ActionListener {
@@ -182,7 +180,7 @@ public class WindowGame extends JFrame implements ActionListener {
 			try {
 				SaveLoad.SaveGame(BeforeGame.plateauGameGraphic.plateau);
 				save_game=true;
-			} catch (ClassNotFoundException | IOException e1) {
+			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
 		}
