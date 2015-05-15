@@ -14,27 +14,6 @@ import java.util.ArrayList;
  */
 public class Victory {
 
-    public static boolean EnnemyWin(PlateauBase plateau){
-       return ( ( !FlagDisponible("Friend",plateau) ||! MyPawnsCanMoves(plateau) ) && (FlagDisponible("Ennemy",plateau) && ComputerPawnsCanMoves(plateau) ) );
-    }
-
-    public static boolean YouWin (PlateauBase plateau) {
-        if ( (/* FlagDisponible("Friend",plateau) && MyPawnsCanMoves(plateau) ) && */(!FlagDisponible("Ennemy",plateau)))) {
-        		
-        	System.out.println("drapeau pas present");
-        	return true;
-        }
-        else if (!ComputerPawnsCanMoves(plateau)) {
-        	System.out.println("pion peut pas se deplacer");
-        	return true;
-        }
-        else
-        	return false;
-            
-        
-    }
-
-
     public static boolean FlagDisponible ( String squad,PlateauBase plateau){
         if (squad.equals("Friend")){
              for (int i = 8;i<10;i++) {// regarde si le drapeau est toujours présent
@@ -51,7 +30,7 @@ public class Victory {
             return false;
         }
         else {
-            for (int i = 0;i<2;i++) {// regarde si le drapeau est toujours présent
+            for (int i = 0;i<4;i++) {// regarde si le drapeau est toujours présent
                 for (int j=0;j<10;j++) {
                     Cell cell = plateau.board[i][j];
                     if (cell==null )

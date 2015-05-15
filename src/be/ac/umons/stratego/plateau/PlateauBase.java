@@ -4,7 +4,9 @@ package be.ac.umons.stratego.plateau;
 import be.ac.umons.stratego.pion.Cell;
 import be.ac.umons.stratego.pion.CellObject;
 import be.ac.umons.stratego.pion.Pion;
+import be.ac.umons.stratego.pion.SaveLoad;
 
+import java.io.IOException;
 import java.util.Random;
 
 /* dedans tu as la méthode qui génère un plateau, une qui met les pions alliés
@@ -27,107 +29,6 @@ public class PlateauBase
 	}
 
 	
-	public static PlateauBase pawnRandomAlly(PlateauBase plateau) {
-		/* Method that will place the pieces of your team randomly on the table
-		 * This Method return the table whit your pawns */
-		Random myNumberRandom = new Random();
-		// Variables that limit the parts to put in the table
-		int countBomb=0,countMarechal=0,countGeneral=0,countFlag=0,countSpy=0,countScout=0,
-		countLieutenant=0, countColonel=0,countMajor=0,countCaptain=0,countMiner=0,
-		countSergeant=0;
-		// Number of pieces to place in the table
-		int numberPiece=0;
-		boolean placementPiece;
-		while (numberPiece<40) {
-			placementPiece=false;
-			int numberLine = myNumberRandom.nextInt(4);
-			int numberColonne = myNumberRandom.nextInt(10);
-			int numberPiecesRandom= myNumberRandom.nextInt(11);
-			switch (numberPiecesRandom) {
-				case 0 :
-					if ( plateau.board[numberLine+6][numberColonne]==null &&countMarechal<1) {
-						plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.MARECHAL,numberLine,numberColonne,"Friend");
-						placementPiece=true;
-						countMarechal=1;
-				}
-				case 1: 
-					if (plateau.board[numberLine+6][numberColonne] ==null && countGeneral<1) {
-						plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.GENERAL,numberLine,numberColonne,"Friend");
-						placementPiece=true;
-						countGeneral=1;
-					}
-				case 2:
-					if (plateau.board[numberLine+6][numberColonne] ==null && countColonel<2) {
-						plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.COLONEL,numberLine,numberColonne,"Friend");
-						placementPiece=true;
-						countColonel++;
-					}
-				case 3:
-					if (plateau.board[numberLine+6][numberColonne] ==null && countMajor<3) {
-						plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.MAJOR,numberLine,numberColonne,"Friend");
-						placementPiece=true;
-						countMajor++;
-					}
-				case 4:
-					if (plateau.board[numberLine+6][numberColonne] ==null && countCaptain<4) {
-						plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.CAPTAIN,numberLine,numberColonne,"Friend");
-						placementPiece=true;
-						countCaptain++;
-					}
-				case 5: 
-					if (plateau.board[numberLine+6][numberColonne] ==null && countLieutenant<4) {
-						plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.LIEUTENANT,numberLine,numberColonne,"Friend");
-						placementPiece=true;
-						countLieutenant++;
-					}	
-				case 6:
-					if (plateau.board[numberLine+6][numberColonne] ==null && countSergeant<4) {
-						plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.SERGEANT,numberLine,numberColonne,"Friend");
-						placementPiece=true;
-						countSergeant++;
-					}	
-				case 7:
-					if (plateau.board[numberLine+6][numberColonne] ==null && countMiner<5) {
-						plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.MINER,numberLine,numberColonne,"Friend");
-						placementPiece=true;
-						countMiner++;
-					}
-				case 8: 
-					if (plateau.board[numberLine+6][numberColonne] ==null && countScout<8) {
-						plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.SCOUT,numberLine,numberColonne,"Friend");
-						placementPiece=true;
-						countScout++;
-					}
-				case 9:
-					if (plateau.board[numberLine+6][numberColonne] ==null && countSpy<1) {
-						plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.SPY,numberLine,numberColonne,"Friend");
-						placementPiece=true;
-						countSpy++;
-					}
-				case 10:
-					if (plateau.board[numberLine+6][numberColonne] ==null && countBomb<6) {
-						plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.BOMB,numberLine,numberColonne,"Friend");
-						placementPiece=true;
-						countBomb++;
-					}
-				case 11:
-					if (plateau.board[numberLine+6][numberColonne] ==null && countFlag<1) {
-						plateau.board[numberLine+6][numberColonne] = new Cell(CellObject.FLAG,numberLine,numberColonne,"Friend");
-						placementPiece=true;
-						countFlag++;
-						posD_X = numberColonne;
-						posD_Y = numberLine;
-					}		
-				}
-				if (placementPiece) {
-					// if the piece put in the table
-					numberPiece ++;
-				}
-			}
-			return plateau;
-		}
-		
-		
 		public static PlateauBase pawnRandomEnnemy(PlateauBase plateau) {
 			/* Method that will place the pieces of your team randomly on the table
 			* This Method return the table whit your pawns */
@@ -189,28 +90,35 @@ public class PlateauBase
 					}
 				}
 			}
-			/*while (numberShuffer != 0) {
+			while (numberShuffer != 0) {
 				int numberLine1 = myNumberRandom.nextInt(4);
 				int numberColonne1 = myNumberRandom.nextInt(10);
 				Cell a= plateau.board[numberLine1][numberColonne1];
-				Cell old_a=a;
+				int x_old=a.getThispiece().getPosX();
+				int y_old=a.getThispiece().getPosY();
 				Pion oldPiece_a=a.getThispiece();
 				
 				int numberLine2 = myNumberRandom.nextInt(4);
 				int numberColonne2 = myNumberRandom.nextInt(10); 
 				
 				Cell b = plateau.board[numberLine2][numberColonne2];
+				a.getThispiece().setPosX(b.getThispiece().getPosX());
+				a.getThispiece().setPosY(b.getThispiece().getPosY());
+				
+				b.getThispiece().setPosX(x_old);
+				b.getThispiece().setPosY(y_old);
+				
 				a.setThispiece(b.getThispiece());
 				b.setThispiece(oldPiece_a);
-				a=b;
-				b=old_a;
 				
-				plateau.board[numberLine1][numberColonne1]=b;
-				plateau.board[numberLine2][numberColonne2]=a;
+				
+				plateau.board[numberLine1][numberColonne1]=a;
+				plateau.board[numberLine2][numberColonne2]=b;
 				
 				
 				numberShuffer --;
-			} */
+			}
+				
 			return plateau;
 		} 
 			
@@ -229,11 +137,4 @@ public class PlateauBase
 		}
 	}
 	
-	/*public static void main (String argv[]) {
-		PlateauBase x = new PlateauBase();
-		//pawnRandomAlly(x);
-		pawnRandomEnnemy(x);
-		afficherTab(x);
-		}
-*/
 }
