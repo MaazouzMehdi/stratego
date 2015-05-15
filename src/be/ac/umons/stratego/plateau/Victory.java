@@ -74,10 +74,10 @@ public class Victory {
                 if ((cell==null) ||  cell.getThisriverpiece()!=null ||(cell.getThispiece().getSquad().equals("Ennemy")))
                 	continue;
                 else {
-                    if (cell.getThispiece().deplacementPossible(Direction.NORTH, plateau, 1) ==true
-                            || cell.getThispiece().deplacementPossible(Direction.SOUTH, plateau, 1)==true
-                            || cell.getThispiece().deplacementPossible(Direction.EAST, plateau, 1)==true
-                            || cell.getThispiece().deplacementPossible(Direction.WEST, plateau, 1) == true )
+                    if (cell.getThispiece().deplacementPossible(Direction.NORTH, plateau, 1) 
+                            || cell.getThispiece().deplacementPossible(Direction.SOUTH, plateau, 1)
+                            || cell.getThispiece().deplacementPossible(Direction.EAST, plateau, 1)
+                            || cell.getThispiece().deplacementPossible(Direction.WEST, plateau, 1) )
                         return true;
                 }
             }
@@ -92,10 +92,10 @@ public class Victory {
                 if ((cell==null) ||  cell.getThisriverpiece()!=null ||(cell.getThispiece().getSquad().equals("Friend")))
                 	continue;
                 else {
-                	 if (cell.getThispiece().deplacementPossible(Direction.NORTH, plateau, 1) ==true
-                             || cell.getThispiece().deplacementPossible(Direction.SOUTH, plateau, 1)==true
-                             || cell.getThispiece().deplacementPossible(Direction.EAST, plateau, 1)==true
-                             || cell.getThispiece().deplacementPossible(Direction.WEST, plateau, 1) == true )
+                	 if (cell.getThispiece().deplacementPossible(Direction.NORTH, plateau, 1) 
+                             || cell.getThispiece().deplacementPossible(Direction.SOUTH, plateau, 1)
+                             || cell.getThispiece().deplacementPossible(Direction.EAST, plateau, 1)
+                             || cell.getThispiece().deplacementPossible(Direction.WEST, plateau, 1) )
                          return true;
                 }
             }
