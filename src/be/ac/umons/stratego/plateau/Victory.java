@@ -27,7 +27,7 @@ public class Victory {
 
     public static boolean FlagDisponible ( String squad,PlateauBase plateau){
         if (squad.equals("Friend")){
-             for (int i = 8;i<10;i++) {// regarde si le drapeau est toujours présent
+             for (int i = 6;i<10;i++) {// regarde si le drapeau est toujours présent
                  for (int j=0;j<10;j++) {
                      Cell cell = plateau.board[i][j];
                      if (cell!=null  && cell.getThispiece().toString().equals("FLAG")) // on ne regarde pas l'équipe car le flag est toujours soit en haut soit en bas
@@ -37,7 +37,7 @@ public class Victory {
             return false;
         }
         else {
-            for (int i = 0;i<2;i++) {// regarde si le drapeau est toujours présent
+            for (int i = 0;i<4;i++) {// regarde si le drapeau est toujours présent
                 for (int j=0;j<10;j++) {
                     Cell cell = plateau.board[i][j];
                     if (cell!=null && cell.getThispiece().toString().equals("FLAG"))
