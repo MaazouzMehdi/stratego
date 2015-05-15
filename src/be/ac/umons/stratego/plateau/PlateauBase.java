@@ -28,7 +28,8 @@ public class PlateauBase
 		}
 	}
 
-	
+		
+		
 		public static PlateauBase pawnRandomEnnemy(PlateauBase plateau) {
 			/* Method that will place the pieces of your team randomly on the table
 			* This Method return the table whit your pawns */

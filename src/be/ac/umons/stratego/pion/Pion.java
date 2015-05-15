@@ -1,7 +1,5 @@
 package be.ac.umons.stratego.pion;
 
-
-import be.ac.umons.stratego.ia.Ia_easy;
 import be.ac.umons.stratego.plateau.PlateauBase;
 
 import java.io.Serializable;
