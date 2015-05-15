@@ -47,7 +47,7 @@ public class FenetreGame extends JFrame implements ActionListener {
 	
 	public FenetreGame(DrawPlateau plateauGameGraphic){
 			//emplacement3.removeAll();
-		    this.setTitle("Bienvenue dans la Stragego");
+		    this.setTitle("Bienvenue dans la Stratego");
 		    this.setSize(800, 800);
 		    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		    this.setLocationRelativeTo(null);
@@ -123,10 +123,7 @@ public class FenetreGame extends JFrame implements ActionListener {
 				   countPiecesTot ++;
 			   }
 			}
-		   while (countFlag < 1) { 
-			   Button a= new Button("Flag");
-			   if (PlacementPawn.PlacementMyPawn(a)) {
-				   countFlag ++ ;
+		   
 				   countPiecesTot ++;
 				 }
 		}
@@ -166,7 +163,12 @@ public class FenetreGame extends JFrame implements ActionListener {
 				   countScout ++;
 			   }
 		  }
-		   
+		   while (countFlag < 1) { 
+			   Button a= new Button("FLAG");
+			   if (PlacementPawn.PlacementMyPawn(a,plateauGameGraphic)) {
+				   countFlag ++ ;
+			   }
+		   }
 	}
 	
 	public void initMenu()  {

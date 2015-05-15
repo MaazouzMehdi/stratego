@@ -59,10 +59,15 @@ public class Game {
 			FenetreGame.emplacement3.repaint();
 			if ( FenetreGame.count==false) {
 				PlacementPawn.ChoicePion(plateauGameGraphic);
+				if (!Victory.ComputerPawnsCanMoves(plateauGameGraphic.plateau) && (!Victory.MyPawnsCanMoves(plateauGameGraphic.plateau)) )
+					new FenetreEnd();
 				if ((! Victory.FlagDisponible("Ennemy", plateauGameGraphic.plateau) || !Victory.ComputerPawnsCanMoves(plateauGameGraphic.plateau)))
 					new FenetreEnd();
+				
 				Ia_easy.play(plateauGameGraphic.plateau);
-				if (!Victory.ComputerPawnsCanMoves(plateauGameGraphic.plateau))
+				if (!Victory.ComputerPawnsCanMoves(plateauGameGraphic.plateau) && (!Victory.MyPawnsCanMoves(plateauGameGraphic.plateau)) )
+					new FenetreEnd();
+				else if ((! Victory.FlagDisponible("Friend", plateauGameGraphic.plateau) || !Victory.MyPawnsCanMoves(plateauGameGraphic.plateau)))
 					new FenetreEnd();
 				FenetreGame.emplacement3.repaint();
 				PlateauBase.afficherTab(plateauGameGraphic.plateau);
