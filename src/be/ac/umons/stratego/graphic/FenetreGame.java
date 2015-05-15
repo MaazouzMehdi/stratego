@@ -24,6 +24,7 @@ public class FenetreGame extends JFrame implements ActionListener {
 	 * 
 	 */
 	public static boolean count=false;
+	public static boolean save_game=false;
 	private static final long serialVersionUID = 1L;
 	protected static Panneau emplacement3=new Panneau();
 	public static JPanel panelSud= new JPanel();
@@ -46,22 +47,19 @@ public class FenetreGame extends JFrame implements ActionListener {
 	
 	
 	public FenetreGame(DrawPlateau plateauGameGraphic){
-			//emplacement3.removeAll();
 		    this.setTitle("Bienvenue dans la Stratego");
 		    this.setSize(800, 800);
 		    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		    this.setLocationRelativeTo(null);
 		    this.setContentPane(emplacement3);
 		    this.setVisible(true);
-		    //this.plateauGameGraphic=plateauGameGraphic;
+		    
 		    
 		    //On définit le layout à utiliser sur le content pane
 		    this.setLayout(new BorderLayout());
 		    this.add(panelSud, BorderLayout.SOUTH);
 		    this.add(plateauGameGraphic,BorderLayout.CENTER);
-		    this.add(panelEast,BorderLayout.EAST);
 		    this.add(panelNord,BorderLayout.NORTH);
-		    this.add(panelWest,BorderLayout.WEST);
 		    this.initMenu();
 		    
 		   PlacementPawn.PlacementEnnemyPawn(plateauGameGraphic);
@@ -70,6 +68,11 @@ public class FenetreGame extends JFrame implements ActionListener {
 			plateauGameGraphic.plateau.board[5][7]=new Cell(CellObject.RIVER,5,7);
 			plateauGameGraphic.plateau.board[4][6]=new Cell(CellObject.RIVER,4,6);
 			plateauGameGraphic.plateau.board[5][6]=new Cell(CellObject.RIVER,5,6);
+			
+			plateauGameGraphic.plateau.board[4][2]=new Cell(CellObject.RIVER,4,2);
+			plateauGameGraphic.plateau.board[5][2]=new Cell(CellObject.RIVER,5,3);
+			plateauGameGraphic.plateau.board[4][3]=new Cell(CellObject.RIVER,4,2);
+			plateauGameGraphic.plateau.board[5][3]=new Cell(CellObject.RIVER,5,3);
 		   
 		   //NE PAS OUBLIER DE RETIRER LES PARENTHESES AUX IF POUR LES COUNT...
 		  /*  while (countMajor < 3) {
@@ -132,9 +135,9 @@ public class FenetreGame extends JFrame implements ActionListener {
 		    emplacement3.repaint();
 	}
 	
-	public void PawnOffPlateau(final DrawPlateau plateauGameGraphic) {
+	public static void PawnOffPlateau(final DrawPlateau plateauGameGraphic) {
 		   while (countColonel < 2) {
-			   Button a= new Button("COlONEL"); 
+			   Button a= new Button("COLONEL"); 
 			   PlacementPawn.PlacementMyPawn(a,plateauGameGraphic);
 			   countColonel ++;
 		   }
@@ -194,7 +197,10 @@ public class FenetreGame extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e)
 	{
 		if((JMenuItem)e.getSource()==newGame) {
-			
+			panelSud.removeAll();
+			 countColonel=0 ;countMajor=0 ; countGeneral=0;
+			countLieutenant=0;countMarechal=0; countCaptain=0;countFlag=0;
+			countSergeant=0; countMiner=0;countSpy=0;countScout=0;countBomb=0;
 			BeforeGame.plateauGameGraphic.removeAll();
 			BeforeGame.plateauGameGraphic.repaint();
 			Game.NewGame(BeforeGame.plateauGameGraphic);
@@ -207,15 +213,22 @@ public class FenetreGame extends JFrame implements ActionListener {
 		{
 			try {
 				SaveLoad.SaveGame(BeforeGame.plateauGameGraphic.plateau);
+				save_game=true;
 			} catch (ClassNotFoundException | IOException e1) {
 				e1.printStackTrace();
 			}
 		}
 		
 		else {
-			BeforeGame.plateauGameGraphic.removeAll();
-			BeforeGame.plateauGameGraphic.repaint();
-			Game.NewGame(BeforeGame.plateauGameGraphic);
+			if (!save_game) {
+				countColonel=0 ;countMajor=0 ; countGeneral=0;
+				countLieutenant=0;countMarechal=0; countCaptain=0;countFlag=0;
+				countSergeant=0; countMiner=0;countSpy=0;countScout=0;countBomb=0;
+				BeforeGame.plateauGameGraphic.removeAll();
+				BeforeGame.plateauGameGraphic.repaint();
+				Game.NewGame(BeforeGame.plateauGameGraphic);
+			}
+			save_game=false;
 			emplacement3.add(BeforeGame.plateauGameGraphic);
 			this.dispose();
 			new Interface();

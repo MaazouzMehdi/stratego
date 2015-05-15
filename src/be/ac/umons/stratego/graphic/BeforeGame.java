@@ -36,6 +36,15 @@ public class BeforeGame extends JFrame implements ActionListener {
 	{
 		if((JButton)e.getSource()==bouton1)
 		{
+			FenetreGame.countColonel=0 ;FenetreGame.countMajor=0 ; FenetreGame.countGeneral=0;
+			FenetreGame.countLieutenant=0;FenetreGame.countMarechal=0; FenetreGame.countCaptain=0;FenetreGame.countFlag=0;
+			FenetreGame.countSergeant=0; FenetreGame.countMiner=0;FenetreGame.countSpy=0;FenetreGame.countScout=0;
+			FenetreGame.countBomb=0;
+			FenetreGame.panelSud.removeAll();
+			BeforeGame.plateauGameGraphic.removeAll();
+			BeforeGame.plateauGameGraphic.repaint();
+			FenetreGame.emplacement3.add(BeforeGame.plateauGameGraphic);
+			Game.NewGame(BeforeGame.plateauGameGraphic);
 			this.dispose(); // permet de fermer la fenetre
 			new FenetreGame(plateauGameGraphic);
 		}		
@@ -43,9 +52,8 @@ public class BeforeGame extends JFrame implements ActionListener {
 			this.dispose();
 			try {
 				SaveLoad.LoadGame();
-				new FenetreLoadGame(plateauGameGraphic);
-				//FenetreGame.emplacement3.repaint();
 				BeforeGame.plateauGameGraphic.repaint();
+				new FenetreGame(plateauGameGraphic);
 			} catch (ClassNotFoundException | IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
