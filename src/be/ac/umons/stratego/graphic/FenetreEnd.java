@@ -1,5 +1,6 @@
 package be.ac.umons.stratego.graphic;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -15,28 +16,34 @@ public class FenetreEnd extends JFrame implements ActionListener {
 	/**
 	 * @param args
 	 */
-	private Panneau emplacement1=new Panneau();
-	//public final static DrawPlateau plateauGameGraphic= new DrawPlateau(new PlateauBase());
+	private Panneau emplacement5=new Panneau();
 	private JButton bouton1 = new JButton("Recommencer une partie");
 	private JButton bouton2 = new JButton("Menu Principal");
 	private JButton bouton3 = new JButton("Quitter");
 	
 	public FenetreEnd()
 	{
+		EndLabel affichage = new EndLabel();
 		this.setTitle("Bienvenue dans le Stratego");
 		this.setSize(800,800);
 		this.setLocationRelativeTo(null);
+		this.setLayout(new BorderLayout());
+	    this.add(affichage,BorderLayout.CENTER);
+	    this.add(emplacement5,BorderLayout.NORTH);
 		
-		//on prévient notre JFrame que ce sera notre Jpannel
-		this.getContentPane().add(emplacement1);
-		emplacement1.add(bouton1); // on ajoute les boutons au JPanel, ainsi l'image est sauvegarder
-		emplacement1.add(bouton2);
-		emplacement1.add(bouton3);
+		//affichage.add(emplacement1);
+		//this.add(emplacement1,affichage);
+		emplacement5.add(bouton1); // on ajoute les boutons au JPanel, ainsi l'image est sauvegarder
+		emplacement5.add(bouton2);
+		emplacement5.add(bouton3);
 		bouton1.addActionListener(this);
 		bouton2.addActionListener(this); 
 		bouton3.addActionListener(this);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//repaint();
+		emplacement5.repaint();
+		//affichage.repaint();
 	}
 	
 	public void actionPerformed(ActionEvent e)

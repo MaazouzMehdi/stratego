@@ -70,63 +70,8 @@ public class DrawPlateau extends JPanel  {
 			g.drawString(BeforeGame.plateauGameGraphic.plateau.board[PlacementPawn.YellowY][PlacementPawn.YellowX].getThispiece()
 					.toString(),(PlacementPawn.YellowX*this.getWidth()/10)+3 ,(PlacementPawn.YellowY+1)*this.getHeight()/10-20);
 		 } 
-			
-		
-		//PlacementPawn.clique=false;
-
-		/*if (PlacementPawn.clique==true) {
-			g.setColor(Color.yellow);
-			g.drawString(plateau.board[yellowY][pion.posX].getThispiece().toString(),pion.posY*this.getWidth()/10 ,((pion.posX+1)*this.getHeight()/10)-20);
-		} */
-		
-		
-		//g.setColor(Color.blue);
-		//g.drawString(plateau.board[7][5].getThisriverpiece().toString(),7*this.getWidth()/10 ,(5+1)*this.getHeight()/10 );
-		//g.drawString(plateau.board[2][5].getThisriverpiece().toString(),2*this.getWidth()/10 ,(5+1)*this.getHeight()/10 );
-		
 	}
-
-	    	
-	    	/*public void mouseDragged(MouseEvent e) {
-	    		
-	    		int x= e.getX();
-	    		System.out.println(x);
-	    		FenetreGame.emplacement3.repaint();
-	    	}
-
-			public void mouseMoved(MouseEvent e) {}
-
-			/*@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			/*@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			*/
-	}
+}
 
 
 	

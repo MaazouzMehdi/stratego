@@ -14,7 +14,6 @@ import java.util.ArrayList;
  */
 public class Victory {
 
-
     public static boolean FlagDisponible ( String squad,PlateauBase plateau){
         if (squad.equals("Friend")){
              for (int i = 8;i<10;i++) {// regarde si le drapeau est toujours présent
